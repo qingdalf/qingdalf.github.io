@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
+    
+    
+        <link rel="shortcut icon" href="/images/favicon.ico">
+    
+     
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.2.30/dist/vuetify.min.css" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+    
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1N0P7T2Z7F"></script>
+<script>
+  var host = window.location.hostname;
+  if (host != "localhost" || true == false) {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1N0P7T2Z7F');
+  }
+</script>
+
+
+
+
+
+
+
+    
+    
+          
+
+    
+    
+    
+
+    
+    
+    <title>
+        
+            test | welcome
+        
+    </title>
+    
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div id="app">
+        <v-app>
+            <v-content id="page">
+                <v-container fluid>
+                    <v-row>
+                        <v-col cols="2" class="d-none d-md-block">
+                            <div id="sidebar" class="float-right">
+    <a href="/" rel="home">
+        <v-avatar size=96>
+            <img id="logo" src="/images/avatar.webp">     
+        </v-avatar> 
+    </a>
+    <v-divider></v-divider>
+    <div class="mini-menu">
+        <v-btn icon href="/">
+            <v-icon>home</v-icon>
+        </v-btn>
+        <v-btn icon href="/categories/">
+            <v-icon>folder</v-icon>
+        </v-btn>
+        <v-btn icon href="/tags/">
+            <v-icon>bookmark</v-icon>
+        </v-btn>
+        <v-btn icon @click="SetNightMode">
+            <v-icon>{{ nightMode }}</v-icon>
+        </v-btn>
+    </div>
+    <v-list id="main-menu" class="font-weight-bold" flat>
+        
+            
+            <v-list-item href="/archives/" link>
+            <v-list-item-icon><v-icon>archive</v-icon></v-list-item-icon>
+            <v-list-item-content>
+                归档
+            </v-list-item-content>
+            </v-list-item>
+        
+            
+            <v-list-item href="/about/" link>
+            <v-list-item-icon><v-icon>account_circle</v-icon></v-list-item-icon>
+            <v-list-item-content>
+                关于
+            </v-list-item-content>
+            </v-list-item>
+        
+            
+            <v-list-item href="https://scaven.site/" link>
+            <v-list-item-icon><v-icon>rss_feed</v-icon></v-list-item-icon>
+            <v-list-item-content>
+                我的博客
+            </v-list-item-content>
+            </v-list-item>
+        
+            
+            <v-list-item href="https://garybear.cn/hexo-theme-insulin/doc/#/" link>
+            <v-list-item-icon><v-icon>insert_drive_file</v-icon></v-list-item-icon>
+            <v-list-item-content>
+                说明文档
+            </v-list-item-content>
+            </v-list-item>
+        
+    </v-list>
+    <v-divider></v-divider>
+    
+        <div class="post-toc">
+            <a href="/2021-month-day/test/" class="toc-header">文章目录</a>
+            <div class="toc-content">
+                
+            </div>
+        </div>
+    
+
+    <div id="footer">
+        <div class="footer-social">
+            
+                
+                <v-btn icon href="mailto:scaven.qing@qq.com" target="_blank">
+                    <v-icon>fas fa-envelope</v-icon>
+                </v-btn>
+            
+                
+                <v-btn icon href="https://github.com/qingdalf" target="_blank">
+                    <v-icon>fab fa-github</v-icon>
+                </v-btn>
+            
+                
+                <v-btn icon href="https://weibo.com/qingdalf" target="_blank">
+                    <v-icon>fab fa-weibo</v-icon>
+                </v-btn>
+            
+        </div>
+        <v-divider></v-divider>
+        <div class="footer-content">
+            
+                <span id="busuanzi_container_site_uv" style="display: none;"> 
+                    总访客量 <span id="busuanzi_value_site_uv"></span>
+                </span>
+                <br>
+            
+            <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a></span><br>
+            <span>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
+            <span>
+                &copy; Sun Apr 18 2021 08:00:00 GMT+0800 (China Standard Time) - 2021 
+                qingdalf
+            </span>
+        </div>
+    </div>
+</div>
+
+                        </v-col>
+                        <v-col cols="12" md="10">
+                            <v-row>
+  <v-col cols="12" md="8" align-self="end">
+    <div id="site-header">
+      <div id="site-title">
+        <a href="/" rel="home">welcome</a>
+      </div>
+      <div id="site-description"></div>
+      <div id="mobile-menu" class="d-block d-md-none">
+        <v-text-field label="请输入关键字" data-src="search.xml" v-model="searchHeaderValue" prepend-inner-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchHeaderValue,true)"></v-text-field>
+        <div class="mobile-mini-menu">
+          <v-btn icon href="/">
+              <v-icon>home</v-icon>
+          </v-btn>
+          <v-btn icon href="/categories/">
+              <v-icon>folder</v-icon>
+          </v-btn>
+          <v-btn icon href="/tags/">
+              <v-icon>bookmark</v-icon>
+          </v-btn>
+          <v-btn icon @click="SetNightMode">
+              <v-icon>{{ nightMode }}</v-icon>
+          </v-btn>
+          
+            
+            <v-btn icon href="/archives/">
+              <v-icon>archive</v-icon>
+            </v-btn>
+          
+            
+            <v-btn icon href="/about/">
+              <v-icon>account_circle</v-icon>
+            </v-btn>
+          
+            
+            <v-btn icon href="https://scaven.site/">
+              <v-icon>rss_feed</v-icon>
+            </v-btn>
+          
+            
+            <v-btn icon href="https://garybear.cn/hexo-theme-insulin/doc/#/">
+              <v-icon>insert_drive_file</v-icon>
+            </v-btn>
+          
+        </div>
+      </div>    
+    </div>
+  </v-col>  
+  <v-col cols="4" align-self="end" class="d-none d-md-block">
+    <v-col align-self="end">
+      <v-text-field label="请输入关键字" data-src="search.xml" v-model="searchHeaderValue" prepend-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchHeaderValue,true)"></v-text-field>
+    </v-col> 
+  </v-col>
+</v-row>
+
+                            <v-card class="elevation-2 post-card">
+    
+    
+        <div class="post-header">
+  <a class="post-header-title font-weight-medium" href="/2021-month-day/test/">test</a>
+  <div class="post-header-meta">   
+    <span>
+      <v-icon color="">event</v-icon>
+      发布于:&nbsp;2021-04-19
+    </span>
+    <span>
+      <v-icon color="">event_available</v-icon>
+      更新于:&nbsp;2021-04-19
+    </span>
+    <span>
+      <v-icon color="">folder</v-icon>
+      分类于:&nbsp;未分类
+    </span>
+    
+    <span>
+      <v-icon color="">visibility</v-icon>
+      阅读次数:&nbsp;<span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+    </span>
+    
+  </div>
+</div>
+
+    
+    
+    
+    
+    <div class="post-content typo">
+        <p>oneblog的搭建：</p>
+<p>准备工作：</p>
+<ul>
+<li>安装 JDK（1.8+）</li>
+<li>安装 Maven (3.3.0+)</li>
+<li>安装 Redis服务 (3.0+)</li>
+<li>安装 MySQL (5.6+)</li>
+<li>安装 IDE (Idea、Eclipse等)</li>
+</ul>
+<ol>
+<li><p>安装jdk</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@e951bc3088d1 /]# yum list | grep ^java # 查看否存在java JDK的软件包</span><br><span class="line">java-1.8.0-openjdk.x86_64                 1:1.8.0.262.b10-0.el7_8        @updates</span><br><span class="line">···</span><br><span class="line">[root@e951bc3088d1 /]# yum -y install java-1.8.0-openjdk.x86_64</span><br><span class="line">[root@e951bc3088d1 /]# java -version</span><br><span class="line">openjdk version &quot;1.8.0_262&quot;</span><br><span class="line">OpenJDK Runtime Environment (build 1.8.0_262-b10)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 25.262-b10, mixed mode)</span><br></pre></td></tr></table></figure></li>
+<li><p>安装Maven</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@e951bc3088d1 /]# yum list | grep ^maven</span><br><span class="line">[root@e951bc3088d1 /]# yum -y install maven.noarch</span><br><span class="line">[root@e951bc3088d1 /]# mvn -version</span><br><span class="line">Apache Maven 3.0.5 (Red Hat 3.0.5-17)</span><br><span class="line">Maven home: /usr/share/maven</span><br><span class="line">Java version: 1.8.0_262, vendor: Oracle Corporation</span><br><span class="line">Java home: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.262.b10-0.el7_8.x86_64/jre</span><br><span class="line">Default locale: en_US, platform encoding: ANSI_X3.4-1968</span><br><span class="line">OS name: &quot;linux&quot;, version: &quot;3.10.0-957.el7.x86_64&quot;, arch: &quot;amd64&quot;, family: &quot;unix&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>安装redis</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">[root@e951bc3088d1 /]# yum -y install gcc gcc-c++ make </span><br><span class="line">[root@e951bc3088d1 /]# wget http://download.redis.io/releases/redis-3.2.9.tar.gz</span><br><span class="line">[root@e951bc3088d1 /]# tar xzf redis-3.2.9.tar.gz </span><br><span class="line">[root@e951bc3088d1 /]# cd redis-3.2.9</span><br><span class="line">[root@e951bc3088d1 redis-3.2.9]# ls  </span><br><span class="line">00-RELEASENOTES  CONTRIBUTING  INSTALL    Makefile   deps        runtest          runtest-sentinel  src    utils</span><br><span class="line">BUGS             COPYING       MANIFESTO  README.md  redis.conf  runtest-cluster  sentinel.conf     tests</span><br><span class="line">[root@e951bc3088d1 redis-3.2.9]# make</span><br><span class="line">cd src &amp;&amp; make all</span><br><span class="line">make[1]: Entering directory `/redis-3.2.9/src&#x27;</span><br><span class="line">    CC adlist.o</span><br><span class="line">In file included from adlist.c:34:0:</span><br><span class="line">zmalloc.h:50:31: fatal error: jemalloc/jemalloc.h: No such file or directory</span><br><span class="line"><span class="meta"> #</span><span class="bash">include &lt;jemalloc/jemalloc.h&gt;</span></span><br><span class="line">                               ^</span><br><span class="line">compilation terminated.</span><br><span class="line">make[1]: *** [adlist.o] Error 1</span><br><span class="line">make[1]: Leaving directory `/redis-3.2.9/src&#x27;</span><br><span class="line">make: *** [all] Error 2</span><br><span class="line">[root@e951bc3088d1 redis-3.2.9]# make MALLOC=libs  # 如果有上述错误就执行该命令</span><br><span class="line">···</span><br><span class="line">Hint: It&#x27;s a good idea to run &#x27;make test&#x27; ;)</span><br><span class="line">make[1]: Leaving directory `/redis-3.2.9/src&#x27;  # 安装成功</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动redis</span></span><br><span class="line">[root@e951bc3088d1 redis-3.2.9]# cd src/</span><br><span class="line">[root@e951bc3088d1 src]# ./redis-server ../redis.conf &amp; #此处使用默认配置文件后台启动redis</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 开启另一个终端测试redis是否启动成功</span></span><br><span class="line">[root@Dev ~]# docker exec -it e951bc3088d1  /bin/bash</span><br><span class="line">[root@e951bc3088d1 /]# cd redis-3.2.9</span><br><span class="line">[root@e951bc3088d1 redis-3.2.9]# cd src/</span><br><span class="line">[root@e951bc3088d1 src]# ./redis-cli </span><br><span class="line">127.0.0.1:6379&gt; set foo bar</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; get foo</span><br><span class="line">&quot;bar&quot;</span><br><span class="line">127.0.0.1:6379&gt; exit # 退出redis客户端</span><br></pre></td></tr></table></figure></li>
+<li><p>安装 MySQL (5.6+)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">[root@e951bc3088d1 ~]# vim /etc/yum.repos.d/mysql-community.repo</span><br><span class="line">[mysql-connectors-community]</span><br><span class="line">name=MySQL Connectors Community</span><br><span class="line">baseurl=https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql-connectors-community-el7-$basearch/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://repo.mysql.com/RPM-GPG-KEY-mysql</span><br><span class="line"></span><br><span class="line">[mysql-tools-community]</span><br><span class="line">name=MySQL Tools Community</span><br><span class="line">baseurl=https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql-tools-community-el7-$basearch/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://repo.mysql.com/RPM-GPG-KEY-mysql</span><br><span class="line"></span><br><span class="line">[mysql-5.6-community]</span><br><span class="line">name=MySQL 5.6 Community Server</span><br><span class="line">baseurl=https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql-5.6-community-el7-$basearch/</span><br><span class="line">enabled=0</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://repo.mysql.com/RPM-GPG-KEY-mysql</span><br><span class="line"></span><br><span class="line">[mysql-5.7-community]</span><br><span class="line">name=MySQL 5.7 Community Server</span><br><span class="line">baseurl=https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql-5.7-community-el7-$basearch/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://repo.mysql.com/RPM-GPG-KEY-mysql</span><br><span class="line"></span><br><span class="line">[mysql-8.0-community]</span><br><span class="line">name=MySQL 8.0 Community Server</span><br><span class="line">baseurl=https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql-8.0-community-el7-$basearch/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://repo.mysql.com/RPM-GPG-KEY-mysql</span><br><span class="line">[root@e951bc3088d1 ~]# yum clean all &amp;&amp; yum repolist</span><br><span class="line">[root@e951bc3088d1 ~]# yum -y insatll mysql</span><br><span class="line">[root@e951bc3088d1 ~]# rpm -qa | grep mysql</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+    </div>
+    <!--文末结束语-->
+    
+        <div style="text-align:center;color: #ccc;font-size:24px;"> --- 欢迎阅读 <i class="fas fa-heart"></i> The End --- </div>
+    
+    <!--页脚广告-->
+    
+    <v-divider></v-divider>
+    
+    <div class="post-nav">             
+              
+          
+            <div class="post-nav-button float-right">
+                <a class="font-weight-bold text-right" href="/2021-month-day/hello-world/">      
+                    welcome
+                </a>
+                <v-icon>chevron_right</v-icon>
+            </div>
+        
+    </div>
+</v-card>
+
+
+
+    <v-card class="comment-card elevation-2">
+        <v-tabs v-model="commentTab"  id="comment-tabs" active-class="active-comment-tab">
+            
+        </v-tabs>
+        <v-tabs-items v-model="commentTab" id="tabs-content" data=eyJ1c2UiOnRydWUsImdpdGFsa19jbGllbnRfaWQiOm51bGwsImdpdGFsa19jbGllbnRfc2VjcmV0IjpudWxsLCJnaXRhbGtfcmVwbyI6bnVsbCwiZ2l0YWxrX293bmVyIjpudWxsLCJnaXRhbGtfc2lkX3R5cGUiOm51bGwsImdpdGFsa19kaXN0cmFjdGlvbkZyZWVNb2RlIjp0cnVlLCJkaXNxdXNfc2hvcnRuYW1lIjpudWxsLCJsaXZlcmVfZGF0YV91aWQiOm51bGwsInZhbGluZV9sZWFuY2xvdWRfYXBwX2lkIjpudWxsLCJ2YWxpbmVfbGVhbmNsb3VkX2FwcF9rZXkiOm51bGwsInZhbGluZV9vcHRpb24iOm51bGwsImNoYW5neWFuX2FwcF9pZCI6bnVsbCwiY2hhbmd5YW5fYXBwX2tleSI6bnVsbCwiY2hhbmd5YW5fc2lkX3R5cGUiOm51bGx9 >
+            
+        </v-tabs-items>
+    </v-card>
+
+        
+                            <div id="mobile-footer" class="d-block d-md-none">
+                                <v-divider></v-divider>
+                                <div id="mobile-footer-content">
+                                    <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a> &nbsp; Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
+                                    <span> &copy; Sun Apr 18 2021 08:00:00 GMT+0800 (China Standard Time) - 2021 qingdalf</span>
+                                </div>
+                            </div>                   
+                        </v-col>                                            
+                    </v-row>
+                </v-container>
+            </v-content>
+        </v-app>
+    </div>
+    
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@2.2.30"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-base64@3.5.2/base64.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({
+        startOnLoad: true,
+        theme: "default"
+    });</script>
+
+
+
+
+
+</body>
+</html>
