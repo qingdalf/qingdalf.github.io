@@ -126,6 +126,18 @@
     
         <v-list id="sub-menu" class="font-weight-medium" dense>
             
+                
+                    <v-list-item href="/categories/docker/" link>
+                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
+                            <v-hover v-model="menuHover">
+                                <v-list-item-content>
+                                    <span>docker</span>                              
+                                </v-list-item-content>                           
+                            </v-hover>
+                        </v-badge>
+                    </v-list-item>
+                
+            
         </v-list>    
     
 
@@ -233,6 +245,20 @@
                     <span class="timeline-subtitle">归档</span>
                 </v-timeline-item>
                 
+            
+            <v-timeline-item fill-dot small color="secondary lighten-2">
+                <div class="timeline-item-post d-none d-md-block">
+                    <span class="timeline-item-time">2021.04.19</span>
+                    <a href="/2021-month-day/docker-registory/" class="timeline-item-title">docker-registory</a>
+                </div>
+                <div class="timeline-item-post-mobile d-block d-md-none">
+                    <span class="timeline-item-time">2021.04.19</span><br>
+                    <a href="/2021-month-day/docker-registory/" class="timeline-item-title">docker-registory</a>
+                </div>
+                <v-divider></v-divider>
+            </v-timeline-item>
+        
+            
             
             <v-timeline-item fill-dot small color="secondary lighten-2">
                 <div class="timeline-item-post d-none d-md-block">

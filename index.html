@@ -182,6 +182,18 @@
     
         <v-list id="sub-menu" class="font-weight-medium" dense>
             
+                
+                    <v-list-item href="/categories/docker/" link>
+                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
+                            <v-hover v-model="menuHover">
+                                <v-list-item-content>
+                                    <span>docker</span>                              
+                                </v-list-item-content>                           
+                            </v-hover>
+                        </v-badge>
+                    </v-list-item>
+                
+            
         </v-list>    
     
 
@@ -279,6 +291,49 @@
 </v-row>
 
                             <v-card class="elevation-2 index-card">
+  
+    <article class="index-article">
+      
+      <div class="index-article-header">
+        <v-row no-gutters>
+          <v-col cols="auto">
+            <div class="index-article-header-date font-weight-medium">
+              2021-04-19
+            </div>
+          </v-col>
+          <v-spacer></v-spacer>
+          <v-col cols="auto">
+            
+              <v-card flat color="secondary" tile class="index-article-header-tag  font-weight-medium">
+                
+                  <span class="index-article-header-tag-content">
+                    <v-icon>fas fa-tag</v-icon>
+                    <a rel="tag" href = /tags/harbor/ >harbor</a>
+                  </span>
+                
+              </v-card>
+            
+          </v-col>
+        </v-row>
+        <span>
+          
+            <a class="index-article-header-category font-weight-bold" href="/categories/docker/">docker></a>
+           
+        </span> 
+        <a class="index-article-header-title font-weight-medium" href="/2021-month-day/docker-registory/">docker-registory</a>
+      </div>
+      
+      <div class="index-article-content">
+        
+          第一章 docker私有仓库–harbor的搭建1. harbor是什么1.1 harbor简介​        Harbor是由VMware公司开源的一个用于存储和分发Docker镜像的企业级docker镜像仓库，默认使用https访问协议。通过添加一些企业必需的功能特性，例如安全、标识和管理等，扩展了开源Docker Distribution。作为一个企业级私有Registry服务器，Harbor提供了更好的性能和安全。提升用户使用Registry构建和运行环境传输镜像的效率。Harbor支持安装在多个Registry节点的镜像资源复制，镜像全部保存在私有Registry中， 确保数...
+        
+      </div>
+      
+      <div class="index-article-readmore ">
+        <v-btn text href="/2021-month-day/docker-registory/">阅读更多</v-btn>
+      </div>
+      <v-divider></v-divider>
+    </article> 
   
     <article class="index-article">
       
