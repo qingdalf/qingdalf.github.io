@@ -10,17 +10,20 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="倚楼听风雨，淡看江湖路。">
+  <meta name="description" content="第二章 变量和简单数据类型Q：运行hello_world.py 时发生的情况 ​        现在我们有一个hello_world.py的python文件，文件内容如下，当我们执行这个文件时，发生了什么呢？ 1print(&quot;hello world&quot;)  ​        我们在cmd中执行hello_world.py文件 12&gt;&gt;&gt; phython3 hel">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PythonVarString">
 <meta property="og:url" content="https://scaven.site/2021-04/21-PythonVarString/index.html">
 <meta property="og:site_name" content="倚楼听雨">
-<meta property="og:description" content="倚楼听风雨，淡看江湖路。">
+<meta property="og:description" content="第二章 变量和简单数据类型Q：运行hello_world.py 时发生的情况 ​        现在我们有一个hello_world.py的python文件，文件内容如下，当我们执行这个文件时，发生了什么呢？ 1print(&quot;hello world&quot;)  ​        我们在cmd中执行hello_world.py文件 12&gt;&gt;&gt; phython3 hel">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://scaven.site/2021-04/21-PythonVarString/image-20210421111639194.png">
 <meta property="article:published_time" content="2021-04-21T06:33:54.000Z">
-<meta property="article:modified_time" content="2021-04-21T06:33:54.661Z">
+<meta property="article:modified_time" content="2021-04-24T11:47:59.910Z">
 <meta property="article:author" content="qingdalf">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://scaven.site/2021-04/21-PythonVarString/image-20210421111639194.png">
   
     <link rel="alternative" href="/atom.xml" title="倚楼听雨" type="application/atom+xml">
   
@@ -253,7 +256,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">0字</span>
+      <span class="post-count">4.7k字</span>
     </span>
   </span>
 
@@ -262,7 +265,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">19分</span>
     </span>
   </span>
 </div>
@@ -273,7 +276,187 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    
+    <h1 id="第二章-变量和简单数据类型"><a href="#第二章-变量和简单数据类型" class="headerlink" title="第二章 变量和简单数据类型"></a>第二章 变量和简单数据类型</h1><p>Q：运行hello_world.py 时发生的情况</p>
+<p>​        现在我们有一个hello_world.py的python文件，文件内容如下，当我们执行这个文件时，发生了什么呢？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;hello world&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>​        我们在cmd中执行hello_world.py文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>phython3 hello_world.py</span><br><span class="line">hello world    <span class="comment"># 输出结果</span></span><br></pre></td></tr></table></figure>
+
+<p>​        运行文件hello_world.py时，末尾的**.py指出这是一个Python程序，因此编辑器将使用Python解释器来运行它<strong>。</strong>Python解释器读取整个程序，确定其中每个单词的含义**。例如，看到单词print时，解释器就会将括号中的内容打印到屏幕，而不会管括号中的内容是什么。</p>
+<h2 id="1-变量"><a href="#1-变量" class="headerlink" title="1.变量"></a>1.变量</h2><h3 id="1-1-格式"><a href="#1-1-格式" class="headerlink" title="1.1 格式"></a>1.1 格式</h3><p><strong><code>变量名=&quot;变量值&quot;</code></strong></p>
+<p>值得注意的几点：</p>
+<ul>
+<li>格式只能是**<code>变量名=&quot;变量值&quot;</code>**，如<code>name=&quot;张三&quot;</code></li>
+<li>格式不能是**<code>变量名=变量值</code><strong>，这种变量赋值的方法初学者很容易犯，在python中，</strong><code>变量名=变量值</code>**这种写法会被python解释等号两边是两个变量，定义变量的时候，等号后面的变量值一定是被引号包围起来的</li>
+<li>等号两边可以有空格，变量值中的引号可以是单引号或多引号，尤其是当变量值中本来就包含引号时，为了避免歧义就会使用多引号或转义符<code>\</code></li>
+<li>变量一定是先定义，后使用，没有定义的变量，不能被引用，python将抛出错误</li>
+</ul>
+<h3 id="1-2-变量的命名和使用"><a href="#1-2-变量的命名和使用" class="headerlink" title="1.2 变量的命名和使用"></a>1.2 变量的命名和使用</h3><p>​        在Python中使用变量时，需要遵守下面的命名规范。</p>
+<ul>
+<li><p><strong>变量名只能包含字母、数字和下划线，但不能以数字打头</strong>，此处的字母并不局限于 26 个英文字母，可以包含中文字符、日文字符等。例如，可将变量命名为message_1，但不能将其命名为1_message。</p>
+</li>
+<li><p><strong>变量名不能包含空格，但可使用下划线来分隔其中的单词</strong>。例如，变量名greeting_message可行，但变量名greeting message会引发错误。</p>
+</li>
+<li><p><strong>不要将Python关键字和函数名用作变量名</strong>，即不要使用Python保留用于特殊用途的单词，如print（请参见附录A.4）。</p>
+</li>
+<li><p><strong>变量名应既简短又具有描述性</strong>。例如，name比n好，student_name比s_n好，name_length<br>比length_of_persons_name好。</p>
+</li>
+<li><p><strong>慎用容易引起歧义的字母</strong>，如小写字母l和大写字母O，因为它们可能被人错看成数字1和0。</p>
+</li>
+</ul>
+<p>python关键字：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> keyword</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(keyword.kwlist)</span><br><span class="line">[<span class="string">&#x27;False&#x27;</span>, <span class="string">&#x27;None&#x27;</span>, <span class="string">&#x27;True&#x27;</span>, <span class="string">&#x27;and&#x27;</span>, <span class="string">&#x27;as&#x27;</span>, <span class="string">&#x27;assert&#x27;</span>, <span class="string">&#x27;async&#x27;</span>, <span class="string">&#x27;await&#x27;</span>, <span class="string">&#x27;break&#x27;</span>, <span class="string">&#x27;class&#x27;</span>, <span class="string">&#x27;continue&#x27;</span>, <span class="string">&#x27;def&#x27;</span>, <span class="string">&#x27;del&#x27;</span>, <span class="string">&#x27;elif&#x27;</span>, <span class="string">&#x27;else&#x27;</span>, <span class="string">&#x27;except&#x27;</span>, <span class="string">&#x27;finally&#x27;</span>, <span class="string">&#x27;for&#x27;</span>, <span class="string">&#x27;from&#x27;</span>, <span class="string">&#x27;global&#x27;</span>, <span class="string">&#x27;if&#x27;</span>, <span class="string">&#x27;import&#x27;</span>, <span class="string">&#x27;in&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;lambda&#x27;</span>, <span class="string">&#x27;nonlocal&#x27;</span>, <span class="string">&#x27;not&#x27;</span>, <span class="string">&#x27;or&#x27;</span>, <span class="string">&#x27;pass&#x27;</span>, <span class="string">&#x27;raise&#x27;</span>, <span class="string">&#x27;return&#x27;</span>, <span class="string">&#x27;try&#x27;</span>, <span class="string">&#x27;while&#x27;</span>, <span class="string">&#x27;with&#x27;</span>, <span class="string">&#x27;yield&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-推荐使用的命令方法"><a href="#1-3-推荐使用的命令方法" class="headerlink" title="1.3 推荐使用的命令方法"></a>1.3 推荐使用的命令方法</h3><ul>
+<li>驼峰命名法：<ul>
+<li>大驼峰命名法：每个单词的首字母都大写，如StudentName</li>
+<li>小驼峰命名法：头一个单词首字母小写，其余单词首字母大写，如studentName</li>
+</ul>
+</li>
+<li>下划线连接符命名法，如student_name</li>
+</ul>
+<h3 id="1-4-python赋值的方法"><a href="#1-4-python赋值的方法" class="headerlink" title="1.4 python赋值的方法"></a>1.4 python赋值的方法</h3><ul>
+<li>常规赋值：<code>a = 100</code></li>
+<li>链式赋值：<code> a = b = 100</code>，表示<code>a=100</code>，<code>b=100</code></li>
+<li>序列解包赋值： <code>a,b = 100,&quot;zhangsan&quot;</code>，等同于<code>a=100</code>，<code>b=&quot;zhangsan&quot;</code>，此种赋值方法中，等号两边的个数必须相等，否则python将抛出错误</li>
+<li>增量赋值： a+=1，等同于<code>a=a+1</code></li>
+</ul>
+<p>案例：</p>
+<p>1.使用汉字作为变量(不推荐)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>名字=<span class="string">&quot;zhangsan&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(名字)</span><br><span class="line">zhangsan</span><br></pre></td></tr></table></figure>
+
+<p>2.变量值包含引号</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>message = <span class="string">&quot;This&#x27;s an apple&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(message)</span><br><span class="line">This<span class="string">&#x27;s an apple</span></span><br></pre></td></tr></table></figure>
+
+<p>案例中This’s an apple中包含单引号，如果再使用单引号，则将引起歧义，python将抛出错误</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>message = <span class="string">&#x27;This&#x27;</span>s an apple<span class="string">&#x27;</span></span><br><span class="line"><span class="string">&gt;&gt;&gt; print(message)</span></span><br><span class="line"><span class="string">## 执行后结果如下：</span></span><br><span class="line"><span class="string">  File &quot;test.py&quot;, line 4</span></span><br><span class="line"><span class="string">    message = &#x27;</span>This<span class="string">&#x27;s an apple&#x27;</span>  <span class="comment"># python将&#x27;This&#x27;当成了一个整体，&#x27;This&#x27;后面的字符串就搞蒙了python，因此抛出错误</span></span><br><span class="line">                    ^</span><br><span class="line">SyntaxError: invalid syntax   <span class="comment"># 提示语法错误</span></span><br></pre></td></tr></table></figure>
+
+<p>3.定义变量时，等号后边不含引号</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>n = zhangsan</span><br></pre></td></tr></table></figure>
+
+<p>​        这种情况下，python会认为等号两边都是变量，即将变量<code>zhangsan</code>的值赋给变量<code>n</code>，这种情况需要分两种情况说明：</p>
+<ul>
+<li>如果上文中定义了<code>zhangsan</code>的值，即<code>zhangsan</code>是原本就是一个变量名，那么等式成立</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>zhangsan = <span class="number">28</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>n = zhangsan   <span class="comment"># 等同于n = zhangsan = 28，即先定义变量zhangsan，再将变量zhangsan的值赋给了n</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果上文没有定义<code>zhangsan</code>，那么python将抛出错误，即<strong>变量一定是先定义，后使用</strong>，此时我们重新打开cmd</li>
+</ul>
+<p><img src="image-20210421111639194.png" alt="image-20210421111639194"></p>
+<h2 id="2-注释"><a href="#2-注释" class="headerlink" title="2 注释"></a>2 注释</h2><p>​        python中使用井号（”#”）进行注释，被注释的行将不会被执行。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入用户名</span></span><br><span class="line">name = <span class="built_in">input</span>(<span class="string">&quot;please, enter your name: &quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>关于注释需要注意的几点：</p>
+<ul>
+<li>一定要养成写注释的习惯，认真写注释不仅是对自己也是对阅读代码的人的尊重</li>
+<li>注释一定要简明扼要的阐述代码的目的</li>
+<li>注释一定要规范，此处要求的规范可以是大多数人的习惯，也可以是公司对代码注释的规定</li>
+</ul>
+<h2 id="3-字符串"><a href="#3-字符串" class="headerlink" title="3.字符串"></a>3.字符串</h2><p>字符串常见操作官方文档：<a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.9/library/string.html?highlight=%E5%AD%97%E7%AC%A6%E4%B8%B2">https://docs.python.org/zh-cn/3.9/library/string.html?highlight=字符串</a></p>
+<p>​        大多数程序都定义并收集某种数据，然后使用它们来做些有意义的事情。鉴于此，对数据进行分类大有裨益。其中字符串就是一个基础的数据类型。</p>
+<h3 id="3-1-字符串的定义"><a href="#3-1-字符串的定义" class="headerlink" title="3.1 字符串的定义"></a>3.1 字符串的定义</h3><p>​        在 Python 中处理文本数据是使用 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.9/library/stdtypes.html#str"><code>str</code></a> 对象，也称为 <em>字符串</em>。 字符串是由 Unicode 码位构成的不可变 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.9/library/stdtypes.html#typesseq">序列</a>。 字符串字面值有多种不同的写法：</p>
+<ul>
+<li><p>单引号: <code>&#39;允许包含有 &quot;双&quot; 引号&#39;</code></p>
+</li>
+<li><p>双引号: <code>&quot;允许包含有 &#39;单&#39; 引号&quot;</code>。</p>
+</li>
+<li><p>三重引号: <code>&#39;&#39;&#39;三重单引号&#39;&#39;&#39;</code>, <code>&quot;&quot;&quot;三重双引号&quot;&quot;&quot;</code></p>
+<p>​    使用三重引号的字符串可以跨越多行 —— 其中所有的空白字符都将包含在该字符串字面值中。</p>
+</li>
+</ul>
+<p><strong>字符串中本身不含引号的情况</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;This is a string.&quot;</span></span><br><span class="line"><span class="string">&#x27;This is also a string.&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>字符串中本身含有引号的情况</strong>：如果字符串中包含某种引号(如单引号)，则在定义字符串的时候应该使用另外的两种引号</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;I told my friend, &quot;Python is my favorite language!&quot;&#x27;</span></span><br><span class="line"><span class="string">&quot;The language &#x27;Python&#x27; is named after Monty Python, not the snake.&quot;</span></span><br><span class="line"><span class="string">&quot;One of Python&#x27;s strengths is its diverse and supportive community.&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-字符串的常用方法"><a href="#3-2-字符串的常用方法" class="headerlink" title="3.2 字符串的常用方法"></a>3.2 字符串的常用方法</h3><p>​        对于字符串的操作，通常有修改字符串的大小写、拼接字符串、切割、等待。</p>
+<h4 id="3-2-1-修改字符串的大小写"><a href="#3-2-1-修改字符串的大小写" class="headerlink" title="3.2.1 修改字符串的大小写"></a>3.2.1 修改字符串的大小写</h4><p>​        我们可以通过字符串的指定方法修改字符串的大小写，如将字母全部为小写的字符串修改成大写字母，反义亦然；将全部为字符的字符串的首字母大写等。</p>
+<p>(1).首字母大写</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>name = <span class="string">&quot;ada lovelace&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(name.title())</span><br><span class="line">Ada Lovelace</span><br></pre></td></tr></table></figure>
+
+<p>​        在这个示例中，小写的字符串”ada lovelace”存储到了变量name中。在print()语句中，方法title()出现在这个变量的后面。<strong>方法是Python可对数据执行的操作</strong>。<strong>在name.title()中，name后面的句点（.）让Python对变量name执行方法title()指定的操作。每个方法后面都跟着一对括号，这是因为方法通常需要额外的信息来完成其工作。这种信息是在括号内提供的。</strong>函数title()不需要额外的信息，因此它后面的括号是空的。title()以首字母大写的方式显示每个单词，即将每个单词的首字母都改为大写。这很有用，因为你经常需要将名字视为信息。例如，你可能希望程序将值Ada、ADA和ada视为同一个名字，并将它们都显示为Ada。</p>
+<p>(2).全部大写</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(name.upper())</span><br><span class="line">ADA LOVELACE</span><br></pre></td></tr></table></figure>
+
+<p>(3).全部小写</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(name.lower())</span><br><span class="line">ada lovelace</span><br></pre></td></tr></table></figure>
+
+<p>​        存储数据时，方法lower()很有用。很多时候，你无法依靠用户来提供正确的大小写，因此需要将字符串先转换为小写，再存储它们。以后需要显示这些信息时，再将其转换为最合适的大小写方式。</p>
+<h4 id="3-2-2-合并（拼接）字符串"><a href="#3-2-2-合并（拼接）字符串" class="headerlink" title="3.2.2 合并（拼接）字符串"></a>3.2.2 合并（拼接）字符串</h4><p>​        合并(拼接)字符串是指将两个字符串进行合并(拼接)起来，以便按照我们想要的方式一起输出或存储。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>first_name = <span class="string">&quot;ada&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>last_name = <span class="string">&quot;lovelace&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>full_name = first_name + <span class="string">&quot; &quot;</span> + last_name</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(full_name)</span><br><span class="line">ada lovelace</span><br></pre></td></tr></table></figure>
+
+<p>​        对于上面的案例，我们可以不定义<code>full_name</code>这个变量也能达到合并输出的效果，这两种方式在本质上都是一样的，只不过上面的方法是将合并(拼接)的结果存储在了变量<code>full_name</code>中，下面的方式是直接进行字符串的拼接并通过<code>print()</code>函数输出</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(first_name + <span class="string">&quot; &quot;</span> + last_name)</span><br><span class="line">ada lovelace</span><br></pre></td></tr></table></figure>
+
+<p>​        通过字符串的合并(拼接)功能，我们可以输出一些有意义的表达式，如当用户登陆的时候，我们可以跟用户打招呼。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>name = <span class="built_in">input</span>(<span class="string">&quot;please, input your username: &quot;</span>)</span><br><span class="line">please, <span class="built_in">input</span> your username: zhangsan</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&quot;Hello, &quot;</span> + name.title() + <span class="string">&quot;!&quot;</span> + <span class="string">&quot; welcome login.&quot;</span>)</span><br><span class="line">Hello, Zhangsan! welcome login.</span><br></pre></td></tr></table></figure>
+
+<p>​        其实，print()函数本身提供了字符串合并(拼接)的功能，当然这是print()函数的功能，并不是字符串的功能。</p>
+<p><strong>print()函数默认以空格为分隔符将字符串输出</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&quot;apples&quot;</span>, <span class="string">&quot;oranges&quot;</span>, <span class="string">&quot;bananas&quot;</span>)</span><br><span class="line">apples oranges bananas</span><br></pre></td></tr></table></figure>
+
+<p><strong>指定print()函数的分隔符</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以逗号(&quot;,&quot;)为分隔符输出</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&quot;apples&quot;</span>, <span class="string">&quot;oranges&quot;</span>, <span class="string">&quot;bananas&quot;</span>, sep=<span class="string">&quot;,&quot;</span>)</span><br><span class="line">apples,oranges,bananas</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以横杠(&quot;-&quot;)为分隔符输出</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&quot;apples&quot;</span>, <span class="string">&quot;oranges&quot;</span>, <span class="string">&quot;bananas&quot;</span>, sep=<span class="string">&quot;-&quot;</span>)</span><br><span class="line">apples-oranges-bananas</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-3-使用制表符或换行符来添加空白"><a href="#3-2-3-使用制表符或换行符来添加空白" class="headerlink" title="3.2.3 使用制表符或换行符来添加空白"></a>3.2.3 使用制表符或换行符来添加空白</h4><p>​        <strong>在编程中，空白泛指任何非打印字符，如空格、制表符和换行符</strong>。你可使用空白来组织输出，以使其更易读。要在字符串中添加制表符，可使用字符组合<code>\t</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&quot;Hello, Python&quot;</span>)</span><br><span class="line">Hello, Python</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&quot;\tHello, Python&quot;</span>)</span><br><span class="line">	Hello, Python            <span class="comment"># 此处的输出中Hello, Python前面有四个空格(\t制表符的输出结果)</span></span><br></pre></td></tr></table></figure>
+
+<p>​        要在字符串中添加换行符，可使用<code>\n</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&quot;Languages:\nPython\nC\nJavaScript&quot;</span>)</span><br><span class="line">Languages:</span><br><span class="line">Python</span><br><span class="line">C</span><br><span class="line">JavaScript</span><br></pre></td></tr></table></figure>
+
+<p>​        为了更加美观和已读，我们可以混用换行符<code>\n</code>和制表符<code>\t</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&quot;Languages:\n\tPython\n\tC\n\tJavaScript&quot;</span>)</span><br><span class="line">Languages:</span><br><span class="line">	Python</span><br><span class="line">	C</span><br><span class="line">	JavaScript</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-4-删除空白"><a href="#3-2-4-删除空白" class="headerlink" title="3.2.4 删除空白"></a>3.2.4 删除空白</h4><p>​        在程序中，额外的空白可能令人迷惑。对程序员来说，’python’和’python ‘看起来几乎没什么两样，但对程序来说，它们却是两个不同的字符串。Python能够发现’python ‘中额外的空白，并认为它是有意义的——除非你告诉它不是这样的。<br>​        空白很重要，因为你经常需要比较两个字符串是否相同。例如，一个重要的示例是，在用户登录网站时检查其用户名。但在一些简单得多的情形下，额外的空格也可能令人迷惑。所幸在Python中，删除用户输入的数据中的多余的空白易如反掌。</p>
+<p>​        Python能够找出字符串开头和末尾多余的空白。在python中，可以使用rstrip()删除字符串末尾的空白，使用lstrip()删除字符串前方的空白，使用strip()删除字符串前后的空白。</p>
+<p>​        下面的案例中，我在输入用户名的时候，分别在<code>zhangsan</code>前面和后面各加了两个和一个空格</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>name = <span class="built_in">input</span>(<span class="string">&quot;please, input your username: &quot;</span>)</span><br><span class="line">please, <span class="built_in">input</span> your username:   zhangsan    </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(name)   <span class="comment"># 直接输出&quot;zhangsan&quot;我们很难分辨出字符串前后的空格</span></span><br><span class="line">  zhangsan </span><br></pre></td></tr></table></figure>
+
+<p>如何分辨我输出的空格呢？</p>
+<p><strong>方法1：</strong>通过len()函数比较两个字符串的长度</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">len</span>(<span class="string">&quot;zhangsan&quot;</span>))    <span class="comment"># 字符串&quot;zhangsan&quot;的长度是8</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">len</span>(name))     <span class="comment"># 变量name的长度为11，则证明name前后必然有空格，但是前后空格的个数，我们不知道</span></span><br><span class="line"><span class="number">11</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>方法2：</strong>除了比较长度外，我们也可以通过下面的方法比较两个字符串是否是同一个字符串</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(name == <span class="string">&quot;zhangsan&quot;</span>)</span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>方法3：</strong>通过字符串的替换功能，将空格替换成易识别的其他字符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>name.replace(<span class="string">&quot; &quot;</span>,<span class="string">&quot;-&quot;</span>)  <span class="comment"># 将空格替换成横杠&quot;-&quot;</span></span><br><span class="line"><span class="string">&#x27;--zhangsan-&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="3-2-4-1-删除字符串末尾的空白"><a href="#3-2-4-1-删除字符串末尾的空白" class="headerlink" title="3.2.4.1 删除字符串末尾的空白"></a>3.2.4.1 删除字符串末尾的空白</h5><p>​        为了方便查看删除效果，我们使用字符串的替换功能进行检验</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(name.rstrip())</span><br><span class="line">  zhangsan</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(name.rstrip().replace(<span class="string">&quot; &quot;</span>,<span class="string">&quot;-&quot;</span>))</span><br><span class="line">--zhangsan</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-2-4-1-删除字符串左边的空白"><a href="#3-2-4-1-删除字符串左边的空白" class="headerlink" title="3.2.4.1 删除字符串左边的空白"></a>3.2.4.1 删除字符串左边的空白</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(name.lstrip())</span><br><span class="line">zhangsan </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(name.lstrip().replace(<span class="string">&quot; &quot;</span>,<span class="string">&quot;-&quot;</span>))</span><br><span class="line">zhangsan-</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-2-4-1-删除字符串首未的空白"><a href="#3-2-4-1-删除字符串首未的空白" class="headerlink" title="3.2.4.1 删除字符串首未的空白"></a>3.2.4.1 删除字符串首未的空白</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(name.strip())</span><br><span class="line">zhangsan</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(name.strip().replace(<span class="string">&quot; &quot;</span>,<span class="string">&quot;-&quot;</span>))   <span class="comment"># 没有空格，将不能进行替换</span></span><br><span class="line">zhangsan</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="built_in">len</span>(name.strip()))   <span class="comment"># 查看长度，删除字符串首尾的空格后，字符串的长度跟字符串&quot;zhangsan&quot;的长度一样</span></span><br><span class="line"><span class="number">8</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-5-替换字符串"><a href="#3-2-5-替换字符串" class="headerlink" title="3.2.5 替换字符串"></a>3.2.5 替换字符串</h4><p>​        将字符串中的某些字符替换成其他字符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>name = <span class="string">&quot;zhangsan&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>name.replace(<span class="string">&quot;a&quot;</span>,<span class="string">&quot;H&quot;</span>)</span><br><span class="line"><span class="string">&#x27;zhHngsHn&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>name = <span class="string">&quot;Zhang san&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(name)</span><br><span class="line">Zhang san</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(name.replace(<span class="string">&quot; &quot;</span>,<span class="string">&quot;+++++&quot;</span>))</span><br><span class="line">Zhang+++++san</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-数字"><a href="#4-数字" class="headerlink" title="4 数字"></a>4 数字</h2><p>​        在编程中，经常使用数字来记录游戏得分、表示可视化数据、存储Web应用信息等。Python根据数字的用法以不同的方式处理它们。鉴于整数使用起来最简单，下面就先来看看Python是如何管理它们的。</p>
+<h3 id="4-1-整数"><a href="#4-1-整数" class="headerlink" title="4.1 整数"></a>4.1 整数</h3><p>​        <strong>在Python中，可对整数进行加（+）减（-）乘（*）除（/）四则运算</strong>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10</span> + <span class="number">22</span>   <span class="comment"># 加</span></span><br><span class="line"><span class="number">32</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10</span> - <span class="number">22</span>   <span class="comment"># 减</span></span><br><span class="line">-<span class="number">12</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10</span> * <span class="number">22</span>  <span class="comment"># 乘</span></span><br><span class="line"><span class="number">220</span> </span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10</span> / <span class="number">22</span>   <span class="comment"># 除</span></span><br><span class="line"><span class="number">0.45454545454545453</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">23</span> // <span class="number">10</span>    <span class="comment"># 地板除，返回除数的整数部分</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">23</span> % <span class="number">10</span>     <span class="comment"># 取余，返回除数的余数部分</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> ** <span class="number">10</span>     <span class="comment"># 乘方</span></span><br><span class="line"><span class="number">1024</span></span><br></pre></td></tr></table></figure>
+
+<p>​        <strong>Python还支持运算次序</strong>，因此你可在同一个表达式中使用多种运算。你还可以使用括号来修改运算次序，让Python按你指定的次序执行运算。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> + <span class="number">3</span>*<span class="number">4</span></span><br><span class="line"><span class="number">14</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>( <span class="number">2</span> + <span class="number">3</span>) * <span class="number">4</span></span><br><span class="line"><span class="number">20</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-浮点数"><a href="#4-2-浮点数" class="headerlink" title="4.2 浮点数"></a>4.2 浮点数</h3><p>​        <strong>Python将带小数点的数字都称为浮点数</strong>。大多数编程语言都使用了这个术语，它指出了这样一个事实：小数点可出现在数字的任何位置。每种编程语言都须细心设计，以妥善地处理浮点数，确保不管小数点出现在什么位置，数字的行为都是正常的。从很大程度上说，使用浮点数时都无需考虑其行为。你只需输入要使用的数字，Python通常都会按你期望的方式处理它们：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0.2</span> + <span class="number">0.2</span></span><br><span class="line"><span class="number">0.4</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> * <span class="number">0.2</span></span><br><span class="line"><span class="number">0.4</span></span><br></pre></td></tr></table></figure>
+
+<p>​        但需要注意的是，结果包含的小数位数可能是不确定时，结果可能会出现误差，如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0.1</span> + <span class="number">0.1</span></span><br><span class="line"><span class="number">0.2</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0.1</span> + <span class="number">0.1</span> + <span class="number">0.1</span></span><br><span class="line"><span class="number">0.30000000000000004</span></span><br></pre></td></tr></table></figure>
+
+<p>​        在计算机的世界中，一个普遍存在的问题是浮点数并不能准确地表示为十进制，因此就出现了这种精度问题，那么如何精准的计算呢？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> decimal <span class="keyword">import</span> Decimal</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(Decimal(<span class="string">&quot;0.1&quot;</span>) + Decimal(<span class="string">&quot;0.1&quot;</span>) + Decimal(<span class="string">&quot;0.1&quot;</span>))</span><br><span class="line"><span class="number">0.3</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-python之禅"><a href="#5-python之禅" class="headerlink" title="5. python之禅"></a>5. python之禅</h2><p>​        python之禅阐述了python的编码的原则和设计理念。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> this</span><br><span class="line">The Zen of Python, by Tim Peters</span><br><span class="line"></span><br><span class="line">Beautiful <span class="keyword">is</span> better than ugly.</span><br><span class="line">Explicit <span class="keyword">is</span> better than implicit.</span><br><span class="line">Simple <span class="keyword">is</span> better than <span class="built_in">complex</span>.</span><br><span class="line">Complex <span class="keyword">is</span> better than complicated.</span><br><span class="line">Flat <span class="keyword">is</span> better than nested.</span><br><span class="line">Sparse <span class="keyword">is</span> better than dense.</span><br><span class="line">Readability counts.</span><br><span class="line">Special cases aren<span class="string">&#x27;t special enough to break the rules.</span></span><br><span class="line"><span class="string">Although practicality beats purity.</span></span><br><span class="line"><span class="string">Errors should never pass silently.</span></span><br><span class="line"><span class="string">Unless explicitly silenced.</span></span><br><span class="line"><span class="string">In the face of ambiguity, refuse the temptation to guess.</span></span><br><span class="line"><span class="string">There should be one-- and preferably only one --obvious way to do it.</span></span><br><span class="line"><span class="string">Although that way may not be obvious at first unless you&#x27;</span>re Dutch.</span><br><span class="line">Now <span class="keyword">is</span> better than never.</span><br><span class="line">Although never <span class="keyword">is</span> often better than *right* now.</span><br><span class="line">If the implementation <span class="keyword">is</span> hard to explain, it<span class="string">&#x27;s a bad idea.</span></span><br><span class="line"><span class="string">If the implementation is easy to explain, it may be a good idea.</span></span><br><span class="line"><span class="string">Namespaces are one honking great idea -- let&#x27;</span>s do more of those!</span><br></pre></td></tr></table></figure>
+
+<p>翻译如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Python之禅 by Tim Peters</span><br><span class="line"> </span><br><span class="line">优美胜于丑陋（Python 以编写优美的代码为目标）</span><br><span class="line">明了胜于晦涩（优美的代码应当是明了的，命名规范，风格相似）</span><br><span class="line">简洁胜于复杂（优美的代码应当是简洁的，不要有复杂的内部实现）</span><br><span class="line">复杂胜于凌乱（如果复杂不可避免，那代码间也不能有难懂的关系，要保持接口简洁）</span><br><span class="line">扁平胜于嵌套（优美的代码应当是扁平的，不能有太多的嵌套）</span><br><span class="line">间隔胜于紧凑（优美的代码有适当的间隔，不要奢望一行代码解决问题）</span><br><span class="line">可读性很重要（优美的代码是可读的）</span><br><span class="line">即便假借特例的实用性之名，也不可违背这些规则（这些规则至高无上）</span><br><span class="line">不要包容所有错误，除非你确定需要这样做（精准地捕获异常，不写 <span class="keyword">except</span>:<span class="keyword">pass</span> 风格的代码）</span><br><span class="line">当存在多种可能，不要尝试去猜测</span><br><span class="line">而是尽量找一种，最好是唯一一种明显的解决方案（如果不确定，就用穷举法）</span><br><span class="line">虽然这并不容易，因为你不是 Python 之父（这里的 Dutch 是指 Guido ）</span><br><span class="line">做也许好过不做，但不假思索就动手还不如不做（动手之前要细思量）</span><br><span class="line">如果你无法向人描述你的方案，那肯定不是一个好方案；反之亦然（方案测评标准）</span><br><span class="line">命名空间是一种绝妙的理念，我们应当多加利用（倡导与号召）</span><br></pre></td></tr></table></figure>
+
     
 
     
@@ -336,7 +519,29 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
     
 
@@ -430,7 +635,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    这里什么都没有…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%8F%98%E9%87%8F%E5%92%8C%E7%AE%80%E5%8D%95%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">第二章 变量和简单数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.</span> <span class="toc-text">1.变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 变量的命名和使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 推荐使用的命令方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-python%E8%B5%8B%E5%80%BC%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4 python赋值的方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%B3%A8%E9%87%8A"><span class="toc-number">1.2.</span> <span class="toc-text">2 注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">1.3.</span> <span class="toc-text">3.字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 字符串的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 字符串的常用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-%E4%BF%AE%E6%94%B9%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%86%99"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">3.2.1 修改字符串的大小写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-%E5%90%88%E5%B9%B6%EF%BC%88%E6%8B%BC%E6%8E%A5%EF%BC%89%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">3.2.2 合并（拼接）字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-3-%E4%BD%BF%E7%94%A8%E5%88%B6%E8%A1%A8%E7%AC%A6%E6%88%96%E6%8D%A2%E8%A1%8C%E7%AC%A6%E6%9D%A5%E6%B7%BB%E5%8A%A0%E7%A9%BA%E7%99%BD"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">3.2.3 使用制表符或换行符来添加空白</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-4-%E5%88%A0%E9%99%A4%E7%A9%BA%E7%99%BD"><span class="toc-number">1.3.2.4.</span> <span class="toc-text">3.2.4 删除空白</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-4-1-%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%AB%E5%B0%BE%E7%9A%84%E7%A9%BA%E7%99%BD"><span class="toc-number">1.3.2.4.1.</span> <span class="toc-text">3.2.4.1 删除字符串末尾的空白</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-4-1-%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B7%A6%E8%BE%B9%E7%9A%84%E7%A9%BA%E7%99%BD"><span class="toc-number">1.3.2.4.2.</span> <span class="toc-text">3.2.4.1 删除字符串左边的空白</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-4-1-%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%A6%96%E6%9C%AA%E7%9A%84%E7%A9%BA%E7%99%BD"><span class="toc-number">1.3.2.4.3.</span> <span class="toc-text">3.2.4.1 删除字符串首未的空白</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-5-%E6%9B%BF%E6%8D%A2%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">1.3.2.5.</span> <span class="toc-text">3.2.5 替换字符串</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%95%B0%E5%AD%97"><span class="toc-number">1.4.</span> <span class="toc-text">4 数字</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%95%B4%E6%95%B0"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 整数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 浮点数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-python%E4%B9%8B%E7%A6%85"><span class="toc-number">1.5.</span> <span class="toc-text">5. python之禅</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
