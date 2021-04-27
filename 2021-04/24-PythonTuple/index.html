@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://scaven.site/2021-04/24-PythonTuple/image-20210427102855904.png">
 <meta property="og:image" content="https://scaven.site/2021-04/24-PythonTuple/image-20210427111534244.png">
 <meta property="article:published_time" content="2021-04-24T03:18:59.000Z">
-<meta property="article:modified_time" content="2021-04-27T03:21:48.447Z">
+<meta property="article:modified_time" content="2021-04-27T03:28:06.558Z">
 <meta property="article:author" content="qingdalf">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -327,7 +327,7 @@
 <h2 id="3-关于-不-可变"><a href="#3-关于-不-可变" class="headerlink" title="3 关于(不)可变"></a>3 关于(不)可变</h2><p>​        不可变是指内存地址的变化，比如列表，可以修改元素值，修改元素值之后列表的内存地址并没有变化。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>L = [<span class="number">1</span>, <span class="string">&#x27;Hello&#x27;</span>, [<span class="string">&#x27;张三&#x27;</span>, <span class="number">9</span>], <span class="number">1.2</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(L)</span><br><span class="line"><span class="number">2383109707456</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(L[<span class="number">0</span>])</span><br><span class="line"><span class="number">140736779327136</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改列表第一个元素的值</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L[<span class="number">0</span>] = <span class="string">&quot;China&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(L)</span><br><span class="line"><span class="number">2383109707456</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(L[<span class="number">0</span>])</span><br><span class="line"><span class="number">2383109618544</span></span><br></pre></td></tr></table></figure>
 
-<p>​        通过上面的例子，我们可以发现，修改列表元素前后，列表L的内存地址并没有变化，变化的是修改的元素的内存地址，这就是说我们修改了列表的值，列表还是原先的列表(L的内存地址没有变化)，但是列表的元素已经发生了变化。</p>
+<p>​        通过上面的例子，我们可以发现，修改列表元素前后，列表L的内存地址(2383109707456)并没有变化，变化的是修改的元素的内存地址(即列表值的内存地址)，这就是说我们修改了列表的值，列表还是原先的列表(L的内存地址没有变化)，但是列表的元素已经发生了变化。</p>
 <p><img src="./image-20210427101204300.png" alt="image-20210427101204300"></p>
 <p>​        在未对列表元素进行修改时的内存地址和指向</p>
 <img src="./image-20210427102341664.png" alt="image-20210427102341664" style="zoom:67%;" />
