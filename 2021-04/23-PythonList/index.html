@@ -50,9 +50,6 @@
   
 
   
-    
- 	  <script src="/lib/clickLove.js"></script>
-  
   
 
 
@@ -651,6 +648,30 @@
 
 
 
+  <div id="giteement-ctn"></div>
+  
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
+  
+  <script>
+  <!-- id: "PythonList" -->
+  var giteement = new Giteement({
+    id: '20210423194944',
+    owner: 'qingdalf',
+    repo: 'yilia-plus-omment',
+    backcall_uri: 'https://gitee.com/qingdalf/yilia-plus-omment',
+    oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'e87f247d2f4e47d52e92ed08237368d0fb4fa53eb6499ac04281cac63573c60d',
+      client_secret: '138ff2cd15f8b0834e3c798cdd06ad108550807072ac05f12d48695fdaa40d5d'
+    },
+  })
+  giteement.render('giteement-ctn')
+  </script>
+
+
+
+
 
 
 
@@ -710,23 +731,6 @@
 
 
 <!--  -->
-
-<script>
-  /* 标签页标题切换 */
-  var originTitle = document.title;
-  var titleTime;
-  document.addEventListener("visibilitychange", function () {
-    if (document.hidden) {
-      document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
-      clearTimeout(titleTime);
-    } else {
-      document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
-      titleTime = setTimeout(function () {
-        document.title = originTitle;
-      }, 2000);
-    }
-  });
-</script>
 
 
     
@@ -872,16 +876,6 @@
   <!-- <script async type="text/javascript" size="90" alpha="0.2" zIndex="0" src="/plugins/ribbon.js/ribbon.min.js"></script> -->
   
   
-  
-  <script type="text/javascript" src="/lib/snow.js"></script>
-  <script type="text/javascript" src="/lib/jquery-2.1.4.min.js"></script>
-  <script>
-    snow.down();
-    $(window).resize(function() {
-      $("canvas").css("z-index","500").remove();
-      snow.down();
-    });
-  </script>
   
 </body>
 
