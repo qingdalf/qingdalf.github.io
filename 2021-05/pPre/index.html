@@ -6,21 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://scaven.site">
-  <title>test | 倚楼听雨</title>
+  <title>Python.md | 倚楼听雨</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="这是一个测试文件，你看好不好玩呀">
+  <meta name="description" content="变量、注释、缩进与python之禅Q：运行hello_world.py 时发生的情况 ​        现在我们有一个hello_world.py的python文件，文件内容如下，当我们执行这个文件时，发生了什么呢？ 1print(&quot;hello world&quot;)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="https://scaven.site/2021-05/test/index.html">
+<meta property="og:title" content="Python.md">
+<meta property="og:url" content="https://scaven.site/2021-05/pPre/index.html">
 <meta property="og:site_name" content="倚楼听雨">
-<meta property="og:description" content="这是一个测试文件，你看好不好玩呀">
+<meta property="og:description" content="变量、注释、缩进与python之禅Q：运行hello_world.py 时发生的情况 ​        现在我们有一个hello_world.py的python文件，文件内容如下，当我们执行这个文件时，发生了什么呢？ 1print(&quot;hello world&quot;)">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-02T06:57:10.000Z">
-<meta property="article:modified_time" content="2021-05-02T07:04:51.177Z">
+<meta property="og:image" content="https://scaven.site/2021-05/pPre/image-20210502004502042.png">
+<meta property="og:image" content="https://scaven.site/2021-05/pPre/image-20210502005348961.png">
+<meta property="og:image" content="https://scaven.site/2021-05/pPre/image-20210502014359358.png">
+<meta property="og:image" content="https://scaven.site/2021-05/pPre/image-20210502014435283.png">
+<meta property="og:image" content="https://scaven.site/2021-05/pPre/image-20210421111639194.png">
+<meta property="og:image" content="https://scaven.site/2021-05/pPre/image-20210502095555498.png">
+<meta property="article:published_time" content="2021-05-01T03:11:11.000Z">
+<meta property="article:modified_time" content="2021-05-02T03:20:07.982Z">
 <meta property="article:author" content="qingdalf">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://scaven.site/2021-05/pPre/image-20210502004502042.png">
   
     <link rel="alternative" href="/atom.xml" title="倚楼听雨" type="application/atom+xml">
   
@@ -217,14 +225,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-test" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-pPre" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      test
+      Python.md
     </h1>
   
 
@@ -236,8 +244,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2021-05/test/" class="archive-article-date">
-        <time datetime="2021-05-02T06:57:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-02</time>
+<a href="/2021-05/pPre/" class="archive-article-date">
+        <time datetime="2021-05-01T03:11:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-01</time>
 </a>
 
   
@@ -250,7 +258,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">15字</span>
+      <span class="post-count">3.6k字</span>
     </span>
   </span>
 
@@ -259,7 +267,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">14分</span>
     </span>
   </span>
 </div>
@@ -270,7 +278,155 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>这是一个测试文件，你看好不好玩呀</p>
+    <h1 id="变量、注释、缩进与python之禅"><a href="#变量、注释、缩进与python之禅" class="headerlink" title="变量、注释、缩进与python之禅"></a>变量、注释、缩进与python之禅</h1><p>Q：运行hello_world.py 时发生的情况</p>
+<p>​        现在我们有一个hello_world.py的python文件，文件内容如下，当我们执行这个文件时，发生了什么呢？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;hello world&quot;</span>)</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>​        我们在cmd中执行hello_world.py文件</p>
+<!--more-->
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>phython3 hello_world.py</span><br><span class="line">hello world    <span class="comment"># 输出结果</span></span><br></pre></td></tr></table></figure>
+
+<p>​        运行文件hello_world.py时，末尾的**.py指出这是一个Python程序，因此编辑器将使用Python解释器来运行它<strong>。</strong>Python解释器读取整个程序，确定其中每个单词的含义**。例如，看到单词print时，解释器就会将括号中的内容打印到屏幕，而不会管括号中的内容是什么。</p>
+<h2 id="1-变量"><a href="#1-变量" class="headerlink" title="1.变量"></a>1.变量</h2><h3 id="1-1-格式"><a href="#1-1-格式" class="headerlink" title="1.1 格式"></a>1.1 格式</h3><p><strong><code>变量名=&quot;变量值&quot;</code></strong></p>
+<p>值得注意的几点：</p>
+<ul>
+<li>格式只能是**<code>变量名=&quot;变量值&quot;</code>**，如<code>name=&quot;张三&quot;</code></li>
+<li>格式不能是**<code>变量名=变量值</code><strong>，这种变量赋值的方法初学者很容易犯，在python中，</strong><code>变量名=变量值</code>**这种写法会被python解释等号两边是两个变量，定义变量的时候，等号后面的变量值一定是被引号包围起来的</li>
+<li>等号两边可以有空格，变量值中的引号可以是单引号或多引号，尤其是当变量值中本来就包含引号时，为了避免歧义就会使用多引号或转义符<code>\</code></li>
+<li>变量一定是先定义，后使用，没有定义的变量，不能被引用，python将抛出错误</li>
+</ul>
+<h3 id="1-2-变量的命名和使用"><a href="#1-2-变量的命名和使用" class="headerlink" title="1.2 变量的命名和使用"></a>1.2 变量的命名和使用</h3><p>​        在Python中使用变量时，需要遵守下面的命名规范。</p>
+<ul>
+<li><p><strong>变量名只能包含字母、数字和下划线，但不能以数字打头</strong>，此处的字母并不局限于 26 个英文字母，可以包含中文字符、日文字符等。例如，可将变量命名为message_1，但不能将其命名为1_message。</p>
+</li>
+<li><p><strong>变量名不能包含空格，但可使用下划线来分隔其中的单词</strong>。例如，变量名greeting_message可行，但变量名greeting message会引发错误。</p>
+</li>
+<li><p><strong>不要将Python关键字和函数名用作变量名</strong>，即不要使用Python保留用于特殊用途的单词，如print（请参见附录A.4）。</p>
+</li>
+<li><p><strong>变量名应既简短又具有描述性</strong>。例如，name比n好，student_name比s_n好，name_length<br>比length_of_persons_name好。</p>
+</li>
+<li><p><strong>慎用容易引起歧义的字母</strong>，如小写字母l和大写字母O，因为它们可能被人错看成数字1和0。</p>
+</li>
+</ul>
+<p>python关键字：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> keyword</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(keyword.kwlist)</span><br><span class="line">[<span class="string">&#x27;False&#x27;</span>, <span class="string">&#x27;None&#x27;</span>, <span class="string">&#x27;True&#x27;</span>, <span class="string">&#x27;and&#x27;</span>, <span class="string">&#x27;as&#x27;</span>, <span class="string">&#x27;assert&#x27;</span>, <span class="string">&#x27;async&#x27;</span>, <span class="string">&#x27;await&#x27;</span>, <span class="string">&#x27;break&#x27;</span>, <span class="string">&#x27;class&#x27;</span>, <span class="string">&#x27;continue&#x27;</span>, <span class="string">&#x27;def&#x27;</span>, <span class="string">&#x27;del&#x27;</span>, <span class="string">&#x27;elif&#x27;</span>, <span class="string">&#x27;else&#x27;</span>, <span class="string">&#x27;except&#x27;</span>, <span class="string">&#x27;finally&#x27;</span>, <span class="string">&#x27;for&#x27;</span>, <span class="string">&#x27;from&#x27;</span>, <span class="string">&#x27;global&#x27;</span>, <span class="string">&#x27;if&#x27;</span>, <span class="string">&#x27;import&#x27;</span>, <span class="string">&#x27;in&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;lambda&#x27;</span>, <span class="string">&#x27;nonlocal&#x27;</span>, <span class="string">&#x27;not&#x27;</span>, <span class="string">&#x27;or&#x27;</span>, <span class="string">&#x27;pass&#x27;</span>, <span class="string">&#x27;raise&#x27;</span>, <span class="string">&#x27;return&#x27;</span>, <span class="string">&#x27;try&#x27;</span>, <span class="string">&#x27;while&#x27;</span>, <span class="string">&#x27;with&#x27;</span>, <span class="string">&#x27;yield&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-推荐使用的命令方法"><a href="#1-3-推荐使用的命令方法" class="headerlink" title="1.3 推荐使用的命令方法"></a>1.3 推荐使用的命令方法</h3><ul>
+<li>驼峰命名法：<ul>
+<li>大驼峰命名法：每个单词的首字母都大写，如<code>StudentName</code></li>
+<li>小驼峰命名法：头一个单词首字母小写，其余单词首字母大写，如<code>studentName</code></li>
+</ul>
+</li>
+<li>下划线连接符命名法，如<code>student_name</code></li>
+</ul>
+<h3 id="1-4-python赋值的方法"><a href="#1-4-python赋值的方法" class="headerlink" title="1.4 python赋值的方法"></a>1.4 python赋值的方法</h3><ul>
+<li>常规赋值：<code>a = 100</code></li>
+<li>链式赋值：<code> a = b = 100</code>，表示<code>a=100</code>，<code>b=100</code></li>
+<li>序列解包赋值： <code>a,b = 100,&quot;zhangsan&quot;</code>，等同于<code>a=100</code>，<code>b=&quot;zhangsan&quot;</code>，此种赋值方法中，等号两边的个数必须相等，否则python将抛出错误</li>
+<li>增量赋值： a+=1，等同于<code>a=a+1</code></li>
+</ul>
+<h3 id="1-5-变量与内存"><a href="#1-5-变量与内存" class="headerlink" title="1.5 变量与内存"></a>1.5 变量与内存</h3><h4 id="1-5-1-一个变量一个值"><a href="#1-5-1-一个变量一个值" class="headerlink" title="1.5.1 一个变量一个值"></a>1.5.1 一个变量一个值</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="number">100</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(a)</span><br><span class="line"><span class="number">140732887802624</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>​        当我们定义一个变量<code>a = 100</code>时，首先程序在内存中开辟了一块内存空间，将变量值<code>100</code>存入了这块内存中，并将变量名<code>a</code>指向了变量值<code>100</code>所在的内存地址，我们使用变量名就可以使用到存放于内存中的变量值。</p>
+<p><img src="image-20210502004502042.png" alt="image-20210502004502042"></p>
+<h4 id="1-5-2-同一个变量两个值"><a href="#1-5-2-同一个变量两个值" class="headerlink" title="1.5.2 同一个变量两个值"></a>1.5.2 同一个变量两个值</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="number">100</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(a)</span><br><span class="line"><span class="number">140732887802624</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">&quot;lisi&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(a)</span><br><span class="line"><span class="number">1518145987568</span></span><br></pre></td></tr></table></figure>
+
+<p>​        如上所示，我们首先定义了一个变量<code>a = 100</code>，然后我们又把<code>&quot;lisi&quot;</code>的值赋给了变量<code>a</code>，即<code>a = &quot;lisi&quot;</code>，变量<code>a</code>在内存中的指向发生了怎样的变化呢？<br>​        首先当我们定义<code>a = 100</code>时，程序在内存中开辟了一块内存空间，将变量值<code>100</code>存入了这块内存中，并将变量名<code>a</code>指向了变量值<code>100</code>所在的内存地址；</p>
+<p>​        当我们将<code>&quot;lisi&quot;</code>的值赋给了变量<code>a</code>时，这时变量名<code>a</code>的指向将从<code>100</code>变成<code>&quot;lisi&quot;</code>，并且变量值<code>100</code>由于没有被变量引用(指向)将等待内存回收，如下图：</p>
+<p><img src="image-20210502005348961.png" alt="image-20210502005348961"></p>
+<h4 id="1-5-3-两个变量同一个变量值"><a href="#1-5-3-两个变量同一个变量值" class="headerlink" title="1.5.3 两个变量同一个变量值"></a>1.5.3 两个变量同一个变量值</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;hello&quot;</span></span><br><span class="line"><span class="number">1518145988016</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="string">&quot;hello&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(b)</span><br><span class="line"><span class="number">1518145988016</span></span><br></pre></td></tr></table></figure>
+
+<p>​        如上所示，我们首先定义了一个变量<code>a = &quot;hello&quot;</code>，然后再定义了一个<code>b = &quot;hello&quot;</code>，此时，内存中的指向是怎么样的呢？</p>
+<p>我们不妨来大胆猜想，情况分两种：</p>
+<ol>
+<li><p>程序分别在内存中开辟了两块内存空间，将变量值<code>&quot;hello&quot;</code>存入内存中，并分别将变量名<code>a</code>和<code>b</code>指向了这两个内存空间中的<code>&quot;hello&quot;</code>；</p>
+</li>
+<li><p>程序在内存中只开辟了一个内存空间用于存放变量值<code>&quot;hello&quot;</code>，然后将变量<code>a</code>和<code>b</code>都指向了这块内存空间。</p>
+</li>
+</ol>
+<p>上面的两种猜想都是正确的。</p>
+<p>在python中，从节约内存的角度出发，将一些常用的简单字符串和数字([-5,257))做了优化，将这些变量的指向之前定义过的变量值，而不去重新开辟内存空间。</p>
+<p><strong>字符串</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 简单字符串</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>name = <span class="string">&quot;zhangsan&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(name)</span><br><span class="line"><span class="number">1518145802416</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">&quot;zhangsan&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(a)</span><br><span class="line"><span class="number">1518145802416</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 复杂字符串</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>message1 = <span class="string">&quot;This is a message!&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(message1)</span><br><span class="line"><span class="number">1518145996160</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>message2 = <span class="string">&quot;This is a message!&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(message2)</span><br><span class="line"><span class="number">1518145996000</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>数字</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">num = []</span><br><span class="line">a = [i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(-<span class="number">10</span>, <span class="number">300</span>)]</span><br><span class="line">b = [i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(-<span class="number">10</span>, <span class="number">300</span>)]</span><br><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">309</span>):</span><br><span class="line">    <span class="keyword">if</span> a[n] <span class="keyword">is</span> b[n]:</span><br><span class="line">        num.append(a[n])</span><br><span class="line"><span class="built_in">print</span>(num)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 结果如下：</span></span><br><span class="line">[-<span class="number">5</span>, -<span class="number">4</span>, -<span class="number">3</span>, -<span class="number">2</span>, -<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>, <span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">25</span>, <span class="number">26</span>, <span class="number">27</span>, <span class="number">28</span>, <span class="number">29</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">32</span>, <span class="number">33</span>, <span class="number">34</span>, <span class="number">35</span>, <span class="number">36</span>, <span class="number">37</span>, <span class="number">38</span>, <span class="number">39</span>, <span class="number">40</span>, <span class="number">41</span>, <span class="number">42</span>, <span class="number">43</span>, <span class="number">44</span>, <span class="number">45</span>, <span class="number">46</span>, <span class="number">47</span>, <span class="number">48</span>, <span class="number">49</span>, <span class="number">50</span>, <span class="number">51</span>, <span class="number">52</span>, <span class="number">53</span>, <span class="number">54</span>, <span class="number">55</span>, <span class="number">56</span>, <span class="number">57</span>, <span class="number">58</span>, <span class="number">59</span>, <span class="number">60</span>, <span class="number">61</span>, <span class="number">62</span>, <span class="number">63</span>, <span class="number">64</span>, <span class="number">65</span>, <span class="number">66</span>, <span class="number">67</span>, <span class="number">68</span>, <span class="number">69</span>, <span class="number">70</span>, <span class="number">71</span>, <span class="number">72</span>, <span class="number">73</span>, <span class="number">74</span>, <span class="number">75</span>, <span class="number">76</span>, <span class="number">77</span>, <span class="number">78</span>, <span class="number">79</span>, <span class="number">80</span>, <span class="number">81</span>, <span class="number">82</span>, <span class="number">83</span>, <span class="number">84</span>, <span class="number">85</span>, <span class="number">86</span>, <span class="number">87</span>, <span class="number">88</span>, <span class="number">89</span>, <span class="number">90</span>, <span class="number">91</span>, <span class="number">92</span>, <span class="number">93</span>, <span class="number">94</span>, <span class="number">95</span>, <span class="number">96</span>, <span class="number">97</span>, <span class="number">98</span>, <span class="number">99</span>, <span class="number">100</span>, <span class="number">101</span>, <span class="number">102</span>, <span class="number">103</span>, <span class="number">104</span>, <span class="number">105</span>, <span class="number">106</span>, <span class="number">107</span>, <span class="number">108</span>, <span class="number">109</span>, <span class="number">110</span>, <span class="number">111</span>, <span class="number">112</span>, <span class="number">113</span>, <span class="number">114</span>, <span class="number">115</span>, <span class="number">116</span>, <span class="number">117</span>, <span class="number">118</span>, <span class="number">119</span>, <span class="number">120</span>, <span class="number">121</span>, <span class="number">122</span>, <span class="number">123</span>, <span class="number">124</span>, <span class="number">125</span>, <span class="number">126</span>, <span class="number">127</span>, <span class="number">128</span>, <span class="number">129</span>, <span class="number">130</span>, <span class="number">131</span>, <span class="number">132</span>, <span class="number">133</span>, <span class="number">134</span>, <span class="number">135</span>, <span class="number">136</span>, <span class="number">137</span>, <span class="number">138</span>, <span class="number">139</span>, <span class="number">140</span>, <span class="number">141</span>, <span class="number">142</span>, <span class="number">143</span>, <span class="number">144</span>, <span class="number">145</span>, <span class="number">146</span>, <span class="number">147</span>, <span class="number">148</span>, <span class="number">149</span>, <span class="number">150</span>, <span class="number">151</span>, <span class="number">152</span>, <span class="number">153</span>, <span class="number">154</span>, <span class="number">155</span>, <span class="number">156</span>, <span class="number">157</span>, <span class="number">158</span>, <span class="number">159</span>, <span class="number">160</span>, <span class="number">161</span>, <span class="number">162</span>, <span class="number">163</span>, <span class="number">164</span>, <span class="number">165</span>, <span class="number">166</span>, <span class="number">167</span>, <span class="number">168</span>, <span class="number">169</span>, <span class="number">170</span>, <span class="number">171</span>, <span class="number">172</span>, <span class="number">173</span>, <span class="number">174</span>, <span class="number">175</span>, <span class="number">176</span>, <span class="number">177</span>, <span class="number">178</span>, <span class="number">179</span>, <span class="number">180</span>, <span class="number">181</span>, <span class="number">182</span>, <span class="number">183</span>, <span class="number">184</span>, <span class="number">185</span>, <span class="number">186</span>, <span class="number">187</span>, <span class="number">188</span>, <span class="number">189</span>, <span class="number">190</span>, <span class="number">191</span>, <span class="number">192</span>, <span class="number">193</span>, <span class="number">194</span>, <span class="number">195</span>, <span class="number">196</span>, <span class="number">197</span>, <span class="number">198</span>, <span class="number">199</span>, <span class="number">200</span>, <span class="number">201</span>, <span class="number">202</span>, <span class="number">203</span>, <span class="number">204</span>, <span class="number">205</span>, <span class="number">206</span>, <span class="number">207</span>, <span class="number">208</span>, <span class="number">209</span>, <span class="number">210</span>, <span class="number">211</span>, <span class="number">212</span>, <span class="number">213</span>, <span class="number">214</span>, <span class="number">215</span>, <span class="number">216</span>, <span class="number">217</span>, <span class="number">218</span>, <span class="number">219</span>, <span class="number">220</span>, <span class="number">221</span>, <span class="number">222</span>, <span class="number">223</span>, <span class="number">224</span>, <span class="number">225</span>, <span class="number">226</span>, <span class="number">227</span>, <span class="number">228</span>, <span class="number">229</span>, <span class="number">230</span>, <span class="number">231</span>, <span class="number">232</span>, <span class="number">233</span>, <span class="number">234</span>, <span class="number">235</span>, <span class="number">236</span>, <span class="number">237</span>, <span class="number">238</span>, <span class="number">239</span>, <span class="number">240</span>, <span class="number">241</span>, <span class="number">242</span>, <span class="number">243</span>, <span class="number">244</span>, <span class="number">245</span>, <span class="number">246</span>, <span class="number">247</span>, <span class="number">248</span>, <span class="number">249</span>, <span class="number">250</span>, <span class="number">251</span>, <span class="number">252</span>, <span class="number">253</span>, <span class="number">254</span>, <span class="number">255</span>, <span class="number">256</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-6-is和"><a href="#1-6-is和" class="headerlink" title="1.6 is和=="></a>1.6 <code>is</code>和<code>==</code></h3><p>​        在python中，<code>is</code>比较的是两个变量的内存值(内存空间)是否一致，<code>==</code>比较的是变量值是否相同。</p>
+<p>​        <code>==</code>比较变量值是否一样，通过肉眼可以查看到。但是通过<code>is</code>比较内存值是否一致时，我们需要考虑两方面的问题：</p>
+<ul>
+<li>简单字符串和[-5,257)之间的数字</li>
+<li>代码块：<ul>
+<li><strong>如果在同一代码块下</strong>，则采用同一代码块下的换缓存机制(即先将值保留在字典中，若后续的变量使用了相同的值，则直接将新变量指向该值，不再创建新的变量值，若不存在才创建新的变量值)。</li>
+<li><strong>如果在不同代码块中</strong>，则采用小数据池的驻留机制。</li>
+<li><strong>适用范围</strong>：仅限字符串、整形、布尔型，其他的数据类型，如列表、字典、元组等不适用该规则</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 简单字符串</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">&quot;zhangsan&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="string">&quot;zhangsan&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a <span class="keyword">is</span> b</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a == b</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 复杂字符串</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>message1 = <span class="string">&quot;This is a message!&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>message2 = <span class="string">&quot;This is a message!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>message1 <span class="keyword">is</span> message2</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>message1 == message2</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>同一代码块下的结果：</p>
+<p><img src="image-20210502014359358.png" alt="image-20210502014359358"></p>
+<p>不同代码块下的结果：</p>
+<p><img src="image-20210502014435283.png" alt="image-20210502014435283"></p>
+<p><strong>案例：</strong></p>
+<p><strong>1.使用汉字作为变量(不推荐)</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>名字=<span class="string">&quot;zhangsan&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(名字)</span><br><span class="line">zhangsan</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.变量值包含引号</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>message = <span class="string">&quot;This&#x27;s an apple&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(message)</span><br><span class="line">This<span class="string">&#x27;s an apple</span></span><br></pre></td></tr></table></figure>
+
+<p>​        案例中This’s an apple中包含单引号，如果再使用单引号，则将引起歧义，python将抛出错误。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>message = <span class="string">&#x27;This&#x27;</span>s an apple<span class="string">&#x27;</span></span><br><span class="line"><span class="string">&gt;&gt;&gt; print(message)</span></span><br><span class="line"><span class="string">## 执行后结果如下：</span></span><br><span class="line"><span class="string">  File &quot;test.py&quot;, line 4</span></span><br><span class="line"><span class="string">    message = &#x27;</span>This<span class="string">&#x27;s an apple&#x27;</span>  <span class="comment"># python将&#x27;This&#x27;当成了一个整体，&#x27;This&#x27;后面的字符串就搞蒙了python，因此抛出错误</span></span><br><span class="line">                    ^</span><br><span class="line">SyntaxError: invalid syntax   <span class="comment"># 提示语法错误</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>3.定义变量时，等号后边不含引号</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>n = zhangsan</span><br></pre></td></tr></table></figure>
+
+<p>​        这种情况下，python会认为等号两边都是变量，即将变量<code>zhangsan</code>的值赋给变量<code>n</code>，这种情况需要分两种情况说明：</p>
+<ul>
+<li>如果上文中定义了<code>zhangsan</code>的值，即<code>zhangsan</code>是原本就是一个变量名，那么等式成立</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>zhangsan = <span class="number">28</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>n = zhangsan   <span class="comment"># 等同于n = zhangsan = 28，即先定义变量zhangsan，再将变量zhangsan的值赋给了n</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果上文没有定义<code>zhangsan</code>，那么python将抛出错误，即<strong>变量一定是先定义，后使用</strong>，此时我们重新打开cmd</li>
+</ul>
+<p><img src="image-20210421111639194.png" alt="image-20210421111639194"></p>
+<h2 id="2-注释"><a href="#2-注释" class="headerlink" title="2 注释"></a>2 注释</h2><p>​        python中使用井号（”#”）和三引号(单三引号或双三引号)进行注释，被注释的行将不会被执行。</p>
+<ul>
+<li>单行注释：<code>#</code></li>
+<li>多行注释：<code>&quot;&quot;&quot;</code>、<code>&#39;&#39;&#39;</code></li>
+</ul>
+<h3 id="2-1-当行注释"><a href="#2-1-当行注释" class="headerlink" title="2.1 当行注释"></a>2.1 当行注释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入用户名</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;------&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>执行结果为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">------</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-多行注释"><a href="#2-2-多行注释" class="headerlink" title="2.2 多行注释"></a>2.2 多行注释</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;------&quot;</span>)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">这里是注释信息，这里将不会被执行</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;------&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>执行结果为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">------</span><br><span class="line">------</span><br></pre></td></tr></table></figure>
+
+<p>关于注释需要注意的几点：</p>
+<ul>
+<li>一定要养成写注释的习惯，认真写注释不仅是对自己也是对阅读代码的人的尊重</li>
+<li>注释一定要简明扼要的阐述代码的目的</li>
+<li>注释一定要规范，此处要求的规范可以是大多数人的习惯，也可以是公司对代码注释的规定</li>
+<li>注释信息可以帮助调试代码</li>
+</ul>
+<h2 id="3-缩进"><a href="#3-缩进" class="headerlink" title="3. 缩进"></a>3. 缩进</h2><p>​        和其它程序设计语言（如 Java、C 语言）采用大括号“{}”分隔代码块不同，Python采用代码缩进和冒号（ : ）来区分代码块之间的层次。</p>
+<p>​        在 Python 中，对于类定义、函数定义、流程控制语句、异常处理语句等，<strong>行尾的冒号和下一行的缩进，表示下一个代码块的开始，而缩进的结束则表示此代码块的结束</strong>。</p>
+<p>​        注意，Python 中实现对代码的缩进，可以使用空格或者 Tab 键实现。但无论是手动敲空格，还是使用 Tab 键，<strong>通常情况下都是采用 4 个空格(约定熟成规范)长度作为一个缩进量</strong>（默认情况下，一个 Tab 键就表示 4 个空格）。</p>
+<p>​        Python 对代码的缩进要求非常严格，<strong>同一个级别代码块的缩进量必须一样</strong>，否则解释器会报<code> IndentationError</code>异常错误。</p>
+<p><img src="image-20210502095555498.png" alt="image-20210502095555498"></p>
+<h2 id="4-python之禅"><a href="#4-python之禅" class="headerlink" title="4. python之禅"></a>4. python之禅</h2><p>​        python之禅阐述了python的编码的原则和设计理念。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> this</span><br><span class="line">The Zen of Python, by Tim Peters</span><br><span class="line"></span><br><span class="line">Beautiful <span class="keyword">is</span> better than ugly.</span><br><span class="line">Explicit <span class="keyword">is</span> better than implicit.</span><br><span class="line">Simple <span class="keyword">is</span> better than <span class="built_in">complex</span>.</span><br><span class="line">Complex <span class="keyword">is</span> better than complicated.</span><br><span class="line">Flat <span class="keyword">is</span> better than nested.</span><br><span class="line">Sparse <span class="keyword">is</span> better than dense.</span><br><span class="line">Readability counts.</span><br><span class="line">Special cases aren<span class="string">&#x27;t special enough to break the rules.</span></span><br><span class="line"><span class="string">Although practicality beats purity.</span></span><br><span class="line"><span class="string">Errors should never pass silently.</span></span><br><span class="line"><span class="string">Unless explicitly silenced.</span></span><br><span class="line"><span class="string">In the face of ambiguity, refuse the temptation to guess.</span></span><br><span class="line"><span class="string">There should be one-- and preferably only one --obvious way to do it.</span></span><br><span class="line"><span class="string">Although that way may not be obvious at first unless you&#x27;</span>re Dutch.</span><br><span class="line">Now <span class="keyword">is</span> better than never.</span><br><span class="line">Although never <span class="keyword">is</span> often better than *right* now.</span><br><span class="line">If the implementation <span class="keyword">is</span> hard to explain, it<span class="string">&#x27;s a bad idea.</span></span><br><span class="line"><span class="string">If the implementation is easy to explain, it may be a good idea.</span></span><br><span class="line"><span class="string">Namespaces are one honking great idea -- let&#x27;</span>s do more of those!</span><br></pre></td></tr></table></figure>
+
+<p>翻译如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Python之禅 by Tim Peters</span><br><span class="line"> </span><br><span class="line">优美胜于丑陋（Python 以编写优美的代码为目标）</span><br><span class="line">明了胜于晦涩（优美的代码应当是明了的，命名规范，风格相似）</span><br><span class="line">简洁胜于复杂（优美的代码应当是简洁的，不要有复杂的内部实现）</span><br><span class="line">复杂胜于凌乱（如果复杂不可避免，那代码间也不能有难懂的关系，要保持接口简洁）</span><br><span class="line">扁平胜于嵌套（优美的代码应当是扁平的，不能有太多的嵌套）</span><br><span class="line">间隔胜于紧凑（优美的代码有适当的间隔，不要奢望一行代码解决问题）</span><br><span class="line">可读性很重要（优美的代码是可读的）</span><br><span class="line">即便假借特例的实用性之名，也不可违背这些规则（这些规则至高无上）</span><br><span class="line">不要包容所有错误，除非你确定需要这样做（精准地捕获异常，不写 <span class="keyword">except</span>:<span class="keyword">pass</span> 风格的代码）</span><br><span class="line">当存在多种可能，不要尝试去猜测</span><br><span class="line">而是尽量找一种，最好是唯一一种明显的解决方案（如果不确定，就用穷举法）</span><br><span class="line">虽然这并不容易，因为你不是 Python 之父（这里的 Dutch 是指 Guido ）</span><br><span class="line">做也许好过不做，但不假思索就动手还不如不做（动手之前要细思量）</span><br><span class="line">如果你无法向人描述你的方案，那肯定不是一个好方案；反之亦然（方案测评标准）</span><br><span class="line">命名空间是一种绝妙的理念，我们应当多加利用（倡导与号召）</span><br></pre></td></tr></table></figure>
 
     
 
@@ -317,7 +473,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://scaven.site/2021-05/test/" title="test" target="_blank">https://scaven.site/2021-05/test/</a>
+          <a href="https://scaven.site/2021-05/pPre/" title="Python.md" target="_blank">https://scaven.site/2021-05/pPre/</a>
         </li>
         
         <li>
@@ -334,7 +490,29 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
     
 
@@ -384,7 +562,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://scaven.site/2021-05/test/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://scaven.site/2021-05/pPre/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -399,18 +577,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2021-05/test2/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021-05/pInstall/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          test2
+          安装python
         
       </div>
     </a>
   
   
-    <a href="/2021-05/pVarString/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">PythonVarString</div>
+    <a href="/2021-04/aboutme/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">aboutme</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -437,7 +615,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    这里什么都没有…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E3%80%81%E6%B3%A8%E9%87%8A%E3%80%81%E7%BC%A9%E8%BF%9B%E4%B8%8Epython%E4%B9%8B%E7%A6%85"><span class="toc-number">1.</span> <span class="toc-text">变量、注释、缩进与python之禅</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.</span> <span class="toc-text">1.变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 变量的命名和使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 推荐使用的命令方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-python%E8%B5%8B%E5%80%BC%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4 python赋值的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E5%8F%98%E9%87%8F%E4%B8%8E%E5%86%85%E5%AD%98"><span class="toc-number">1.1.5.</span> <span class="toc-text">1.5 变量与内存</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-1-%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E4%B8%80%E4%B8%AA%E5%80%BC"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">1.5.1 一个变量一个值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-2-%E5%90%8C%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E4%B8%A4%E4%B8%AA%E5%80%BC"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">1.5.2 同一个变量两个值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-3-%E4%B8%A4%E4%B8%AA%E5%8F%98%E9%87%8F%E5%90%8C%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E5%80%BC"><span class="toc-number">1.1.5.3.</span> <span class="toc-text">1.5.3 两个变量同一个变量值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-is%E5%92%8C"><span class="toc-number">1.1.6.</span> <span class="toc-text">1.6 is和&#x3D;&#x3D;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%B3%A8%E9%87%8A"><span class="toc-number">1.2.</span> <span class="toc-text">2 注释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%BD%93%E8%A1%8C%E6%B3%A8%E9%87%8A"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 当行注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%A4%9A%E8%A1%8C%E6%B3%A8%E9%87%8A"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 多行注释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%BC%A9%E8%BF%9B"><span class="toc-number">1.3.</span> <span class="toc-text">3. 缩进</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-python%E4%B9%8B%E7%A6%85"><span class="toc-number">1.4.</span> <span class="toc-text">4. python之禅</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
