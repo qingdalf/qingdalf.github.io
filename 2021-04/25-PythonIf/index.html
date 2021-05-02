@@ -451,6 +451,15 @@
 
 <nav id="article-nav">
   
+    <a href="/2021-05/02-Python/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          :title
+        
+      </div>
+    </a>
+  
   
     <a href="/2021-04/24-PythonTuple/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">PythonTuple</div>
@@ -661,35 +670,6 @@
   </div>
 
   
-<script type="text/javascript" src="/plugins/TweenMax/TweenMax.min.js"></script>
-<script type="text/javascript" src="/plugins/TweenMax/HoverImg.js"></script>
-
-<script>
-
-
-  var hoverEffect = {
-    "subNav": ".left-col .social a"
-  }
-
-
-  for (var x in hoverEffect) {
-    // 初始化data-img属性值
-    let $em = document.querySelectorAll(hoverEffect[x]);
-    $em.forEach(($a) => {
-      //console.log($a.href);
-      if (isImageType($a.href)) {
-        $a.setAttribute("data-img", $a.href)
-      }
-    })
-    // 实现悬停元素预览图片效果
-    let $a = document.querySelectorAll(hoverEffect[x] + "[data-img]");
-    $a.forEach(($em) => {
-      new HoverImgFx1($em)
-    })
-  }
-
-</script>
-
   
 <script type="text/javascript" src="/plugins/activate-power-mode/activate-power-mode.js"></script>
 <script>
