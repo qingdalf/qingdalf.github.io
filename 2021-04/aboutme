@@ -76,17 +76,17 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/2021-04/20-welcome/" >Home</a></li>
+				<li><a href="/2021-04/welcome" >Home</a></li>
 			
 				<li><a href="/tags/linux" >Linux</a></li>
 			
-				<li><a href="/2021-04/21-PythonContents/" >python</a></li>
+				<li><a href="/2021-05/python/pContents" >python</a></li>
 			
 				<li><a href="/tags/kubernets" >kubernets</a></li>
 			
 				<li><a href="/tags/DevOps" >DevOps</a></li>
 			
-				<li><a href="/2021-04/20-aboutme/" >AboutMe</a></li>
+				<li><a href="/2021-04/aboutme" >AboutMe</a></li>
 			
 			</ul>
 		</nav>
@@ -192,17 +192,17 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 16.666666666666668%"><a href="/2021-04/20-welcome/">Home</a></li>
+					<li style="width: 16.666666666666668%"><a href="/2021-04/welcome">Home</a></li>
 		        
 					<li style="width: 16.666666666666668%"><a href="/tags/linux">Linux</a></li>
 		        
-					<li style="width: 16.666666666666668%"><a href="/2021-04/21-PythonContents/">python</a></li>
+					<li style="width: 16.666666666666668%"><a href="/2021-05/python/pContents">python</a></li>
 		        
 					<li style="width: 16.666666666666668%"><a href="/tags/kubernets">kubernets</a></li>
 		        
 					<li style="width: 16.666666666666668%"><a href="/tags/DevOps">DevOps</a></li>
 		        
-					<li style="width: 16.666666666666668%"><a href="/2021-04/20-aboutme/">AboutMe</a></li>
+					<li style="width: 16.666666666666668%"><a href="/2021-04/aboutme">AboutMe</a></li>
 		        
 				</ul>
 			</nav>
@@ -426,18 +426,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2021-04/kubernets/k8s-service" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          k8s-service
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021-04/docker/docker" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">docker</div>
+    <a href="/2021-04/welcome" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">welcome</div>
       <i class="icon-circle-right"></i>
     </a>
   
