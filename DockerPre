@@ -10,16 +10,16 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="1.1什么是容器？​        容器技术是一种虚拟化的方案。容器虚拟化也就是操作系统级别的虚拟化，只能运行相同或相似内核的操作系统(也就是说一个基于ubuntu的容器能够运行在centos之上)。Docker使用的容器技术依赖于Linux内核的Namespaces和Cgroups，这两个技术就是为了让操作系统资源被区隔成独立区间。 Docker依赖的Linux内核特性：  Namespaces">
+  <meta name="description" content="1.1什么是容器？​        容器技术是一种虚拟化的方案。容器虚拟化也就是操作系统级别的虚拟化，只能运行相同或相似内核的操作系统(也就是说一个基于ubuntu的容器能够运行在centos之上)。Docker使用的容器技术依赖于Linux内核的Namespaces和Cgroups，这两个技术就是为了让操作系统资源被区隔成独立区间。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker开篇：容器">
-<meta property="og:url" content="https://scaven.site/dockerPre">
+<meta property="og:url" content="https://scaven.site/DockerPre">
 <meta property="og:site_name" content="倚楼听雨">
-<meta property="og:description" content="1.1什么是容器？​        容器技术是一种虚拟化的方案。容器虚拟化也就是操作系统级别的虚拟化，只能运行相同或相似内核的操作系统(也就是说一个基于ubuntu的容器能够运行在centos之上)。Docker使用的容器技术依赖于Linux内核的Namespaces和Cgroups，这两个技术就是为了让操作系统资源被区隔成独立区间。 Docker依赖的Linux内核特性：  Namespaces">
+<meta property="og:description" content="1.1什么是容器？​        容器技术是一种虚拟化的方案。容器虚拟化也就是操作系统级别的虚拟化，只能运行相同或相似内核的操作系统(也就是说一个基于ubuntu的容器能够运行在centos之上)。Docker使用的容器技术依赖于Linux内核的Namespaces和Cgroups，这两个技术就是为了让操作系统资源被区隔成独立区间。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://scaven.site/image-20200715143707656.png">
 <meta property="article:published_time" content="2021-05-03T03:27:45.000Z">
-<meta property="article:modified_time" content="2021-05-03T03:31:44.540Z">
+<meta property="article:modified_time" content="2021-05-03T03:43:33.375Z">
 <meta property="article:author" content="qingdalf">
 <meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
@@ -239,7 +239,7 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/dockerPre" class="archive-article-date">
+<a href="/DockerPre" class="archive-article-date">
         <time datetime="2021-05-03T03:27:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
 </a>
 
@@ -274,6 +274,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h3 id="1-1什么是容器？"><a href="#1-1什么是容器？" class="headerlink" title="1.1什么是容器？"></a>1.1什么是容器？</h3><p>​        容器技术是一种<strong>虚拟化的方案</strong>。容器虚拟化也就是操作系统级别的虚拟化，只能运行相同或相似内核的操作系统(也就是说一个基于ubuntu的容器能够运行在centos之上)。Docker使用的容器技术依赖于Linux内核的<strong>Namespaces</strong>和<strong>Cgroups</strong>，这两个技术就是为了让操作系统<strong>资源被区隔成独立区间</strong>。</p>
+<span id="more"></span>
 <p>Docker依赖的<strong>Linux内核特性</strong>：</p>
 <ul>
 <li>Namespaces：命名空间</li>
@@ -371,7 +372,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://scaven.site/dockerPre" title="docker开篇：容器" target="_blank">https://scaven.site/dockerPre</a>
+          <a href="https://scaven.site/DockerPre" title="docker开篇：容器" target="_blank">https://scaven.site/DockerPre</a>
         </li>
         
         <li>
@@ -460,7 +461,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://scaven.site/dockerPre" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://scaven.site/DockerPre" alt="微信分享二维码"> -->
     </div>
 </div>
 
