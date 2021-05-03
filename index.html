@@ -222,7 +222,7 @@
             
 
   
-    <article id="post-test2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-DockerPre" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -230,7 +230,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021-05/test2/">test2</a>
+	  <a class="article-title" href="/dockerPre">docker开篇：容器</a>
 	
     </h1>
   
@@ -238,8 +238,8 @@
 
   
   
-<a href="/2021-05/test2/" class="archive-article-date">
-        <time datetime="2021-05-02T07:08:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-02</time>
+<a href="/dockerPre" class="archive-article-date">
+        <time datetime="2021-05-03T03:27:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
 </a>
 
   
@@ -251,81 +251,58 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    
-    
+    <h3 id="1-1什么是容器？"><a href="#1-1什么是容器？" class="headerlink" title="1.1什么是容器？"></a>1.1什么是容器？</h3><p>​        容器技术是一种<strong>虚拟化的方案</strong>。容器虚拟化也就是操作系统级别的虚拟化，只能运行相同或相似内核的操作系统(也就是说一个基于ubuntu的容器能够运行在centos之上)。Docker使用的容器技术依赖于Linux内核的<strong>Namespaces</strong>和<strong>Cgroups</strong>，这两个技术就是为了让操作系统<strong>资源被区隔成独立区间</strong>。</p>
+<p>Docker依赖的<strong>Linux内核特性</strong>：</p>
+<ul>
+<li>Namespaces：命名空间</li>
+<li>Controller groups（cgroups）：控制组</li>
+</ul>
+<h4 id="1-1-1-NameSpace"><a href="#1-1-1-NameSpace" class="headerlink" title="1.1.1 NameSpace"></a>1.1.1 <strong>NameSpace</strong></h4><p>​        为确保提供的是<strong>轻量级虚拟化服务</strong>，Docker使用了NameSpace。<strong>命名空间提供了系统资源的隔离，资源包括进程、网络、文件系统等。</strong></p>
+<p>​        在同一个Namespace下的进程可以<strong>感知彼此的变化</strong>，而对其他的Namespace一无所知。让容器置身于独立的系统环境中。</p>
+<p>Namespace的种类 ：</p>
+<ul>
+<li>PID（Process ID） ：进程隔离</li>
+<li>NET（Network） ：管理网络接口</li>
+<li>IPC（InterProcess Communication） ：管理跨进程通信的访问</li>
+<li>MNT（Mount） ：管理挂载点</li>
+<li>UTS（Unix Timesharing System） ：隔离内核和版本标识</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> ll  /proc/$$/ns   <span class="comment"># $$表示当前进程的id，即1，systemd进程</span></span></span><br><span class="line">total 0</span><br><span class="line">lrwxrwxrwx 1 root root 0 Mar 31 22:48 ipc -&gt; ipc:[4026531839]</span><br><span class="line">lrwxrwxrwx 1 root root 0 Mar 31 22:48 mnt -&gt; mnt:[4026531840]</span><br><span class="line">lrwxrwxrwx 1 root root 0 Mar 31 22:48 net -&gt; net:[4026531956]</span><br><span class="line">lrwxrwxrwx 1 root root 0 Mar 31 22:48 pid -&gt; pid:[4026531836]</span><br><span class="line">lrwxrwxrwx 1 root root 0 Mar 31 22:48 user -&gt; user:[4026531837]</span><br><span class="line">lrwxrwxrwx 1 root root 0 Mar 31 22:48 uts -&gt; uts:[4026531838]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-    
+<h4 id="1-1-2-Controller-groups"><a href="#1-1-2-Controller-groups" class="headerlink" title="1.1.2 Controller groups"></a>1.1.2 <strong>Controller groups</strong></h4><p>​        <strong>cgroups是一种Linux提供用于限制、控制、管理资源的机制</strong>，所有的任务就是运行在系统中的一个进程，而Cgroups以某种标准将一组进程为目标进行资源分配和控制，例如cpu、内存、带宽等，并且可以动态配置。</p>
+<p>cgroups的主要功能：</p>
+<ul>
+<li><strong>资源限制</strong>(Resource limitation)：可以为进程组设定资源使用上限。</li>
+<li><strong>优先级设定</strong>(Prioritization)：哪些进程组使用更多的资源，可以为进程组分配特定的CPU、磁盘IO吞吐量等。</li>
+<li><strong>资源计量</strong>(Accounting)：记录进程组使用资源的数量–统计。</li>
+<li><strong>进程组控制</strong>(Control)：能够将进程组挂起和恢复。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> ll  /sys/fs/cgroup/   <span class="comment"># cgroup执行的资源限制</span></span></span><br><span class="line">total 0</span><br><span class="line">drwxr-xr-x 4 root root  0 Apr  1 10:59 blkio     # 对块设备的io进行限制</span><br><span class="line">lrwxrwxrwx 1 root root 11 Apr  1 10:59 cpu -&gt; cpu,cpuacct   # 限制cpu时间片的分配，与cpuacct挂载同一目录</span><br><span class="line">lrwxrwxrwx 1 root root 11 Apr  1 10:59 cpuacct -&gt; cpu,cpuacct   </span><br><span class="line"><span class="meta">#</span><span class="bash"> 生产cgroup中的任务占用cpu资源的报告，与cpu挂载同一目录</span></span><br><span class="line">drwxr-xr-x 4 root root  0 Apr  1 10:59 cpu,cpuacct   </span><br><span class="line">drwxr-xr-x 2 root root  0 Apr  1 10:59 cpuset    # 给cgroup的任务分配独立的cpu和内存节点</span><br><span class="line">drwxr-xr-x 4 root root  0 Apr  1 10:59 devices   # 允许或者拒绝cgroup中的任务访问设备</span><br><span class="line">drwxr-xr-x 2 root root  0 Apr  1 10:59 freezer   # 暂停/恢复cgroup中的任务</span><br><span class="line">drwxr-xr-x 2 root root  0 Apr  1 10:59 hugetlb   # 限制使用的内存页数量</span><br><span class="line">drwxr-xr-x 4 root root  0 Apr  1 10:59 memory    # 对cgroup中任务的可用内存进行限制，并自动生产资源占用报告</span><br><span class="line">lrwxrwxrwx 1 root root 16 Apr  1 10:59 net_cls -&gt; net_cls,net_prio   # 使用等级识别符(classid)标记网络数据包，这让Linux流量控制程序(tc)可以识别来自特定从cgroup任务的数据包，并进行网络限制</span><br><span class="line">drwxr-xr-x 2 root root  0 Apr  1 10:59 net_cls,net_prio  </span><br><span class="line">lrwxrwxrwx 1 root root 16 Apr  1 10:59 net_prio -&gt; net_cls,net_prio  # 允许基于cgroup设置网络流量的优先级</span><br><span class="line">drwxr-xr-x 2 root root  0 Apr  1 10:59 perf_event   # 运行使用perf工具来监控cgroup</span><br><span class="line">drwxr-xr-x 4 root root  0 Apr  1 10:59 pids    # 限制任务的数量</span><br><span class="line">drwxr-xr-x 4 root root  0 Apr  1 10:59 systemd</span><br></pre></td></tr></table></figure>
 
-    
+<p>​        容器实际资源限制文件路径：/sys/fs/cgroup/&lt;资源名&gt;/docker/&lt;容器id&gt;</p>
+<p>​        cgroup为每个容器都创建了相应的限制目录，<strong>直接修改容器目录中的资源限制类型就能达到限制容器使用资源的目标</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> docker container ls</span> </span><br><span class="line">CONTAINER ID   IMAGE  COMMAND                  CREATED        STATUS              PORTS     NAMES</span><br><span class="line">dc6d2297d670   nginx  &quot;/docker-entrypoint.…&quot;   15 hours ago   Up About a minute   80/tcp vibrant_hawking</span><br><span class="line">60ffca766bde   f1cb7c7d58b7   &quot;bash&quot;                   6 weeks ago    Up About a minute             c1</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> cpu目录下的资源限制文件，跟/sys/fs/cgroup/cpu/下的内容大同小异</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> ls /sys/fs/cgroup/cpu/docker/   <span class="comment"># 下面的dc6d2297d670和60ffca766bde就是正在运行的两个容器</span></span></span><br><span class="line">60ffca766bdea3ba772bc8fff9e15a5b569d213d06980f1cb56b0d50a66315cf  cpuacct.usage_percpu  cpu.stat</span><br><span class="line">cgroup.clone_children                                             cpu.cfs_period_us     dc6d2297d670ff91bc2dc1fe0e1f7c38563d6f0279a26e4664d7c87ec96ea86b</span><br><span class="line">cgroup.event_control                                              cpu.cfs_quota_us      notify_on_release</span><br><span class="line">cgroup.procs                                                      cpu.rt_period_us      tasks</span><br><span class="line">cpuacct.stat                                                      cpu.rt_runtime_us</span><br><span class="line">cpuacct.usage                                                     cpu.shares</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ls   /sys/fs/cgroup/cpu/docker/dc6d2297d670ff91bc2dc1fe0e1f7c38563d6f0279a26e4664d7c87ec96ea86b/</span></span><br><span class="line">cgroup.clone_children  cgroup.procs  cpuacct.usage         cpu.cfs_period_us  cpu.rt_period_us   cpu.shares  notify_on_release</span><br><span class="line">cgroup.event_control   cpuacct.stat  cpuacct.usage_percpu  cpu.cfs_quota_us   cpu.rt_runtime_us  cpu.stat    tasks</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> cat    /sys/fs/cgroup/cpu/docker/dc6d2297d670ff91bc2dc1fe0e1f7c38563d6f0279a26e4664d7c87ec96ea86b/tasks</span> </span><br><span class="line">19652    # nginx容器的父进程--master进程</span><br><span class="line">19700    # nginx容器的子进程--worker进程</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ps -ef | grep [1]9652</span></span><br><span class="line">root      19652  19623  0 13:46 ?        00:00:00 nginx: master process nginx -g daemon off;</span><br><span class="line">101       19700  19652  0 13:46 ?        00:00:00 nginx: worker process</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> memory下的资源限制目录，跟/sys/fs/cgroup/memory/下的内容大同小异</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> ls   /sys/fs/cgroup/memory/docker/dc6d2297d670ff91bc2dc1fe0e1f7c38563d6f0279a26e4664d7c87ec96ea86b/</span></span><br><span class="line">cgroup.clone_children       memory.kmem.max_usage_in_bytes      memory.limit_in_bytes            memory.numa_stat            memory.use_hierarchy</span><br><span class="line">cgroup.event_control        memory.kmem.slabinfo                memory.max_usage_in_bytes        memory.oom_control          notify_on_release</span><br><span class="line">cgroup.procs                memory.kmem.tcp.failcnt             memory.memsw.failcnt             memory.pressure_level       tasks</span><br><span class="line">memory.failcnt              memory.kmem.tcp.limit_in_bytes      memory.memsw.limit_in_bytes      memory.soft_limit_in_bytes</span><br><span class="line">memory.force_empty          memory.kmem.tcp.max_usage_in_bytes  memory.memsw.max_usage_in_bytes  memory.stat</span><br><span class="line">memory.kmem.failcnt         memory.kmem.tcp.usage_in_bytes      memory.memsw.usage_in_bytes      memory.swappiness</span><br><span class="line">memory.kmem.limit_in_bytes  memory.kmem.usage_in_bytes          memory.move_charge_at_immigrate  memory.usage_in_bytes</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> cat    /sys/fs/cgroup/memory/docker/dc6d2297d670ff91bc2dc1fe0e1f7c38563d6f0279a26e4664d7c87ec96ea86b/tasks</span> </span><br><span class="line">19652    # nginx容器的父进程--master进程</span><br><span class="line">19700    # nginx容器的子进程--worker进程</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ps -ef | grep [1]9652</span></span><br><span class="line">root      19652  19623  0 13:46 ?        00:00:00 nginx: master process nginx -g daemon off;</span><br><span class="line">101       19700  19652  0 13:46 ?        00:00:00 nginx: worker process</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> cat    /sys/fs/cgroup/memory/docker/dc6d2297d670ff91bc2dc1fe0e1f7c38563d6f0279a26e4664d7c87ec96ea86b/memory.limit_in_bytes</span> </span><br><span class="line">1073741824     # 显示现在分配的内存是1073741824 / 1024 / 1024 /1024 = 1g  </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker stats dc6d2297d670ff91bc2dc1fe0e1f7c38563d6f0279a26e4664d7c87ec96ea86b</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看该容器的资源限制情况，显示内存限制是1G</span></span><br><span class="line">CONTAINER ID   NAME              CPU %     MEM USAGE / LIMIT   MEM %     NET I/O      BLOCK I/O     PIDS</span><br><span class="line">dc6d2297d670   vibrant_hawking   0.00%     2.531MiB / 1GiB     0.25%     1.01kB / 0B  22.3MB / 0B   2</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改容器内存限制，需要注意的是，修改的内存值大于限制值时将修改失败，可以改小，不能改大</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">echo</span> <span class="string">&quot;200M&quot;</span> &gt;  /sys/fs/cgroup/memory/docker/dc6d2297d670ff91bc2dc1fe0e1f7c38563d6f0279a26e4664d7c87ec96ea86b/memory.limit_in_bytes</span>   </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> cat    /sys/fs/cgroup/memory/docker/dc6d2297d670ff91bc2dc1fe0e1f7c38563d6f0279a26e4664d7c87ec96ea86b/memory.limit_in_bytes</span> </span><br><span class="line">209715200    # 209715200 / 1024 / 1024 = 200M</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改完成后查看容器内存限制，内存值已经变成了200m</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker stats dc6d2297d670ff91bc2dc1fe0e1f7c38563d6f0279a26e4664d7c87ec96ea86b</span></span><br><span class="line">CONTAINER ID   NAME              CPU %     MEM USAGE / LIMIT   MEM %     NET I/O     BLOCK I/O     PIDS</span><br><span class="line">dc6d2297d670   vibrant_hawking   0.00%     2.531MiB / 200MiB   1.27%     1.01kB / 0B 22.3MB / 0B   2</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
+<p>​        除了直接修改容器下指定文件来修改限制容器使用资源外，还可以通过下面的命令行命令进行修改。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> docker update --<span class="built_in">help</span>   <span class="comment"># docker资源限制主要是下面的几个类型</span></span></span><br><span class="line"></span><br><span class="line">Usage:  docker update [OPTIONS] CONTAINER [CONTAINER...]</span><br><span class="line"></span><br><span class="line">Update configuration of one or more containers</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">      --blkio-weight uint16        Block IO (relative weight), between 10 and 1000, or 0 to disable (default 0)</span><br><span class="line">      --cpu-period int             Limit CPU CFS (Completely Fair Scheduler) period</span><br><span class="line">      --cpu-quota int              Limit CPU CFS (Completely Fair Scheduler) quota</span><br><span class="line">      --cpu-rt-period int          Limit the CPU real-time period in microseconds</span><br><span class="line">      --cpu-rt-runtime int         Limit the CPU real-time runtime in microseconds</span><br><span class="line">  -c, --cpu-shares int             CPU shares (relative weight)</span><br><span class="line">      --cpus decimal               Number of CPUs</span><br><span class="line">      --cpuset-cpus string         CPUs in which to allow execution (0-3, 0,1)</span><br><span class="line">      --cpuset-mems string         MEMs in which to allow execution (0-3, 0,1)</span><br><span class="line">      --kernel-memory bytes        Kernel memory limit</span><br><span class="line">  -m, --memory bytes               Memory limit</span><br><span class="line">      --memory-reservation bytes   Memory soft limit</span><br><span class="line">      --memory-swap bytes          Swap limit equal to memory plus swap: &#x27;-1&#x27; to enable unlimited swap</span><br><span class="line">      --pids-limit int             Tune container pids limit (set -1 for unlimited)</span><br><span class="line">      --restart string             Restart policy to apply when a container exits</span><br></pre></td></tr></table></figure>
 
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021-05/test2/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021-05/test/">test</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021-05/test/" class="archive-article-date">
-        <time datetime="2021-05-02T06:57:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-02</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>这是一个测试文件，你看好不好玩呀</p>
+<p><strong>1.2 虚拟化技术</strong></p>
+<p>​        虚拟化技术是一种计算机资源管理技术，将内存，网络，CPU等资源进行抽象，让硬件透明，目的是让用户合理地使用操作系统资源。</p>
+<p><strong>容器与虚拟化</strong></p>
+<p><img src="image-20200715143707656.png" alt="image-20200715143707656"></p>
+<p>​        <strong>容器</strong>是应用程序层的抽象，将代码和依赖项打包在一起。<strong>多个容器可以在同一台计算机上运行，并与其他容器共享操作系统内核，每个容器在用户空间中作为隔离的进程运行</strong>。<strong>容器占用的空间少于VM</strong>（容器映像的大小通常为几十MB），可以处理更多的应用程序，并且需要的VM和操作系统更少。</p>
+<p>​        <strong>虚拟机（VM）</strong>是将一台服务器转变为多台服务器的物理硬件的抽象。系统管理程序允许多个VM在单台计算机上运行。每个VM都包含<strong>操作系统，应用程序，必要的二进制文件和库的完整副本</strong></p>
+<p>​       <strong>虚拟机和容器都有优势和劣势</strong>，如何选择取决于具体的需求，但有些规则可以参考。</p>
+<ul>
+<li><p>VM非常适合当应用运行时<strong>需要所有OS资源和功能的场景</strong>，如果需要运行多个这样的应该，可以使用VMs。</p>
+</li>
+<li><p>容器适合在更少的server上运行更多的应用。</p>
+</li>
+</ul>
+<p>​        服务器好比运输码头：拥有场地和各种设备（服务器硬件资源），服务器虚拟化好比作码头上的仓库：拥有独立的空间堆放各种货物或集装箱(仓库之间完全独立，都拥有独立的应用系统和操作系统）。</p>
+<p>​        Docker比作集装箱：各种货物的打包，将各种应用程序和他们所依赖的运行环境打包成标准的容器,容器之间隔离。Docker有着小巧、迁移部署快速、运行高效等特点，但隔离性比服务器虚拟化差：不同的集装箱属于不同的运行单位（Docker上运行不同的应用实例），相互独立（隔离）。但由同一个库管人员管理（主机操作系统内核），因此通过库管人员可以看到所有集装箱的相关信息（因为共享操作系统内核，因此相关信息会共享）。</p>
+<p>​       服务器虚拟化就好比在码头上（物理主机及虚拟化层），建立了多个独立的“小码头”—仓库（虚拟机）。其拥有完全独立（隔离）的空间，属于不同的客户（虚拟机所有者）。每个仓库有各自的库管人员（当前虚拟机的操作系统内核），无法管理其它仓库。不存在信息共享的情况</p>
+<p>​       因此，我们需要根据不同的应用场景和需求采用不同的方式使用Docker技术或使用服务器虚拟化技术。例如一个典型的Docker应用场景是当主机上的Docker实例属于单一用户的情况下，在保证安全的同时可以充分发挥Docker的技术优势。对于隔离要求较高的环境如混合用户环境，就可以使用服务器虚拟化技术。</p>
 
     
 
@@ -337,11 +314,33 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021-05/test/">展开全文 >></a>
+      <a class="article-more-a" href="/dockerPre">展开全文 >></a>
     </p>
     
 
@@ -1125,6 +1124,106 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2021-05/pPre/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-aboutme" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021-04/aboutme/">aboutme</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021-04/aboutme/" class="archive-article-date">
+        <time datetime="2021-04-20T04:14:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-20</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <hr>
+<hr>
+
+<center>
+    <p>贺新郎·甚矣吾衰矣</p>
+</center>
+
+<center>
+    <p>【作者】辛弃疾 【朝代】宋</p>
+</center>
+
+<p>邑中园亭，仆皆为赋此词。一日，独坐停云，水声山色，竞来相娱。意溪山欲援例者，遂作数语，庶几仿佛渊明思亲友之意云。</p><br>
+
+<p>甚矣吾衰矣。怅平生、交游零落，只今余几！白发空垂三千丈，一笑人间万事。问何物、能令公喜？我见青山多妩媚，料青山见我应如是。情与貌，略相似。</p><br>
+<p>一尊搔首东窗里。想渊明、停云诗就，此时风味。江左沉酣求名者，岂识浊醪妙理。回首叫、云飞风起。不恨古人吾不见，恨古人、不见吾狂耳。知我者，二三子。</p><br>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">AboutMe</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021-04/aboutme/">展开全文 >></a>
     </p>
     
 
