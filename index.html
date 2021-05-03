@@ -220,6 +220,94 @@
             
 
   
+    <article id="post-dockerInstall" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021-05/dockerInstall/">安装docker和运行容器的方式</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021-05/dockerInstall/" class="archive-article-date">
+        <time datetime="2021-05-03T05:33:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="1-docker的安装："><a href="#1-docker的安装：" class="headerlink" title="1 docker的安装："></a>1 docker的安装：</h3><p>​       Linux系统自带了docker软件包，但该软件包版本较低，一般不直接安装系统自带的docker。</p>
+    
+    <a class="article-more-a" href="/2021-05/dockerInstall/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021-05/dockerInstall/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-dockerIntroduction" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -252,119 +340,9 @@
     <h3 id="1-1-docker介绍"><a href="#1-1-docker介绍" class="headerlink" title="1.1 docker介绍"></a>1.1 docker介绍</h3><p>官网：<a target="_blank" rel="noopener" href="https://www.docker.com/">https://www.docker.com/</a></p>
 <p>官网文档：<a target="_blank" rel="noopener" href="https://docs.docker.com/">https://docs.docker.com/</a></p>
 <p>​        docker是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/PaaS">PaaS</a>提供商dotCloud开源的一个基于<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/LXC">LXC</a>的高级容器引擎，源代码托管在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Github">Github</a>上，基于<a target="_blank" rel="noopener" href="https://www.runoob.com/go/go-tutorial.html">Go 语言</a>并遵从Apache2.0协议开源，docker是容器的一个管理工具，并不是容器。</p>
-<p>​       docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制（沙箱就是一个限制应用程序对系统资源的访问的运行环境），相互之间不会有任何接口（类似 iPhone的app）,更重要的是容器性能开销极低。</p>
-<p>​        docker从17.03版本之后分为CE（Community Edition: 社区版）和EE（Enterprise Edition: 企业版）。</p>
-<p>​        Docker自2013年以来非常火热，无论是从github上的代码活跃度，还是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Redhat">Redhat</a>在RHEL6.5中集成对Docker的支持, 就连Google的Compute Engine也支持docker在其之上运行。</p>
-<p><strong>docker发展的历史背景：</strong></p>
-<ul>
-<li><p><strong>环境管理复杂</strong> - 从各种OS到各种中间件到各种app, 一款产品能够成功作为开发者需要关心的东西太多，且难于管理，这个问题几乎在所有现代IT相关行业都需要面对。</p>
-</li>
-<li><p><strong>云计算时代的到来</strong> - AWS的成功, 引导开发者将应用转移到 cloud 上, 解决了硬件管理的问题，然而中间件相关的问题依然存在 (所以openstack HEAT和 AWS cloudformation 都着力解决这个问题)。开发者思路变化提供了可能性。</p>
-</li>
-<li><p><strong>虚拟化手段的变化</strong> - cloud 时代采用标配硬件来降低成本，采用虚拟化手段来满足用户按需使用的需求以及保证可用性和隔离性。然而无论是KVM还是Xen在 docker 看来,都在浪费资源，因为用户需要的是高效运行环境而非OS, GuestOS既浪费资源又难于管理, 更加轻量级的LXC更加灵活和快速</p>
-</li>
-<li><p><strong>LXC的移动性</strong> - LXC在 linux 2.6 的 kernel 里就已经存在了，但是其设计之初并非为云计算考虑的，缺少标准化的描述手段和容器的可迁移性，决定其构建出的环境难于迁移和标准化管理(相对于KVM之类image和snapshot的概念)。docker 就在这个问题上做出实质性的革新。这是docker最独特的地方。</p>
-</li>
-</ul>
-<p>​       面对上述几个问题，docker设想是交付运行环境如同海运，OS如同一个货轮，每一个在OS基础上的软件都如同一个集装箱，用户可以通过标准化手段自由组装运行环境，同时集装箱的内容可以由用户自定义，也可以由专业人员制造。这样，交付一个软件，就是一系列标准化组件的集合的交付，如同乐高积木，用户只需要选择合适的积木组合，并且在最顶端署上自己的名字(最后一个标准化组件是用户的app)。这也就是基于docker的PaaS产品的原型。</p>
-<h3 id="1-2-Docker-架构"><a href="#1-2-Docker-架构" class="headerlink" title="1.2 Docker 架构"></a>1.2 Docker 架构</h3><p>​        Docker使用客户端-服务器 (C/S) 架构模式，使用远程API来管理和创建Docker容器。Docker容器通过Docker镜像来创建。容器与镜像的关系类似于面向对象编程中的对象与类，可以理解为程序和进程的关系，镜像是静态的，容器是动态的有生命周期的。</p>
-<table>
-<thead>
-<tr>
-<th>docker</th>
-<th>面向对象</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>容器</td>
-<td>对象</td>
-</tr>
-<tr>
-<td>镜像</td>
-<td>类</td>
-</tr>
-</tbody></table>
-<img src="clip_image002.png" alt="img" style="zoom:67%;" />
-
-<center>架构图一</center>
-
-<p>​        Docker采用C/S架构，<code>Docker daemon</code> 作为服务端接受来自客户的请求，并处理这些请求（创建、运行、分发容器）。 客户端和服务端既可以运行在一个机器上，也可通过 socket 或者RESTful API 来进行通信。</p>
-<p>​        <code>Docker daemon</code>一般在宿主主机后台运行，等待接收来自客户端的消息。 Docker 客户端则为用户提供一系列可执行命令，用户用这些命令实现跟<code>Docker daemon</code>交互。</p>
-<img src="image-20200717170409141.png" alt="image-20200717170409141" style="zoom:67%;" />
-
-<center>架构图二</center>
-
-<p>​        不难发现，docker由内到外是docker daemon（守护进程），docker client（客户端），container（容器），image（镜像），network（网络），data volumes（数据卷）</p>
-<p><strong>Docker的基本组成有：</strong></p>
-<ul>
-<li>Docker Client：客户端，Docker客户端通过命令行或者其他工具使用Docker SDK与Docker的守护进程通信</li>
-<li>Docker Daemon：守护进程，</li>
-<li>Docker Image：镜像，Docker镜像是用于创建Docker容器的模板。</li>
-<li>Docker Container：容器，容器是独立运行的一个或一组应用</li>
-<li>Docker Registry：仓库，Docker仓库用来保存镜像，可以理解为代码控制中的代码仓库。  Docker Hub(<a target="_blank" rel="noopener" href="https://hub.docker.com/">https://hub.docker.com</a>) 提供了庞大的镜像集合供使用。用户可创建自己的私有仓库。默认使用https协议进行访问。  拥有两层功能，提供镜像存储的仓库，提供用户获取镜像时的认证</li>
-<li>Docker Host：docker运行的主机，一个物理或者虚拟的机器用于执行Docker守护进程和容器。</li>
-<li>Containerd：是一个简单的守护进程，向上给Docker Daemon提供接口，向下通过containerd-shim结合runC管理容器</li>
-<li>runC：一个命令行工具，它根据OCI标准来创建和运行容器。</li>
-</ul>
-<img src="image-20210401142134762.png" alt="image-20210401142134762" style="zoom:67%;" />
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> ps ajxf   <span class="comment"># 执行结果如下，他们之间的pid存在相互关联的关系</span></span></span><br></pre></td></tr></table></figure>
-
-<p><img src="image-20210401143510994.png" alt="image-20210401143510994"></p>
-<h3 id="1-3-docker的优缺点"><a href="#1-3-docker的优缺点" class="headerlink" title="1.3 docker的优缺点"></a>1.3 docker的优缺点</h3><h4 id="1-3-1-docker优点"><a href="#1-3-1-docker优点" class="headerlink" title="1.3.1 docker优点"></a>1.3.1 docker优点</h4><p>​        Docker 是一个用于开发，交付和运行应用程序的开放平台。Docker 使您能够将应用程序与基础架构分开，从而可以快速交付软件。借助 Docker，您可以与管理应用程序相同的方式来管理基础架构。通过利用 Docker 的方法来快速交付，测试和部署代码，您可以大大减少编写代码和在生产环境中运行代码之间的延迟。</p>
-<ul>
-<li><strong>快速，一致地交付您的应用程序</strong></li>
-</ul>
-<p>​        Docker 允许开发人员使用您提供的应用程序或服务的本地容器在标准化环境中工作，从而简化了开发的生命周期。</p>
-<p>​       容器非常适合持续集成和持续交付（CI / CD）工作流程，请考虑以下示例方案：</p>
-<p>​       您的开发人员在本地编写代码，并使用 Docker 容器与同事共享他们的工作。</p>
-<p>​       他们使用 Docker 将其应用程序推送到测试环境中，并执行自动或手动测试。</p>
-<p>​      当开发人员发现错误时，他们可以在开发环境中对其进行修复，然后将其重新部署到测试环境中，以进行测试和验证。</p>
-<p>​     测试完成后，将修补程序推送给生产环境，就像将更新的镜像推送到生产环境一样简单。</p>
-<ul>
-<li><strong>响应式部署和扩展</strong></li>
-</ul>
-<p>​        Docker 是基于容器的平台，允许高度可移植的工作负载。Docker 容器可以在开发人员的本机上，数据中心的物理或虚拟机上，云服务上或混合环境中运行。</p>
-<p>​        Docker 的可移植性和轻量级的特性，还可以使您轻松地完成动态管理的工作负担，并根据业务需求指示，实时扩展或拆除应用程序和服务。</p>
-<ul>
-<li><strong>在同一硬件上运行更多工作负载</strong></li>
-</ul>
-<p>​        Docker 轻巧快速。它为基于虚拟机管理程序的虚拟机提供了可行、经济、高效的替代方案，因此您可以利用更多的计算能力来实现业务目标。Docker 非常适合于高密度环境以及中小型部署，而您可以用更少的资源做更多的事情。</p>
-<h4 id="1-3-2-docker局限"><a href="#1-3-2-docker局限" class="headerlink" title="1.3.2 docker局限"></a>1.3.2 docker局限</h4><p>Docker并不是全能的，设计之初也不是KVM之类虚拟化手段的替代品，简单总结几点：</p>
-<ul>
-<li><p>Docker是基于Linux 64bit的，无法在32bit的linux/Windows/unix环境下使用</p>
-</li>
-<li><p>LXC是基于cgroup等linux kernel功能的，因此container的guest系统只能是linux base的</p>
-</li>
-<li><p>隔离性相比KVM之类的虚拟化方案还是有些欠缺，所有container公用一部分的运行库</p>
-</li>
-<li><p>网络管理相对简单，主要是基于namespace隔离</p>
-</li>
-<li><p>cgroup的cpu和cpuset提供的cpu功能相比KVM的等虚拟化方案相比难以度量(所以dotcloud主要是按内存收费)</p>
-</li>
-<li><p>Docker对disk的管理比较有限</p>
-</li>
-<li><p>container随着用户进程的停止而销毁，container中的log等用户数据不便收集</p>
-</li>
-</ul>
-<p>​       针对1-2，有windows base应用的需求的基本可以pass了; 3-5主要是看用户的需求，到底是需要一个container还是一个VM, 同时也决定了docker作为 IaaS 不太可行。</p>
-<p>​       针对6,7虽然是docker本身不支持的功能，但是可以通过其他手段解决(disk quota, mount –bind)。总之，选用container还是vm, 就是在隔离性和资源复用性上做权衡。</p>
-<p>​      <strong>Docker在本质上是一个附加系统</strong>。使用文件系统的不同层构建一个应用是有可能的。每个组件被添加到之前已经创建的组件之上，可以比作为一个文件系统更明智。分层架构带来另一方面的效率提升，当你重建存在变化的Docker镜像时，不需要重建整个Docker镜像，只需要重建变化的部分。</p>
-<p>​        可能更为重要的是，Docker旨在用于弹性计算。每个Docker实例的运营生命周期有限，实例数量根据需求增减。在一个管理适度的系统中，这些实例生而平等，不再需要时便各自消亡了。</p>
-<p>​        针对Docker环境存在的不足，意味着在开始部署Docker前需要考虑如下几个问题。首先，Docker实例是无状态的。这意味着它们不应该承载任何交易数据，所有数据应该保存在数据库服务器中。</p>
-<p>​        其次，开发Docker实例并不像创建一台虚拟机、添加应用然后克隆那样简单。为成功创建并使用Docker基础设施，管理员需要对系统管理的各个方面有一个全面的理解，包括Linux管理、编排及配置工具比如Puppet、Chef以及Salt。这些工具生来就基于命令行以及脚本。</p>
-<h3 id="1-4-docker应用场景"><a href="#1-4-docker应用场景" class="headerlink" title="1.4 docker应用场景"></a>1.4 docker应用场景</h3><p>​        在docker的网站上提到了docker的典型场景：</p>
-<ul>
-<li><p>Automating the packaging and deployment of applications（使应用的打包与部署自动化）</p>
-</li>
-<li><p>Creation of lightweight, private PAAS environments（创建轻量、私密的PAAS环境）</p>
-</li>
-<li><p>Automated testing and continuous integration/deployment（实现自动化测试和持续的集成/部署）</p>
-</li>
-<li><p>Deploying and scaling web apps, databases and backend services（部署与扩展webapp、数据库和后台服务）</p>
-</li>
-</ul>
-
+    
+    <a class="article-more-a" href="/2021-05/dockerIntroduction/#more">more >></a>
+    
     
 
     
@@ -1103,80 +1081,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2021-05/pPre/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-DevOpsContents" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021-04/DevOpsContents/">DevOpsContents</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021-04/DevOpsContents/" class="archive-article-date">
-        <time datetime="2021-04-18T03:54:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-18</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021-04/DevOpsContents/">展开全文 >></a>
     </p>
     
 
