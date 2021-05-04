@@ -236,6 +236,101 @@
             
 
   
+    <article id="post-kuberInstall" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021-05/kuberInstall/">kubernets集群搭建</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021-05/kuberInstall/" class="archive-article-date">
+        <time datetime="2021-05-04T12:43:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="1-kubernetes集群搭建的两种方式"><a href="#1-kubernetes集群搭建的两种方式" class="headerlink" title="1 kubernetes集群搭建的两种方式"></a>1 kubernetes集群搭建的两种方式</h2><p>​        kubernetes集群搭建提供了下面两种方式，建议都熟悉</p>
+<ul>
+<li>kubeadm：Kubeadm是一个工具，提供kubeadm init和kubeadm join，用于快熟部署kubernetes集群<ul>
+<li>网址：<a target="_blank" rel="noopener" href="https://kubernetes.io/docs/reference/setup-tools/kubeadm/">https://kubernetes.io/docs/reference/setup-tools/kubeadm/</a></li>
+</ul>
+</li>
+<li>二进制：从官方下载发行版的二进制包，手动部署每个组件，组成kubernetes集群<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/kubernetes/kubernetes/tree/release-xx">https://github.com/kubernetes/kubernetes/tree/release-xx</a>
+    
+    <a class="article-more-a" href="/2021-05/kuberInstall/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021-05/kuberInstall/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-kuberPre" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1014,122 +1109,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2021-05/dockerNetAdvance/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-dockerNetwork" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021-05/dockerNetwork/">docker容器四种网络模式</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021-05/dockerNetwork/" class="archive-article-date">
-        <time datetime="2021-05-03T12:01:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h3 id="1-四类网络模式"><a href="#1-四类网络模式" class="headerlink" title="1 四类网络模式"></a>1 四类网络模式</h3><table>
-<thead>
-<tr>
-<th>Docker网络模式</th>
-<th>配置</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>host模式(开放式容器)</td>
-<td>–net=host</td>
-<td>容器和宿主机共享Network namespace。</td>
-</tr>
-<tr>
-<td>container模式(联盟式容器)</td>
-<td>–net=container:NAME_or_ID</td>
-<td>容器和另外一个容器共享Network namespace，使用同一块网卡，各容器相互间可以使用lo进行同信。 kubernetes中的pod就是多个容器共享一个Network namespace。</td>
-</tr>
-<tr>
-<td>none模式(封闭式容器)</td>
-<td>–net=none</td>
-<td>容器有独立的Network namespace，但并没有对其进行任何网络设置，如分配veth pair和网桥连接，配置IP等，即网络孤岛，没有网络流量进出。</td>
-</tr>
-<tr>
-<td>bridge模式(桥接式容器)</td>
-<td>–net=bridge</td>
-<td>拥有一个lo回环网卡和私有网络接口，默认模式</td>
-</tr>
-</tbody></table>
-    
-    <a class="article-more-a" href="/2021-05/dockerNetwork/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021-05/dockerNetwork/">展开全文 >></a>
     </p>
     
 
