@@ -6,17 +6,36 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://scaven.site">
-  <title>Archives: 2021/5 | 倚楼听雨</title>
+  <title>dockerImageMake | 倚楼听雨</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="倚楼听雨">
-<meta property="og:url" content="https://scaven.site/archives/2021/05/index.html">
+  <meta name="description" content="1 准备工作–制作本地局域网yum源1.1 安装并启动vsftpd12# yum -y install vsftpd# systemctl enable vsftpd &amp;&amp; systemctl start vsftpd">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dockerImageMake">
+<meta property="og:url" content="https://scaven.site/2021-05/dockerImageMake/index.html">
 <meta property="og:site_name" content="倚楼听雨">
+<meta property="og:description" content="1 准备工作–制作本地局域网yum源1.1 安装并启动vsftpd12# yum -y install vsftpd# systemctl enable vsftpd &amp;&amp; systemctl start vsftpd">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://scaven.site/2021-05/dockerImage/image-20200718181236918.png">
+<meta property="og:image" content="https://scaven.site/2021-05/dockerImage/clip_image052.jpg">
+<meta property="og:image" content="https://scaven.site/2021-05/dockerImage/clip_image054.jpg">
+<meta property="og:image" content="https://scaven.site/2021-05/dockerImage/image-20200719232205533.png">
+<meta property="og:image" content="https://scaven.site/2021-05/dockerImage/image-20200719233021172.png">
+<meta property="og:image" content="https://scaven.site/2021-05/dockerImage/image-20200719233137145.png">
+<meta property="og:image" content="https://scaven.site/2021-05/dockerImage/image-20200719233215227.png">
+<meta property="og:image" content="https://scaven.site/2021-05/dockerImage/image-20200719233803196.png">
+<meta property="og:image" content="https://scaven.site/2021-05/dockerImage/image-20200719233927216.png">
+<meta property="og:image" content="https://scaven.site/2021-05/dockerImage/image-20200719233956493.png">
+<meta property="og:image" content="https://scaven.site/2021-05/dockerImage/image-20200720001324660.png">
+<meta property="og:image" content="https://scaven.site/2021-05/dockerImage/image-20200720000946358.png">
+<meta property="og:image" content="https://scaven.site/2021-05/dockerImage/image-20200720001520071.png">
+<meta property="og:image" content="https://scaven.site/2021-05/dockerImage/image-20200720004135508.png">
+<meta property="article:published_time" content="2021-05-04T09:23:03.000Z">
+<meta property="article:modified_time" content="2021-05-04T09:42:37.104Z">
 <meta property="article:author" content="qingdalf">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://scaven.site/2021-05/dockerImage/image-20200718181236918.png">
   
     <link rel="alternative" href="/atom.xml" title="倚楼听雨" type="application/atom+xml">
   
@@ -213,42 +232,248 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-dockerImageMake" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerImageMake/" class="archive-article-date">
-        <time datetime="2021-05-04T09:23:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerImageMake/">dockerImageMake</a>
-	
+    <h1 class="article-title" itemprop="name">
+      dockerImageMake
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2021-05/dockerImageMake/" class="archive-article-date">
+        <time datetime="2021-05-04T09:23:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">2.3k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">11分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="1-准备工作–制作本地局域网yum源"><a href="#1-准备工作–制作本地局域网yum源" class="headerlink" title="1 准备工作–制作本地局域网yum源"></a>1 准备工作–制作本地局域网yum源</h3><h4 id="1-1-安装并启动vsftpd"><a href="#1-1-安装并启动vsftpd" class="headerlink" title="1.1 安装并启动vsftpd"></a>1.1 安装并启动vsftpd</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> yum -y install vsftpd</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> systemctl <span class="built_in">enable</span> vsftpd &amp;&amp; systemctl start vsftpd</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h4 id="1-2-上传镜像到虚拟机"><a href="#1-2-上传镜像到虚拟机" class="headerlink" title="1.2 上传镜像到虚拟机"></a>1.2 上传镜像到虚拟机</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> ls /mnt/iso/</span></span><br><span class="line">CentOS-6.10-x86_64-bin-DVD1.iso  CentOS-7.6-x86_64-DVD-1810.iso</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-配置yum仓库"><a href="#1-3-配置yum仓库" class="headerlink" title="1.3 配置yum仓库"></a>1.3 配置yum仓库</h4><p>​        分别配置CentOS-6.10和CentOS-7.6的本地yum源</p>
+<ul>
+<li>配置CentOS-6.10的yum源</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 创建ftp镜像挂载目录</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> mkdir -p /var/ftp/centos6.10</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 挂载光盘文件到ftp镜像挂载目录，使用<span class="string">&quot;-o loop&quot;</span>模式用来将一个档案当成硬盘分割挂上系统</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> mount -o loop /mnt/iso/CentOS-6.10-x86_64-bin-DVD1.iso  /var/ftp/centos6.10/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 注意，如果用IP地址访问不到，就用docker0的地址，默认是172.17.0.1</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> cat &gt; /etc/yum.repos.d/ftp6.repo &lt;&lt; <span class="string">EOF</span></span></span><br><span class="line">[ftp6_10]</span><br><span class="line">name=ftp6_10</span><br><span class="line">baseurl=ftp://10.138.3.15/centos6.10</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置CentOS-7.6的yum源</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> mkdir -p /var/ftp/centos7.6</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> mount -o loop /mnt/iso/CentOS-7.6-x86_64-DVD-1810.iso /var/ftp/centos7.6/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> cat &gt; /etc/yum.repos.d/ftp7.repo &lt;&lt; <span class="string">EOF</span></span></span><br><span class="line">[ftp7.6]</span><br><span class="line">name=ftp7.6</span><br><span class="line">baseurl=ftp://10.138.3.15/centos7.6</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<p>浏览器访问如下所示：</p>
+<p><img src="../dockerImage/image-20200718181236918.png" alt="image-20200718181236918"></p>
+<h3 id="2-制作docker镜像"><a href="#2-制作docker镜像" class="headerlink" title="2 制作docker镜像"></a>2 制作docker镜像</h3><p>Docker镜像含有启动容器所需要的文件系统及其内容，因此，其用于创建并启动docker容器。</p>
+<ul>
+<li>Docker镜像采用分层构建机制，最底层是<code>bootfs</code>（引导文件系统）、其次是<code>rootfs</code>（用户文件系统）：</li>
+<li><code>bootfs</code>用于系统引导的文件系统，包括boot loader和kernel，<strong>容器启动完成后会卸载</strong>以节约内存空间；</li>
+<li><code>rootfs</code>位于<code>bootfs</code>之上，表现为docker容器的根文件系统：传统模式中，系统启动之时，内核挂载rootfs时会首先将其挂载为“只读”模式，完整性自检完成后将其重新挂载为读写模式（Linux系统启动模式）；docker中，rootfs由内核挂载为“只读”模式，而后通过“联合挂载”技术额外挂载一个“可写”层；</li>
+<li>下图中，位于下层的镜像为父镜像（parent image），最底层成为基础镜像（base image），最上层为“可读写”层，其下的均为“只读”层。<br><img src="../dockerImage/clip_image052.jpg" alt="img"></li>
+</ul>
+<p>​        Aufs（advanced multi-layered unification filesystem）：高级多层联合文件系统</p>
+<p>​        用于Linux文件系统实现“联合挂载”，docker最初使用aufs作为容器文件系统层，它目前仍作为存储后端之一来支持；aufs的竞争产品overlayfs，后者自从3.18版本开始被合并到Linux内核，docker的分层镜像，除了aufs，还支持btrfs，devicemapper(dm)和vfs等（在Ubuntu系统中，aufs合并到了Ubuntu系统中；但CentOS系统未合并，因此使用aufs系统需打补丁，CentOS默认使用的是overlayfs）<br><img src="../dockerImage/clip_image054.jpg" alt="img"></p>
+<h4 id="2-1-构建企业网站定制镜像–BBS"><a href="#2-1-构建企业网站定制镜像–BBS" class="headerlink" title="2.1  构建企业网站定制镜像–BBS"></a>2.1  构建企业网站定制镜像–BBS</h4><h5 id="2-1-1-第一版镜像的制作–lamp环境"><a href="#2-1-1-第一版镜像的制作–lamp环境" class="headerlink" title="2.1.1 第一版镜像的制作–lamp环境"></a>2.1.1 第一版镜像的制作–lamp环境</h5><ul>
+<li>基于centos6启动容器并配置yum源</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 在宿主机上新建目录存放MySQL和web网页目录，以便做持久化存储</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> mkdir -p /opt/Volume/bbs/mysql /opt/Volume/bbs/html</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动容器</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker run -it -d --name centos6_bbs -v /opt/Volume/bbs/mysql/:/var/lib/mysql -v /opt/Volume/bbs/html/:/var/www/html  48650444e419</span></span><br><span class="line">b8d9eb05d4ed43a192a850c0c0792d1e0b0cb1c0d95c3d084f1785fd2e5ac0a3</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置yum源</span></span><br><span class="line">[root@b8d9eb05d4ed /]# cat &gt; /etc/yum.repos.d/ftp6.repo &lt;&lt; EOF</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> [ftp6_10]</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> name=ftp6_10</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> baseurl=ftp://172.17.0.1/centos6.10</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> enabled=1</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> gpgcheck=0</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> EOF</span></span><br><span class="line"></span><br><span class="line">[root@b8d9eb05d4ed /]# yum clean all &amp;&amp; yum repolist</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在容器内安装lamp</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装lamp</span></span><br><span class="line">[root@b8d9eb05d4ed /]# yum -y install openssh* httpd mysql php php-mysql mysql-server</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>初始化ssh服务</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ssh服务初始化</span><br><span class="line">[root@b8d9eb05d4ed /]# /etc/init.d/sshd start</span><br><span class="line">Generating SSH2 RSA host key:                              [  OK  ]</span><br><span class="line">Generating SSH1 RSA host key:                              [  OK  ]</span><br><span class="line">Generating SSH2 DSA host key:                              [  OK  ]</span><br><span class="line">Starting sshd:                                             [  OK  ]</span><br><span class="line">[root@b8d9eb05d4ed /]# echo &quot;root:123456&quot; | chpasswd </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在容器内初始化mysql服务</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">[root@b8d9eb05d4ed /]# /etc/init.d/mysqld  start</span><br><span class="line">Initializing MySQL database:  Installing MySQL system tables...</span><br><span class="line">OK</span><br><span class="line">Filling help tables...</span><br><span class="line">OK</span><br><span class="line">···</span><br><span class="line">Please report any problems with the /usr/bin/mysqlbug script!  [  OK  ]</span><br><span class="line">Starting mysqld:                                               [  OK  ]</span><br><span class="line"></span><br><span class="line">[root@b8d9eb05d4ed /]# cd /var/lib/mysql/</span><br><span class="line">[root@b8d9eb05d4ed mysql]# ll </span><br><span class="line">total 20484</span><br><span class="line">-rw-rw---- 1 mysql mysql  5242880 Jul 19 14:59 ib_logfile0</span><br><span class="line">-rw-rw---- 1 mysql mysql  5242880 Jul 19 14:59 ib_logfile1</span><br><span class="line">-rw-rw---- 1 mysql mysql 10485760 Jul 19 14:59 ibdata1</span><br><span class="line">drwx------ 2 mysql mysql     4096 Jul 19 14:59 mysql</span><br><span class="line">srwxrwxrwx 1 mysql mysql        0 Jul 19 14:59 mysql.sock</span><br><span class="line">drwx------ 2 mysql mysql        6 Jul 19 14:59 test</span><br><span class="line"></span><br><span class="line">[root@b8d9eb05d4ed mysql]# mysql  # 启动mysql</span><br><span class="line"><span class="meta">#</span><span class="bash"> 新建数据库、用户和授权</span></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> grant all on *.* to  root@<span class="string">&#x27;localhost&#x27;</span> identified by <span class="string">&#x27;123456&#x27;</span>;</span></span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> grant all on *.* to  discuz@<span class="string">&#x27;%&#x27;</span> identified by <span class="string">&#x27;123456&#x27;</span>;</span></span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> grant all on *.* to  discuz@<span class="string">&#x27;localhost&#x27;</span> identified by <span class="string">&#x27;123456&#x27;</span>;</span></span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> create database discuz charset utf8;</span>  </span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 检查宿主机上文件持久化存储结果</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> ls /opt/Volume/bbs/mysql/</span></span><br><span class="line">ibdata1  ib_logfile0  ib_logfile1  mysql  mysql.sock  test</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在容器内初始化http服务</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@b8d9eb05d4ed mysql]# /etc/init.d/httpd  start</span><br><span class="line">Starting httpd: httpd: Could not reliably determine the server&#x27;s fully qualified domain name, using 172.17.0.6 for ServerName                                     [  OK  ]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过宿主机访问nginx容器</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> curl -I 172.17.0.6</span></span><br><span class="line">HTTP/1.1 403 Forbidden</span><br><span class="line">Date: Sun, 19 Jul 2020 15:09:08 GMT</span><br><span class="line">Server: Apache/2.2.15 (CentOS)</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Content-Length: 4961</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: text/html; charset=UTF-8</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>保存镜像</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> docker commit b8d9eb05d4ed centos6_lamp:v1</span></span><br><span class="line">sha256:f022bb774837bd1f28646ca0222005e6962e98a39f7d7ce50ffedd5dbb82a758</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker image ls <span class="comment"># grep lamp</span></span></span><br><span class="line">REPOSITORY    TAG     IMAGE ID        CREATED            SIZE</span><br><span class="line">centos6_lamp   v1     f022bb774837   6 seconds ago       476MB</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>测试lamp服务</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 停止第一版容器</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker container stop centos6_bbs</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用lamp第一版镜像启动容器，并暴露80端口</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker run -it --name centos6_lamp -p 8080:80 -v /opt/Volume/bbs/mysql/:/var/lib/mysql -v /opt/Volume/bbs/html/:/var/www/html f022bb774837</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动MySQL和http服务</span></span><br><span class="line">[root@e6551f8c73eb /]# /etc/init.d/mysqld start</span><br><span class="line">Starting mysqld:                                           [  OK  ]</span><br><span class="line">[root@e6551f8c73eb /]# /etc/init.d/httpd start</span><br><span class="line">Starting httpd: httpd: Could not reliably determine the server&#x27;s fully qualified domain name, using 172.17.0.6 for ServerName                                  [  OK  ]</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 编辑简单的php页面php和http访问情况</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> cat  /opt/Volume/bbs/html/index.php  <span class="comment"># 在宿主机上编写即可</span></span></span><br><span class="line">&lt;?php</span><br><span class="line">    phpinfo();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​        此时，可通过浏览器测试php的访问状态：</p>
+<p><img src="../dockerImage/image-20200719232205533.png" alt="image-20200719232205533"></p>
+<h5 id="2-1-2-第二版镜像的制作–安装bbs"><a href="#2-1-2-第二版镜像的制作–安装bbs" class="headerlink" title="2.1.2 第二版镜像的制作–安装bbs"></a>2.1.2 第二版镜像的制作–安装bbs</h5><ul>
+<li>下载bbs软件包</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> git <span class="built_in">clone</span> https://gitee.com/ComsenzDiscuz/DiscuzX.git</span></span><br><span class="line">Cloning into &#x27;DiscuzX&#x27;...</span><br><span class="line">remote: Enumerating objects: 3493, done.</span><br><span class="line">remote: Counting objects: 100% (3493/3493), done.</span><br><span class="line">remote: Compressing objects: 100% (905/905), done.</span><br><span class="line">remote: Total 11627 (delta 2935), reused 2670 (delta 2588), pack-reused 8134</span><br><span class="line">Receiving objects: 100% (11627/11627), 14.85 MiB | 5.71 MiB/s, done.</span><br><span class="line">Resolving deltas: 100% (5734/5734), done.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将bb软件移动至http服务根目录</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">cd</span> DiscuzX/</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> ls</span> </span><br><span class="line">readme  README.md  upload  utility</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将upload目录下的所有文件拷贝到http服务根目录下，并给与777的权限</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> cp -r  upload/*  /opt/Volume/bbs/html/</span></span><br><span class="line">cp: overwrite ‘/opt/Volume/bbs/html/index.php’? yes</span><br><span class="line"><span class="meta">#</span><span class="bash"> chmod -R 777 /opt/Volume/bbs/html/</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>浏览器访问并安装bbs</li>
+</ul>
+<p>接下来就是页面化操作了</p>
+<img src="../dockerImage/image-20200719233021172.png" alt="image-20200719233021172" style="zoom:50%;" />
+
+<p>检查状态是否符合要求</p>
+<img src="../dockerImage/image-20200719233137145.png" alt="image-20200719233137145" style="zoom:50%;" />
+
+<p>设置运行环境</p>
+<img src="../dockerImage/image-20200719233215227.png" alt="image-20200719233215227" style="zoom:50%;" />
+
+<p>安装数据库，设置数据库信息</p>
+<img src="../dockerImage/image-20200719233803196.png" alt="image-20200719233803196" style="zoom:50%;" />
+
+<p>安装完成，点击右下角进入论坛</p>
+<img src="../dockerImage/image-20200719233927216.png" alt="image-20200719233927216" style="zoom:50%;" />
+
+<p>进入论坛，结果正常</p>
+<p><img src="../dockerImage/image-20200719233956493.png" alt="image-20200719233956493"></p>
+<ul>
+<li>保存第二版镜像</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> docker commit -m <span class="string">&quot;welcom to bbs&quot;</span>  e6551f8c73eb scaven/centos6_bbs:v1</span></span><br><span class="line">sha256:5259a77d042b9f0a2ca73f385603733d025b22c1ce3e549e1c25f95cd7c8bdcb</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker image ls</span></span><br><span class="line">REPOSITORY           TAG      IMAGE ID     CREATED        SIZE</span><br><span class="line">scaven/centos6_bbs   v1       5259a77d042b 10 seconds ago 477MB</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 停止容器</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker container stop e6551f8c73eb</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="2-1-3-第三版镜像的制作–创建启动脚本"><a href="#2-1-3-第三版镜像的制作–创建启动脚本" class="headerlink" title="2.1.3 第三版镜像的制作–创建启动脚本"></a>2.1.3 第三版镜像的制作–创建启动脚本</h5><p>​        docker容器在启动时只能指定启动一个进程，那么，我们可以编写一个启动脚本，只要把需要启动的服务放在该脚本中，并最后保持运行该脚本的窗口不退出即可。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> cat  /opt/Volume/bbs/html/init.sh</span></span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">/etc/init.d/mysqld start   # 启动MySQL</span><br><span class="line">/etc/init.d/httpd start    # 启动http</span><br><span class="line">/usr/sbin/sshd -D          # 启动ssh，该命令是前端运行，即端口不退出</span><br><span class="line"><span class="meta">#</span><span class="bash"> chmod +x  /opt/Volume/bbs/html/init.sh</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 基于第二版镜像，启动容器，暴露http端口，MySQL端口，ssh端口，并执行上面创建的脚本</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker run -d --name centos6_bbs_v1 -p 8000:80 -p 2222:22 -p 13306:3306 -v /opt/Volume/bbs/mysql/:/var/lib/mysql -v /opt/Volume/bbs/html/:/var/www/html 5259a77d042b /var/www/html/init.sh</span></span><br><span class="line">97bf03282d31439ed03201e95aaba52443c86718fc9f5fd0772b2884c00af7c3</span><br></pre></td></tr></table></figure>
+
+<p>检查验证–ssh服务</p>
+<ul>
+<li>宿主机连接ssh服务，通过ip地址直接连接就可以，不需要使用端口</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> ssh 172.17.0.6</span></span><br><span class="line">root@172.17.0.6&#x27;s password:  # 输入密码 </span><br><span class="line">Last login: Sun Jul 19 16:12:52 2020 from 10.138.3.1</span><br><span class="line">[root@97bf03282d31 ~] # </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>外部网络通过xshell连接容器</li>
+</ul>
+<p><img src="../dockerImage/image-20200720001324660.png" alt="image-20200720001324660"></p>
+<p>检查验证–bbs论坛</p>
+<p><img src="../dockerImage/image-20200720000946358.png" alt="image-20200720000946358"></p>
+<p>检查验证–mysql服务</p>
+<img src="../dockerImage/image-20200720001520071.png" alt="image-20200720001520071" style="zoom:50%;" />
+
+<h4 id="3-制作centos7的sshd服务镜像"><a href="#3-制作centos7的sshd服务镜像" class="headerlink" title="3 制作centos7的sshd服务镜像"></a>3 制作centos7的sshd服务镜像</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 启动centos7.6基础镜像</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker run -it --name centos7_sshd f1cb7c7d58b7</span></span><br><span class="line">[root@d4b3c4402094 /]# yum -y install openssh*</span><br><span class="line">[root@d4b3c4402094 /]# systemctl start sshd  # 使用该命令启动不了ssh服务</span><br><span class="line">Failed to get D-Bus connection: Operation not permitted</span><br><span class="line"></span><br><span class="line">[root@d4b3c4402094 /]# /etc/init.d/sshd start  # 该脚本启动也有很多命令没有</span><br><span class="line">/etc/init.d/sshd: line 30: /etc/rc.d/init.d/functions: No such file or directory</span><br><span class="line">/usr/sbin/sshd-keygen: line 10: /etc/rc.d/init.d/functions: No such file or directory</span><br><span class="line">Generating SSH2 RSA host key: /usr/sbin/sshd-keygen: line 63: success: command not found</span><br><span class="line"></span><br><span class="line">Generating SSH2 ECDSA host key: /usr/sbin/sshd-keygen: line 105: success: command not found</span><br><span class="line"></span><br><span class="line">Generating SSH2 ED25519 host key: /usr/sbin/sshd-keygen: line 126: success: command not found</span><br><span class="line"></span><br><span class="line">Starting sshd: /etc/init.d/sshd: line 64: success: command not found</span><br><span class="line">/etc/init.d/sshd: line 64: failure: command not found</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 手动初始化sshd服务</span></span><br><span class="line">[root@d4b3c4402094 /]# mkdir /var/run/sshd</span><br><span class="line">[root@d4b3c4402094 /]# echo &#x27;UseDNS no&#x27; &gt;&gt; /etc/ssh/sshd_config</span><br><span class="line">[root@d4b3c4402094 /]# sed -i -e &#x27;/pam_loginuid.so/d&#x27; /etc/pam.d/sshd</span><br><span class="line">[root@d4b3c4402094 /]# echo &#x27;root:123456&#x27; | chpasswd</span><br><span class="line"></span><br><span class="line">[root@d4b3c4402094 /]# /usr/bin/ssh-keygen -A  # 初始化成功</span><br><span class="line">ssh-keygen: generating new host keys: RSA1 DSA </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 保存含有ssh服务的镜像</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker container ls |grep centos7_sshd</span></span><br><span class="line">CONTAINER ID   IMAGE   COMMAND    CREATED    STATUS    PORTS   NAMES</span><br><span class="line">d4b3c4402094   f1cb7c7d58b7  &quot;/bin/bash&quot;  7 minutes ago   Up 7 minutes    centos7_sshd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker commit -m <span class="string">&quot;centos7 add sshd&quot;</span> d4b3c4402094 scaven/centos:sshd_v1</span></span><br><span class="line">sha256:40b6e896f747f9ea5757ff36f1803e1d8e7a16189a53838b2258e36ff0da3ce4</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动含有ssh服务的镜像</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker run -d --name testsshd  -p 222:22 40b6e896f747 /usr/sbin/sshd -D</span></span><br><span class="line">03a9e7608154a856877fa13479b0dace6eb8c02bc14a3a2654e4a5c62d72c18f</span><br></pre></td></tr></table></figure>
+
+<p>通过xshell连接</p>
+<p><img src="../dockerImage/image-20200720004135508.png" alt="image-20200720004135508"></p>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢您美味的糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          qingdalf
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://scaven.site/2021-05/dockerImageMake/" title="dockerImageMake" target="_blank">https://scaven.site/2021-05/dockerImageMake/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
-          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -261,397 +486,118 @@
 	</div>
 
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://scaven.site/2021-05/dockerImageMake/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerVolumes/" class="archive-article-date">
-        <time datetime="2021-05-04T08:46:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2021-05/dockerVolumes/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">dockerVolumes</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerVolumes/">dockerVolumes</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C%E2%80%93%E5%88%B6%E4%BD%9C%E6%9C%AC%E5%9C%B0%E5%B1%80%E5%9F%9F%E7%BD%91yum%E6%BA%90"><span class="toc-number">1.</span> <span class="toc-text">1 准备工作–制作本地局域网yum源</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E5%AE%89%E8%A3%85%E5%B9%B6%E5%90%AF%E5%8A%A8vsftpd"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 安装并启动vsftpd</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F%E5%88%B0%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 上传镜像到虚拟机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-%E9%85%8D%E7%BD%AEyum%E4%BB%93%E5%BA%93"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 配置yum仓库</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%88%B6%E4%BD%9Cdocker%E9%95%9C%E5%83%8F"><span class="toc-number">2.</span> <span class="toc-text">2 制作docker镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E6%9E%84%E5%BB%BA%E4%BC%81%E4%B8%9A%E7%BD%91%E7%AB%99%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F%E2%80%93BBS"><span class="toc-number">2.1.</span> <span class="toc-text">2.1  构建企业网站定制镜像–BBS</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-1-%E7%AC%AC%E4%B8%80%E7%89%88%E9%95%9C%E5%83%8F%E7%9A%84%E5%88%B6%E4%BD%9C%E2%80%93lamp%E7%8E%AF%E5%A2%83"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.1.1 第一版镜像的制作–lamp环境</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-2-%E7%AC%AC%E4%BA%8C%E7%89%88%E9%95%9C%E5%83%8F%E7%9A%84%E5%88%B6%E4%BD%9C%E2%80%93%E5%AE%89%E8%A3%85bbs"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.1.2 第二版镜像的制作–安装bbs</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-3-%E7%AC%AC%E4%B8%89%E7%89%88%E9%95%9C%E5%83%8F%E7%9A%84%E5%88%B6%E4%BD%9C%E2%80%93%E5%88%9B%E5%BB%BA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC"><span class="toc-number">2.1.3.</span> <span class="toc-text">2.1.3 第三版镜像的制作–创建启动脚本</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%88%B6%E4%BD%9Ccentos7%E7%9A%84sshd%E6%9C%8D%E5%8A%A1%E9%95%9C%E5%83%8F"><span class="toc-number">2.2.</span> <span class="toc-text">3 制作centos7的sshd服务镜像</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerNetQuestion/" class="archive-article-date">
-        <time datetime="2021-05-04T07:19:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerNetQuestion/">两个常见的容器网络问题</a>
-	
-    </h1>
-  
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerNetAdvance/" class="archive-article-date">
-        <time datetime="2021-05-04T07:16:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerNetAdvance/">docker网络进阶</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerNetwork/" class="archive-article-date">
-        <time datetime="2021-05-03T12:01:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerNetwork/">docker容器四种网络模式</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerImage/" class="archive-article-date">
-        <time datetime="2021-05-03T06:29:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerImage/">docker镜像</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerLifeCycle/" class="archive-article-date">
-        <time datetime="2021-05-03T06:09:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerLifeCycle/">docker生命周期</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerInstall/" class="archive-article-date">
-        <time datetime="2021-05-03T05:33:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerInstall/">安装docker和运行容器的方式</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerIntroduction/" class="archive-article-date">
-        <time datetime="2021-05-03T04:49:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerIntroduction/">docker简介</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerPre/" class="archive-article-date">
-        <time datetime="2021-05-03T03:27:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerPre/">docker开篇：容器</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2021/05/page/2/">2</a><a class="extend next" rel="next" href="/archives/2021/05/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -692,8 +638,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
