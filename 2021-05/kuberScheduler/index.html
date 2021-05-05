@@ -10,16 +10,16 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="1. 创建一个Pod的流程*step1 *kubectl run&#x2F;apply创建一个pod，向apiserver发起请求step2 apiserver会将请求的配置写到etcdstep3 etcd响应处理结果给apiserver，apiserver响应处理结果给kubectlestep4* scheduler收到需要创建pod的请求，根据自己调度算法选择一个合适的节点分配，并将结果反馈给apise">
+  <meta name="description" content="1. 创建一个Pod的流程step1 kubectl run&#x2F;apply创建一个pod，向apiserver发起请求step2 apiserver会将请求的配置写到etcdstep3 etcd响应处理结果给apiserver，apiserver响应处理结果给kubectlstep4 scheduler收到需要创建pod的请求，根据自己调度算法选择一个合适的节点分配，并将结果反馈给apiserver">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pod调度">
 <meta property="og:url" content="https://scaven.site/2021-05/kuberScheduler/index.html">
 <meta property="og:site_name" content="倚楼听雨">
-<meta property="og:description" content="1. 创建一个Pod的流程*step1 *kubectl run&#x2F;apply创建一个pod，向apiserver发起请求step2 apiserver会将请求的配置写到etcdstep3 etcd响应处理结果给apiserver，apiserver响应处理结果给kubectlestep4* scheduler收到需要创建pod的请求，根据自己调度算法选择一个合适的节点分配，并将结果反馈给apise">
+<meta property="og:description" content="1. 创建一个Pod的流程step1 kubectl run&#x2F;apply创建一个pod，向apiserver发起请求step2 apiserver会将请求的配置写到etcdstep3 etcd响应处理结果给apiserver，apiserver响应处理结果给kubectlstep4 scheduler收到需要创建pod的请求，根据自己调度算法选择一个合适的节点分配，并将结果反馈给apiserver">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://scaven.site/2021-05/kuberPre/image-20210412155314385.png">
 <meta property="article:published_time" content="2021-05-05T11:07:33.000Z">
-<meta property="article:modified_time" content="2021-05-05T11:12:43.365Z">
+<meta property="article:modified_time" content="2021-05-05T11:21:11.127Z">
 <meta property="article:author" content="qingdalf">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://scaven.site/2021-05/kuberPre/image-20210412155314385.png">
@@ -288,7 +288,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h2 id="1-创建一个Pod的流程"><a href="#1-创建一个Pod的流程" class="headerlink" title="1. 创建一个Pod的流程"></a>1. 创建一个Pod的流程</h2><p>*<em>step1 *<em>kubectl run/apply创建一个pod，向apiserver发起请求<br><strong>step2</strong> apiserver会将请求的配置写到etcd<br><strong>step3</strong> etcd响应处理结果给apiserver，apiserver响应处理结果给kubectl<br>e</em>step4*</em> scheduler收到需要创建pod的请求，根据自己调度算法选择一个合适的节点分配，并将结果反馈给apiserver<br><strong>step5</strong> kubelet收到需要创建我这个节点的pod，再调用容器引擎创建容器，容器引擎将结果反馈给kubelet，kubelet汇总pod状态反馈apiserver</p>
+    <h2 id="1-创建一个Pod的流程"><a href="#1-创建一个Pod的流程" class="headerlink" title="1. 创建一个Pod的流程"></a>1. 创建一个Pod的流程</h2><p><strong>step1</strong> kubectl run/apply创建一个pod，向apiserver发起请求<br><strong>step2</strong> apiserver会将请求的配置写到etcd<br><strong>step3</strong> etcd响应处理结果给apiserver，apiserver响应处理结果给kubectl<br><strong>step4</strong> scheduler收到需要创建pod的请求，根据自己调度算法选择一个合适的节点分配，并将结果反馈给apiserver<br><strong>step5</strong> kubelet收到需要创建我这个节点的pod，再调用容器引擎创建容器，容器引擎将结果反馈给kubelet，kubelet汇总pod状态反馈apiserver</p>
 <span id="more"></span>
 
 <p>​        在创建pod的过程中，少了controller-manager和kube-proxy组件。controller-manager创建工作负载控制器才会用到；kube-proxy创建service才用到。</p>
