@@ -236,6 +236,186 @@
             
 
   
+    <article id="post-dockerVolumes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021-05/dockerVolumes/">docker容器存储</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021-05/dockerVolumes/" class="archive-article-date">
+        <time datetime="2021-05-04T08:46:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>​        将数据从宿主机挂载到容器中的三种方式：</p>
+<ul>
+<li>bind mounts：将宿主机上的任意位置的文件或者目录挂载到容器中。</li>
+<li>volumes：Docker管理宿主机文件系统的一部分(/var/lib/docker/volumes)，保存数据的最佳方法</li>
+<li>tmpfs：挂载存储在主机系统的内存中，而不会写入主机的文件系统。如果不希望将数据持久化存储在任何位置，可以使用tmpfs，同时避免写入容器可写层提高性能(不常使用)。
+    
+    <a class="article-more-a" href="/2021-05/dockerVolumes/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021-05/dockerVolumes/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-dockerNetQuestion" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021-05/dockerNetQuestion/">两个常见的容器网络问题</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021-05/dockerNetQuestion/" class="archive-article-date">
+        <time datetime="2021-05-04T07:19:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="1-容器2引用容器1的网络，当容器1宕掉后，容器2的网络还能正常吗？"><a href="#1-容器2引用容器1的网络，当容器1宕掉后，容器2的网络还能正常吗？" class="headerlink" title="1 容器2引用容器1的网络，当容器1宕掉后，容器2的网络还能正常吗？"></a>1 容器2引用容器1的网络，当容器1宕掉后，容器2的网络还能正常吗？</h4><p>​        不能。容器1宕掉后会销毁网络，因此容器2此时只有lo网络了，不再拥有与容器1共享的网络。</p>
+    
+    <a class="article-more-a" href="/2021-05/dockerNetQuestion/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021-05/dockerNetQuestion/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-dockerNetAdvance" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -936,183 +1116,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2021-05/pVarString/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pList" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021-05/pList/">列表简介和列表操作</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021-05/pList/" class="archive-article-date">
-        <time datetime="2021-05-02T05:49:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-02</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h2 id="1-认识列表"><a href="#1-认识列表" class="headerlink" title="1. 认识列表"></a>1. 认识列表</h2><h3 id="1-1-列表是什么？"><a href="#1-1-列表是什么？" class="headerlink" title="1.1 列表是什么？"></a>1.1 列表是什么？</h3><p>​        列表是由一系列按特定顺序排列的不相关的元素组成且可以更改的集合。在Python中，用方括号（[]）来表示列表，并用逗号来分隔其中的元素。从描述中，我们可以知道：</p>
-    
-    <a class="article-more-a" href="/2021-05/pList/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021-05/pList/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pIf" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021-05/pIf/">if判断语句</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021-05/pIf/" class="archive-article-date">
-        <time datetime="2021-05-02T04:59:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-02</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>​        编程时经常需要检查一系列条件，并据此决定采取什么措施。在Python中，if语句让你能够检查程序的当前状态，并据此采取相应的措施。</p>
-<h2 id="1-格式"><a href="#1-格式" class="headerlink" title="1. 格式"></a>1. 格式</h2><h3 id="1-1-单分支结构"><a href="#1-1-单分支结构" class="headerlink" title="1.1 单分支结构"></a>1.1 单分支结构</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 条件为真:</span><br><span class="line">   执行的代码块</span><br></pre></td></tr></table></figure>
-    
-    <a class="article-more-a" href="/2021-05/pIf/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021-05/pIf/">展开全文 >></a>
     </p>
     
 

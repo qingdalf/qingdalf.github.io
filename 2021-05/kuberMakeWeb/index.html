@@ -6,17 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://scaven.site">
-  <title>Archives | 倚楼听雨</title>
+  <title>快熟部署一个网站 | 倚楼听雨</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="倚楼听雨">
-<meta property="og:url" content="https://scaven.site/archives/index.html">
+  <meta name="description" content="1. 部署应用流程​        在kubernets中部署应用程序的流程，如下：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快熟部署一个网站">
+<meta property="og:url" content="https://scaven.site/2021-05/kuberMakeWeb/index.html">
 <meta property="og:site_name" content="倚楼听雨">
+<meta property="og:description" content="1. 部署应用流程​        在kubernets中部署应用程序的流程，如下：">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://scaven.site/2021-05/kuberPre/image-20210410221952190.png">
+<meta property="og:image" content="https://scaven.site/2021-05/kuberPre/image-20210410223019076.png">
+<meta property="og:image" content="https://scaven.site/2021-05/kuberPre/image-20210410223345969.png">
+<meta property="og:image" content="https://scaven.site/2021-05/kuberPre/image-20210410223507547.png">
+<meta property="og:image" content="https://scaven.site/2021-05/kuberPre/image-20210410223856368.png">
+<meta property="og:image" content="https://scaven.site/2021-05/kuberPre/image-20210410224423040.png">
+<meta property="article:published_time" content="2021-05-05T08:34:56.000Z">
+<meta property="article:modified_time" content="2021-05-05T08:36:36.111Z">
 <meta property="article:author" content="qingdalf">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://scaven.site/2021-05/kuberPre/image-20210410221952190.png">
   
     <link rel="alternative" href="/atom.xml" title="倚楼听雨" type="application/atom+xml">
   
@@ -229,42 +240,179 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-kuberMakeWeb" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+    <h1 class="article-title" itemprop="name">
+      快熟部署一个网站
+    </h1>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 <a href="/2021-05/kuberMakeWeb/" class="archive-article-date">
         <time datetime="2021-05-05T08:34:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-05</time>
 </a>
 
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.1k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">5分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="1-部署应用流程"><a href="#1-部署应用流程" class="headerlink" title="1. 部署应用流程"></a>1. 部署应用流程</h2><p>​        在kubernets中部署应用程序的流程，如下：<br> <span id="more"></span><br><img src="../kuberPre/image-20210410221952190.png" alt="image-20210410221952190"></p>
+<h2 id="1-流程1–制作镜像"><a href="#1-流程1–制作镜像" class="headerlink" title="1.流程1–制作镜像"></a>1.流程1–制作镜像</h2><p>​        制作容器镜像–略，镜像仓库默认hub.docker.com，如果是自建仓库，格式一般是ip/仓库名称(如用户名称)/镜像名称:版本信息</p>
+<h2 id="2-流程2–通过镜像部署容器"><a href="#2-流程2–通过镜像部署容器" class="headerlink" title="2. 流程2–通过镜像部署容器"></a>2. 流程2–通过镜像部署容器</h2><h3 id="2-1-通过deployment的形式部署nginx容器"><a href="#2-1-通过deployment的形式部署nginx容器" class="headerlink" title="2.1 通过deployment的形式部署nginx容器"></a>2.1 通过deployment的形式部署nginx容器</h3><p>格式：<code>kubectl create deployment DeployName --image=nginx:latest [--replicas=num]</code></p>
+<ul>
+<li><code>DeployName</code>：是<code>deployment</code>的命令，在同一个命名空间内全局唯一，可以通过<code>kubectl get deploy</code>查看<code>deployment</code>类型的资源信息</li>
+<li><code>[--replicas=num]</code>：指定副本数，可省略，不指定副本数时，默认启动一个pod</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl create deployment web --image=nginx:latest --replicas=3</span></span><br><span class="line">deployment.apps/web created</span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pod</span></span><br><span class="line">NAME                     READY   STATUS              RESTARTS   AGE</span><br><span class="line">nginx-6799fc88d8-825ps   1/1     Running             0          22h</span><br><span class="line">web-86cd4d65b9-554kq     0/1     ContainerCreating   0          20s</span><br><span class="line">web-86cd4d65b9-65nkq     0/1     ContainerCreating   0          20s</span><br><span class="line">web-86cd4d65b9-7zml9     0/1     ContainerCreating   0          20s</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-通过deployment的形式部署java-demo容器"><a href="#2-2-通过deployment的形式部署java-demo容器" class="headerlink" title="2.2 通过deployment的形式部署java-demo容器"></a>2.2 通过deployment的形式部署java-demo容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl create deployment java-demo --image=lizhenliang/java-demo --replicas=3</span></span><br><span class="line">deployment.apps/java-demo created</span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pod</span></span><br><span class="line">NAME                         READY   STATUS              RESTARTS   AGE</span><br><span class="line">java-demo-56d54df448-7mhg8   0/1     ContainerCreating   0          3s</span><br><span class="line">java-demo-56d54df448-dx767   0/1     ContainerCreating   0          3s</span><br><span class="line">java-demo-56d54df448-flh48   0/1     ContainerCreating   0          3s</span><br><span class="line">nginx-6799fc88d8-825ps       1/1     Running             0          22h</span><br><span class="line">web-86cd4d65b9-554kq         1/1     Running             0          80s</span><br><span class="line">web-86cd4d65b9-65nkq         1/1     Running             0          80s</span><br><span class="line">web-86cd4d65b9-7zml9         1/1     Running             0          80s</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-流程3–暴露端口"><a href="#3-流程3–暴露端口" class="headerlink" title="3. 流程3–暴露端口"></a>3. 流程3–暴露端口</h2><h3 id="3-1-nginx容器"><a href="#3-1-nginx容器" class="headerlink" title="3.1 nginx容器"></a>3.1 nginx容器</h3><h4 id="3-1-1-暴露nginx容器端口"><a href="#3-1-1-暴露nginx容器端口" class="headerlink" title="3.1.1 暴露nginx容器端口"></a>3.1.1 暴露nginx容器端口</h4><p>格式：<code> kubectl  expose deployment web --port=80 --target-port=80 --type=NodePort</code></p>
+<ul>
+<li><code>--port</code>：指定svc的端口</li>
+<li><code>--target-port</code>：指定容器内的端口</li>
+<li><code>--type</code>：svc的类型，总共有三种，后续<code>Service</code>章节将详细介绍：<ul>
+<li>NodePort：将<code>--port</code>跟宿主机做映射，可通过外网访问</li>
+<li>ClusterIP：默认类型，只能在集群类访问，外网不能访问</li>
+<li>LB：一般用于公有云等</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl  expose deployment web --port=80 --target-port=80 --<span class="built_in">type</span>=NodePort</span></span><br><span class="line">service/web exposed</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get svc</span></span><br><span class="line">NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE</span><br><span class="line">kubernetes   ClusterIP   10.96.0.1        &lt;none&gt;        443/TCP        34h</span><br><span class="line">nginx        NodePort    10.103.247.121   &lt;none&gt;        80:32561/TCP   32h</span><br><span class="line">web          NodePort    10.108.74.141    &lt;none&gt;        80:31397/TCP   23s  # 对外暴露的端口是31397</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看关联容器的信息</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get ep</span>   </span><br><span class="line">NAME         ENDPOINTS                                             AGE</span><br><span class="line">kubernetes   10.138.3.61:6443                                      34h</span><br><span class="line">nginx        10.244.154.196:80                                     32h</span><br><span class="line">web          10.244.154.197:80,10.244.44.208:80,10.244.44.209:80   117s  # 这三个ip都是web容器的IP地址</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-1-2-访问nginx容器"><a href="#3-1-2-访问nginx容器" class="headerlink" title="3.1.2 访问nginx容器"></a>3.1.2 访问nginx容器</h4><ul>
+<li><strong>外网访问nginx网页</strong></li>
+</ul>
+<p>​        访问nginx网页，可通过<code>node:port</code>，<code>node</code>为集群中任意一个node节点，<code>port</code>端口信息为通过<code>kubectl get svc</code>查询到的宿主机<code>port</code></p>
+<img src="../kuberPre/image-20210410223019076.png" alt="image-20210410223019076" style="zoom:67%;" />
+
+
+
+<ul>
+<li><p><strong>通过k8s控制台查看日志</strong></p>
+<p>​    我们可以通过k8s控制台获取访问日志信息，由于后端有三个<code>nginx</code>容器，并且<code>svc</code>自动做了负载均衡，因此只有被<code>svc</code>调度了的<code>nginx</code>后端容才有日志输出，没有被<code>svc</code>调度到的容器没有日志输出，下面将截取<code>nginx</code>容器的日志信息做对比</p>
+</li>
+</ul>
+<p>获取token登陆控制台：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 获取用户Token</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl describe secrets -n kube-system $(kubectl -n kube-system get secret | awk <span class="string">&#x27;/dashboard-admin/&#123;print $1&#125;&#x27;</span>)</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="../kuberPre/image-20210410223345969.png" alt="image-20210410223345969"></p>
+<p>​        点击web容器查看nginx访问日志，此处值得注意的是，我们启动了三个nginx容器，我们访问的时候只能有一个容器提供服务，因此日志只能提供服务了的容器才有，也就是说这三个nginx容器的日志可能是有的容器访问日志多，有的容器访问日志少，下面截取两张图做个对比</p>
+<p><img src="../kuberPre/image-20210410223507547.png" alt="image-20210410223507547"></p>
+<p>我们截图另一个web容器，查看访问日志</p>
+<p><img src="../kuberPre/image-20210410223856368.png" alt="image-20210410223856368"></p>
+<h3 id="3-2-java-demo容器"><a href="#3-2-java-demo容器" class="headerlink" title="3.2 java-demo容器"></a>3.2 java-demo容器</h3><h4 id="3-2-1-暴露-java-demo容器端口"><a href="#3-2-1-暴露-java-demo容器端口" class="headerlink" title="3.2.1 暴露 java-demo容器端口"></a>3.2.1 暴露 java-demo容器端口</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl  expose deployment java-demo --port=80 --target-port=8080 --<span class="built_in">type</span>=NodePort</span></span><br><span class="line">service/java-demo exposed</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get svc</span></span><br><span class="line">NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE</span><br><span class="line">java-demo    NodePort    10.111.242.80    &lt;none&gt;        80:32133/TCP   30s  # 通过Node:32133访问java应用</span><br><span class="line">kubernetes   ClusterIP   10.96.0.1        &lt;none&gt;        443/TCP        34h</span><br><span class="line">nginx        NodePort    10.103.247.121   &lt;none&gt;        80:32561/TCP   32h</span><br><span class="line">web          NodePort    10.108.74.141    &lt;none&gt;        80:31397/TCP   19m</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看端点信息</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get ep</span> </span><br><span class="line">NAME         ENDPOINTS                                                    AGE</span><br><span class="line">java-demo    10.244.154.198:8080,10.244.154.199:8080,10.244.44.210:8080   9s # 此处的三个ip对应三个java容器</span><br><span class="line">kubernetes   10.138.3.61:6443                                             34h</span><br><span class="line">nginx        10.244.154.196:80                                            32h</span><br><span class="line">web          10.244.154.197:80,10.244.44.208:80,10.244.44.209:80          18m</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-2-访问java-demo容器"><a href="#3-2-2-访问java-demo容器" class="headerlink" title="3.2.2 访问java-demo容器"></a>3.2.2 访问java-demo容器</h4><ul>
+<li><strong>外网访问java-demo网页</strong></li>
+</ul>
+<p>​        该java应用目前只有一个页面，暂时不能使用，需要结合数据库，页面信息如下：</p>
+<p><img src="../kuberPre/image-20210410224423040.png" alt="image-20210410224423040"></p>
+<ul>
+<li><strong>通过k8s控制台查看日志</strong></li>
+</ul>
+<p>​        方法如nginx容器日志查看方式，此处不再赘述。</p>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢您美味的糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/kuberMakeWeb/">快熟部署一个网站</a>
-	
-    </h1>
-  
+      </a>
+    </div>
+    
 
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          qingdalf
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://scaven.site/2021-05/kuberMakeWeb/" title="快熟部署一个网站" target="_blank">https://scaven.site/2021-05/kuberMakeWeb/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
 
-        <div class="article-info info-on-right">
-          
-          
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -277,397 +425,118 @@
 	</div>
 
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://scaven.site/2021-05/kuberMakeWeb/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/kuberMangerment/" class="archive-article-date">
-        <time datetime="2021-05-05T08:07:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-05</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2021-05/kuberMangerment/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">kubernets管理命令</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/kuberMangerment/">kubernets管理命令</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">1. 部署应用流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%B5%81%E7%A8%8B1%E2%80%93%E5%88%B6%E4%BD%9C%E9%95%9C%E5%83%8F"><span class="toc-number">2.</span> <span class="toc-text">1.流程1–制作镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%B5%81%E7%A8%8B2%E2%80%93%E9%80%9A%E8%BF%87%E9%95%9C%E5%83%8F%E9%83%A8%E7%BD%B2%E5%AE%B9%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">2. 流程2–通过镜像部署容器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E9%80%9A%E8%BF%87deployment%E7%9A%84%E5%BD%A2%E5%BC%8F%E9%83%A8%E7%BD%B2nginx%E5%AE%B9%E5%99%A8"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 通过deployment的形式部署nginx容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E9%80%9A%E8%BF%87deployment%E7%9A%84%E5%BD%A2%E5%BC%8F%E9%83%A8%E7%BD%B2java-demo%E5%AE%B9%E5%99%A8"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 通过deployment的形式部署java-demo容器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%B5%81%E7%A8%8B3%E2%80%93%E6%9A%B4%E9%9C%B2%E7%AB%AF%E5%8F%A3"><span class="toc-number">4.</span> <span class="toc-text">3. 流程3–暴露端口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-nginx%E5%AE%B9%E5%99%A8"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 nginx容器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-1-%E6%9A%B4%E9%9C%B2nginx%E5%AE%B9%E5%99%A8%E7%AB%AF%E5%8F%A3"><span class="toc-number">4.1.1.</span> <span class="toc-text">3.1.1 暴露nginx容器端口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-2-%E8%AE%BF%E9%97%AEnginx%E5%AE%B9%E5%99%A8"><span class="toc-number">4.1.2.</span> <span class="toc-text">3.1.2 访问nginx容器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-java-demo%E5%AE%B9%E5%99%A8"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 java-demo容器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-%E6%9A%B4%E9%9C%B2-java-demo%E5%AE%B9%E5%99%A8%E7%AB%AF%E5%8F%A3"><span class="toc-number">4.2.1.</span> <span class="toc-text">3.2.1 暴露 java-demo容器端口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-%E8%AE%BF%E9%97%AEjava-demo%E5%AE%B9%E5%99%A8"><span class="toc-number">4.2.2.</span> <span class="toc-text">3.2.2 访问java-demo容器</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/kuberRuncSwitch/" class="archive-article-date">
-        <time datetime="2021-05-04T13:05:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/kuberRuncSwitch/">切换容器引擎为Containerd</a>
-	
-    </h1>
-  
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/kuberInstall/" class="archive-article-date">
-        <time datetime="2021-05-04T12:43:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/kuberInstall/">kubernets集群搭建</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/kuberPre/" class="archive-article-date">
-        <time datetime="2021-05-04T12:22:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/kuberPre/">走进kubernets</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerMonitor/" class="archive-article-date">
-        <time datetime="2021-05-04T10:57:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerMonitor/">prometheus+grafana监控docker主机和容器</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerHarbor/" class="archive-article-date">
-        <time datetime="2021-05-04T10:47:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerHarbor/">harbor仓库</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerRegistory/" class="archive-article-date">
-        <time datetime="2021-05-04T10:38:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerRegistory/">docker镜像仓库</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerFile/" class="archive-article-date">
-        <time datetime="2021-05-04T09:49:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerFile/">基于Dockerfile文件制作docker镜像</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerImageMake/" class="archive-article-date">
-        <time datetime="2021-05-04T09:23:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerImageMake/">基于容器制作docker镜像</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kuberntes//" class="article-tag-list-link color5">kuberntes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -708,8 +577,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
