@@ -6,17 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://scaven.site">
-  <title>Archives | 倚楼听雨</title>
+  <title>Pod基础 | 倚楼听雨</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="倚楼听雨">
-<meta property="og:url" content="https://scaven.site/archives/index.html">
+  <meta name="description" content="1 pod基本管理1.1 Pod基本概念​        Pod是k8s创建和管理的最小单元，一个Pod由一个或多个容器组成，这些容器共享存储和网络。 Pod的特点：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pod基础">
+<meta property="og:url" content="https://scaven.site/2021-05/kuberPodPre/index.html">
 <meta property="og:site_name" content="倚楼听雨">
+<meta property="og:description" content="1 pod基本管理1.1 Pod基本概念​        Pod是k8s创建和管理的最小单元，一个Pod由一个或多个容器组成，这些容器共享存储和网络。 Pod的特点：">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://scaven.site/2021-05/kuberPre/image-20210411220442884.png">
+<meta property="article:published_time" content="2021-05-05T10:20:33.000Z">
+<meta property="article:modified_time" content="2021-05-05T10:23:00.368Z">
 <meta property="article:author" content="qingdalf">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://scaven.site/2021-05/kuberPre/image-20210411220442884.png">
   
     <link rel="alternative" href="/atom.xml" title="倚楼听雨" type="application/atom+xml">
   
@@ -229,42 +235,266 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-kuberPodPre" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+    <h1 class="article-title" itemprop="name">
+      Pod基础
+    </h1>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 <a href="/2021-05/kuberPodPre/" class="archive-article-date">
         <time datetime="2021-05-05T10:20:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-05</time>
 </a>
 
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">3k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">14分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="1-pod基本管理"><a href="#1-pod基本管理" class="headerlink" title="1 pod基本管理"></a>1 pod基本管理</h2><h3 id="1-1-Pod基本概念"><a href="#1-1-Pod基本概念" class="headerlink" title="1.1 Pod基本概念"></a>1.1 Pod基本概念</h3><p>​        Pod是k8s创建和管理的最小单元，一个Pod由一个或多个容器组成，这些容器共享存储和网络。</p>
+<p>Pod的特点：</p>
+<span id="more"></span>
+<ul>
+<li>一个Pod可以理解为一个应用实例，共同向外提供服务</li>
+<li>一个Pod中的容器始终部署在同一个Node中</li>
+<li>同一个Pod容器共享网络、存储资源</li>
+<li>k8s直接管理Pod，而不是管理容器</li>
+</ul>
+<h3 id="1-2-Pod的用法"><a href="#1-2-Pod的用法" class="headerlink" title="1.2 Pod的用法"></a>1.2 Pod的用法</h3><ul>
+<li>运行单个容器：最常见的用法，在这种情况下，可以将Pod看作是单个容器的抽象封装</li>
+<li>运行多个容器：封装多个紧密耦合且需要共享资源的应用程序</li>
+</ul>
+<p>如果有这些需求，你可以运行多个容器：</p>
+<ul>
+<li>两个应用之间发生文件交互(传统方式可通过”Rsync实时同步”、”共享存储”、”将两个应用部署在同一台服务器上”这三种方式实现交互)</li>
+<li>两个应用需要通过127.0.0.1或者socket通信</li>
+<li>两个应用需要发生频繁的调用</li>
+</ul>
+<h3 id="1-3-Pod资源共享实现机制"><a href="#1-3-Pod资源共享实现机制" class="headerlink" title="1.3 Pod资源共享实现机制"></a>1.3 Pod资源共享实现机制</h3><ul>
+<li>共享网络：将业务容器网络加入到“负责网络的容器”实现网络共享，创建Pod时，会首先创建一个pause容器，然后将应用容器加入到pause容器的网络命名空间。</li>
+<li>共享存储：容器通过数据卷共享数据</li>
+</ul>
+<img src="../kuberPre/image-20210411220442884.png" alt="image-20210411220442884" style="zoom:67%;" />
+
+<h3 id="1-4-Pod管理命令"><a href="#1-4-Pod管理命令" class="headerlink" title="1.4 Pod管理命令"></a>1.4 Pod管理命令</h3><h4 id="1-4-1-创建Pod"><a href="#1-4-1-创建Pod" class="headerlink" title="1.4.1 创建Pod"></a>1.4.1 创建Pod</h4><p>​        我们已经知道通过yaml文件或者命令行都可以创建pod。</p>
+<ul>
+<li>yaml文件：<code>kubectl apply -f pod.yaml</code></li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">run:</span> <span class="string">nginx</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">resources:</span> &#123;&#125;</span><br><span class="line">  <span class="attr">dnsPolicy:</span> <span class="string">ClusterFirst</span></span><br><span class="line">  <span class="attr">restartPolicy:</span> <span class="string">Always</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>命令行：kubectl run nginx –image=nginx</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 可以通过--dry-run=client参数查看”kubectl run nginx --image=nginx“是否存在格式问题等</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl run nginx --image=nginx --dry-run=client</span></span><br><span class="line">pod/nginx created (dry run)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 可以通过-o yaml文件导入指定pod的yaml文件</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl run nginx --image=nginx --dry-run=client -o yaml    <span class="comment"># 将新建容器nginx的yaml文件输出在屏幕上</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-4-2-查看Pod"><a href="#1-4-2-查看Pod" class="headerlink" title="1.4.2 查看Pod"></a>1.4.2 查看Pod</h4><ul>
+<li>查看简要信息：<code>kubectl get pods</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pods</span></span><br><span class="line">NAME                         READY   STATUS    RESTARTS   AGE</span><br><span class="line">java-demo-56d54df448-7mhg8   1/1     Running   0          24h</span><br><span class="line">java-demo-56d54df448-dx767   1/1     Running   0          24h</span><br><span class="line">java-demo-56d54df448-flh48   1/1     Running   0          24h</span><br><span class="line">nginx-6799fc88d8-825ps       1/1     Running   0          46h</span><br><span class="line">nginx-6799fc88d8-dt5g7       1/1     Running   0          10h</span><br><span class="line">nginx-6799fc88d8-h9fzb       1/1     Running   0          10h</span><br><span class="line">sh                           1/1     Running   0          10h</span><br><span class="line">web-86cd4d65b9-554kq         1/1     Running   0          24h</span><br><span class="line">web-86cd4d65b9-65nkq         1/1     Running   0          24h</span><br><span class="line">web-86cd4d65b9-7zml9         1/1     Running   0          24h</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看详细信息：<code>kubectl describe pod &lt;Pod名称&gt;</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl describe pods nginx-6799fc88d8-h9fzb</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-4-3-查看pod日志"><a href="#1-4-3-查看pod日志" class="headerlink" title="1.4.3 查看pod日志"></a>1.4.3 查看pod日志</h4><ul>
+<li>查看pod日志格式：<code>kubectl logs &lt;Pod名称&gt; </code></li>
+<li>查看pod中指定容器的日志格式：<code>kubectl logs &lt;Pod名称&gt; [-c CONTAINERNAME]</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl logs nginx-6799fc88d8-dt5g7</span></span><br><span class="line">/docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration</span><br><span class="line">/docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/</span><br><span class="line">/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh</span><br><span class="line">10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf</span><br><span class="line">10-listen-on-ipv6-by-default.sh: info: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf</span><br><span class="line">/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh</span><br><span class="line">/docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh</span><br><span class="line">/docker-entrypoint.sh: Configuration complete; ready for start up</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>持续输出日志：<code>kubectl logs &lt;Pod名称&gt; [-c CONTAINER] -f</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl logs nginx-6799fc88d8-dt5g7 -f    <span class="comment"># 跟tailf一样，可以持续输出日志</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-4-4-进入pod或容器"><a href="#1-4-4-进入pod或容器" class="headerlink" title="1.4.4 进入pod或容器"></a>1.4.4 进入pod或容器</h4><ul>
+<li>当pod中只有一个容器时：<code>kubectl exec -it &lt;Pod名称&gt; -- bash</code></li>
+<li>当pod中有多个容器时：<code>kubectl exec -it &lt;Pod名称&gt; -c container_name -- bash</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl <span class="built_in">exec</span> -it nginx-6799fc88d8-dt5g7 -- bash     <span class="comment"># 进入容器</span></span></span><br><span class="line">root@nginx-6799fc88d8-dt5g7:/#</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 也可通过kubectl <span class="built_in">exec</span>直接在容器内执行命令</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl <span class="built_in">exec</span> nginx-6799fc88d8-dt5g7 -- hostname   <span class="comment"># 查看容器的主机名</span></span></span><br><span class="line">nginx-6799fc88d8-dt5g7</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl <span class="built_in">exec</span> nginx-6799fc88d8-dt5g7 -- <span class="built_in">pwd</span>    <span class="comment"># 查看当前工作目录</span></span></span><br><span class="line">/</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-4-5-删除Pod"><a href="#1-4-5-删除Pod" class="headerlink" title="1.4.5 删除Pod"></a>1.4.5 删除Pod</h4><ul>
+<li>以pod(资源类型)部署的pod：<code>kubectl delete pod &lt;Pod名称&gt;</code></li>
+<li>以deployment(资源类型)部署的pod：<code>kubectl delete deploy &lt;deploy名称&gt;</code></li>
+</ul>
+<h3 id="1-5-重启策略和健康检查-应用自我修复"><a href="#1-5-重启策略和健康检查-应用自我修复" class="headerlink" title="1.5 重启策略和健康检查(应用自我修复)"></a>1.5 重启策略和健康检查(应用自我修复)</h3><h4 id="1-5-1-重启策略"><a href="#1-5-1-重启策略" class="headerlink" title="1.5.1 重启策略"></a>1.5.1 重启策略</h4><p>​        在定义pod时通过<code>restartPolicy</code>参数指定，有以下三种重启策略：</p>
+<ul>
+<li><p>Always：当容器终止退出后，总是重启容器，默认策略，长期服务可采用该种策略。</p>
+</li>
+<li><p>OnFailure：当容器异常退出（退出状态码非0）时，才重启容器。</p>
+</li>
+<li><p>Never：当容器终止退出，从不重启容器。</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看部署方式是deployment名称是nginx的容器的重启策略</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get deployment nginx -o yaml  | grep restartPolicy</span>   </span><br><span class="line">            f:restartPolicy: &#123;&#125;</span><br><span class="line">      restartPolicy: Always      # 默认策略是Always</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-5-2-健康检查"><a href="#1-5-2-健康检查" class="headerlink" title="1.5.2 健康检查"></a>1.5.2 健康检查</h4><h5 id="1-5-2-1-健康检查的两种类型"><a href="#1-5-2-1-健康检查的两种类型" class="headerlink" title="1.5.2.1  健康检查的两种类型"></a>1.5.2.1  健康检查的两种类型</h5><ul>
+<li>livenessProbe（存活检查）：如果检查失败，将杀死容器，是否重启根据Pod的restartPolicy来操作。</li>
+<li>readinessProbe（就绪检查）：如果检查失败，Kubernetes会把Pod从service endpoints中剔除，即该故障Pod将不对外提供服务，待容器故障消除后，自动加入到调度策略中。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl get ep</span></span><br><span class="line">NAME         ENDPOINTS                                                    AGE</span><br><span class="line">java-demo    10.244.154.198:8080,10.244.154.199:8080,10.244.44.210:8080   24h</span><br><span class="line">kubernetes   10.138.3.61:6443                                             2d11h</span><br><span class="line">nginx        10.244.154.196:80,10.244.154.200:80,10.244.44.211:80         2d8h</span><br><span class="line">web          10.244.154.197:80,10.244.44.208:80,10.244.44.209:80          24h</span><br><span class="line"><span class="meta">#</span><span class="bash"> 比如web中IP地址为10.244.154.197的Pod服务故障，Kubernetes会把IP地址为10.244.154.197的pod从service endpoints中剔除，即只将请求分发给其他两个容器，由其他两个容器来提供服务，当故障Pod状态消除后，再将请求分发给该Pod(此时IP地址可能已经发生变化了)</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="1-5-2-2-健康检查的三种方法"><a href="#1-5-2-2-健康检查的三种方法" class="headerlink" title="1.5.2.2 健康检查的三种方法"></a>1.5.2.2 健康检查的三种方法</h5><ul>
+<li>httpGet：发送HTTP请求，返回200-400范围状态码为成功。</li>
+<li>exec：执行Shell命令返回状态码是0为成功。</li>
+<li>tcpSocket：发起TCP Socket建立成功。</li>
+</ul>
+<p><strong>案例</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用tcpSocket进行健康检查</span></span><br><span class="line"><span class="comment"># vim probe.yaml   # 新建一个健康检查和存活检查的容器</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">probe-demo</span></span><br><span class="line">  <span class="attr">namespace:</span> <span class="string">demo</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">web</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br><span class="line">    <span class="attr">livenessProbe:</span></span><br><span class="line">      <span class="attr">tcpSocket:</span></span><br><span class="line">        <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">      <span class="attr">initialDelaySeconds:</span> <span class="number">30</span> <span class="comment">#启动容器后多少秒健康检查</span></span><br><span class="line">      <span class="attr">periodSeconds:</span> <span class="number">10</span> <span class="comment">#以后间隔多少秒检查一次</span></span><br><span class="line">    <span class="attr">readinessProbe:</span></span><br><span class="line">      <span class="attr">tcpSocket:</span></span><br><span class="line">        <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">      <span class="attr">initialDelaySeconds:</span> <span class="number">30</span></span><br><span class="line">      <span class="attr">periodSeconds:</span> <span class="number">10</span></span><br><span class="line">      </span><br><span class="line"><span class="comment"># kubectl apply -f probe.yaml</span></span><br><span class="line"><span class="string">pod/probe-demo</span> <span class="string">created</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># kubectl get pods | grep probe-demo</span></span><br><span class="line"><span class="string">probe-demo</span>    <span class="number">0</span><span class="string">/1</span>     <span class="string">Running</span>   <span class="number">0</span>    <span class="string">45s</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim probe2.yaml   # 新建一个健康检查和存活检查的容器</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">probe2-demo</span></span><br><span class="line">  <span class="attr">namespace:</span> <span class="string">default</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">web</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br><span class="line">    <span class="attr">livenessProbe:</span></span><br><span class="line">      <span class="attr">httpGet:</span>            <span class="comment"># 使用httpGet进行健康检查</span></span><br><span class="line">        <span class="attr">path:</span> <span class="string">/index.html</span>    <span class="comment"># 指定httpGet健康检查访问的页面文件</span></span><br><span class="line">        <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">      <span class="attr">initialDelaySeconds:</span> <span class="number">30</span> <span class="comment">#启动容器后多少秒健康检查</span></span><br><span class="line">      <span class="attr">periodSeconds:</span> <span class="number">10</span> <span class="comment">#以后间隔多少秒检查一次</span></span><br><span class="line">    <span class="attr">readinessProbe:</span></span><br><span class="line">      <span class="attr">httpGet:</span>            <span class="comment"># 使用httpGet进行健康检查</span></span><br><span class="line">        <span class="attr">path:</span> <span class="string">/index.html</span>     <span class="comment"># 指定httpGet健康检查访问的页面文件</span></span><br><span class="line">        <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">      <span class="attr">initialDelaySeconds:</span> <span class="number">30</span></span><br><span class="line">      <span class="attr">periodSeconds:</span> <span class="number">10</span></span><br><span class="line">      </span><br><span class="line"><span class="comment"># kubectl apply -f probe2.yaml </span></span><br><span class="line"><span class="string">pod/probe2-demo</span> <span class="string">created</span></span><br><span class="line"><span class="comment"># kubectl get pods | grep probe2-demo</span></span><br><span class="line"><span class="string">probe2-demo</span>      <span class="number">0</span><span class="string">/1</span>     <span class="string">ContainerCreating</span>   <span class="number">0</span>       <span class="string">16s</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在我们没有任何访问的情况下，查看日志，看看是否每隔10s有对index.html的访问请求</span></span><br><span class="line"><span class="comment"># kubectl logs probe2-demo</span></span><br><span class="line"><span class="string">/docker-entrypoint.sh:</span> <span class="string">/docker-entrypoint.d/</span> <span class="string">is</span> <span class="string">not</span> <span class="string">empty,</span> <span class="string">will</span> <span class="string">attempt</span> <span class="string">to</span> <span class="string">perform</span> <span class="string">configuration</span></span><br><span class="line"><span class="string">/docker-entrypoint.sh:</span> <span class="string">Looking</span> <span class="string">for</span> <span class="string">shell</span> <span class="string">scripts</span> <span class="string">in</span> <span class="string">/docker-entrypoint.d/</span></span><br><span class="line"><span class="string">/docker-entrypoint.sh:</span> <span class="string">Launching</span> <span class="string">/docker-entrypoint.d/10-listen-on-ipv6-by-default.sh</span></span><br><span class="line"><span class="attr">10-listen-on-ipv6-by-default.sh: info:</span> <span class="string">Getting</span> <span class="string">the</span> <span class="string">checksum</span> <span class="string">of</span> <span class="string">/etc/nginx/conf.d/default.conf</span></span><br><span class="line"><span class="attr">10-listen-on-ipv6-by-default.sh: info:</span> <span class="string">Enabled</span> <span class="string">listen</span> <span class="string">on</span> <span class="string">IPv6</span> <span class="string">in</span> <span class="string">/etc/nginx/conf.d/default.conf</span></span><br><span class="line"><span class="string">/docker-entrypoint.sh:</span> <span class="string">Launching</span> <span class="string">/docker-entrypoint.d/20-envsubst-on-templates.sh</span></span><br><span class="line"><span class="string">/docker-entrypoint.sh:</span> <span class="string">Launching</span> <span class="string">/docker-entrypoint.d/30-tune-worker-processes.sh</span></span><br><span class="line"><span class="string">/docker-entrypoint.sh:</span> <span class="string">Configuration</span> <span class="string">complete;</span> <span class="string">ready</span> <span class="string">for</span> <span class="string">start</span> <span class="string">up</span></span><br><span class="line"><span class="number">10.138</span><span class="number">.3</span><span class="number">.63</span> <span class="string">--</span> [<span class="number">11</span><span class="string">/Apr/2021:15:17:33</span> <span class="string">+0000</span>] <span class="string">&quot;GET /index.html HTTP/1.1&quot;</span> <span class="number">200</span> <span class="number">612</span> <span class="string">&quot;-&quot;</span> <span class="string">&quot;kube-probe/1.20&quot;</span> <span class="string">&quot;-&quot;</span></span><br><span class="line"><span class="number">10.138</span><span class="number">.3</span><span class="number">.63</span> <span class="string">--</span> [<span class="number">11</span><span class="string">/Apr/2021:15:17:34</span> <span class="string">+0000</span>] <span class="string">&quot;GET /index.html HTTP/1.1&quot;</span> <span class="number">200</span> <span class="number">612</span> <span class="string">&quot;-&quot;</span> <span class="string">&quot;kube-probe/1.20&quot;</span> <span class="string">&quot;-&quot;</span></span><br><span class="line"><span class="number">10.138</span><span class="number">.3</span><span class="number">.63</span> <span class="string">--</span> [<span class="number">11</span><span class="string">/Apr/2021:15:17:43</span> <span class="string">+0000</span>] <span class="string">&quot;GET /index.html HTTP/1.1&quot;</span> <span class="number">200</span> <span class="number">612</span> <span class="string">&quot;-&quot;</span> <span class="string">&quot;kube-probe/1.20&quot;</span> <span class="string">&quot;-&quot;</span></span><br><span class="line"><span class="number">10.138</span><span class="number">.3</span><span class="number">.63</span> <span class="string">--</span> [<span class="number">11</span><span class="string">/Apr/2021:15:17:44</span> <span class="string">+0000</span>] <span class="string">&quot;GET /index.html HTTP/1.1&quot;</span> <span class="number">200</span> <span class="number">612</span> <span class="string">&quot;-&quot;</span> <span class="string">&quot;kube-probe/1.20&quot;</span> <span class="string">&quot;-&quot;</span></span><br><span class="line"><span class="number">10.138</span><span class="number">.3</span><span class="number">.63</span> <span class="string">--</span> [<span class="number">11</span><span class="string">/Apr/2021:15:17:53</span> <span class="string">+0000</span>] <span class="string">&quot;GET /index.html HTTP/1.1&quot;</span> <span class="number">200</span> <span class="number">612</span> <span class="string">&quot;-&quot;</span> <span class="string">&quot;kube-probe/1.20&quot;</span> <span class="string">&quot;-&quot;</span></span><br><span class="line"><span class="number">10.138</span><span class="number">.3</span><span class="number">.63</span> <span class="string">--</span> [<span class="number">11</span><span class="string">/Apr/2021:15:17:54</span> <span class="string">+0000</span>] <span class="string">&quot;GET /index.html HTTP/1.1&quot;</span> <span class="number">200</span> <span class="number">612</span> <span class="string">&quot;-&quot;</span> <span class="string">&quot;kube-probe/1.20&quot;</span> <span class="string">&quot;-&quot;</span></span><br><span class="line"><span class="number">10.138</span><span class="number">.3</span><span class="number">.63</span> <span class="string">--</span> [<span class="number">11</span><span class="string">/Apr/2021:15:18:03</span> <span class="string">+0000</span>] <span class="string">&quot;GET /index.html HTTP/1.1&quot;</span> <span class="number">200</span> <span class="number">612</span> <span class="string">&quot;-&quot;</span> <span class="string">&quot;kube-probe/1.20&quot;</span> <span class="string">&quot;-&quot;</span></span><br><span class="line"><span class="number">10.138</span><span class="number">.3</span><span class="number">.63</span> <span class="string">--</span> [<span class="number">11</span><span class="string">/Apr/2021:15:18:04</span> <span class="string">+0000</span>] <span class="string">&quot;GET /index.html HTTP/1.1&quot;</span> <span class="number">200</span> <span class="number">612</span> <span class="string">&quot;-&quot;</span> <span class="string">&quot;kube-probe/1.20&quot;</span> <span class="string">&quot;-&quot;</span></span><br><span class="line"><span class="number">10.138</span><span class="number">.3</span><span class="number">.63</span> <span class="string">--</span> [<span class="number">11</span><span class="string">/Apr/2021:15:18:13</span> <span class="string">+0000</span>] <span class="string">&quot;GET /index.html HTTP/1.1&quot;</span> <span class="number">200</span> <span class="number">612</span> <span class="string">&quot;-&quot;</span> <span class="string">&quot;kube-probe/1.20&quot;</span> <span class="string">&quot;-&quot;</span></span><br><span class="line"><span class="number">10.138</span><span class="number">.3</span><span class="number">.63</span> <span class="string">--</span> [<span class="number">11</span><span class="string">/Apr/2021:15:18:14</span> <span class="string">+0000</span>] <span class="string">&quot;GET /index.html HTTP/1.1&quot;</span> <span class="number">200</span> <span class="number">612</span> <span class="string">&quot;-&quot;</span> <span class="string">&quot;kube-probe/1.20&quot;</span> <span class="string">&quot;-&quot;</span></span><br><span class="line"><span class="number">10.138</span><span class="number">.3</span><span class="number">.63</span> <span class="string">--</span> [<span class="number">11</span><span class="string">/Apr/2021:15:18:23</span> <span class="string">+0000</span>] <span class="string">&quot;GET /index.html HTTP/1.1&quot;</span> <span class="number">200</span> <span class="number">612</span> <span class="string">&quot;-&quot;</span> <span class="string">&quot;kube-probe/1.20&quot;</span> <span class="string">&quot;-&quot;</span></span><br><span class="line"><span class="number">10.138</span><span class="number">.3</span><span class="number">.63</span> <span class="string">--</span> [<span class="number">11</span><span class="string">/Apr/2021:15:18:24</span> <span class="string">+0000</span>] <span class="string">&quot;GET /index.html HTTP/1.1&quot;</span> <span class="number">200</span> <span class="number">612</span> <span class="string">&quot;-&quot;</span> <span class="string">&quot;kube-probe/1.20&quot;</span> <span class="string">&quot;-&quot;</span></span><br><span class="line"><span class="comment"># 刚好每隔10s就有两个get请求，一个是存活检查，一个是健康检查，将存活和健康检查的访问的默认文件换成不一样的文件，效果会更好。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-6-环境变量"><a href="#1-6-环境变量" class="headerlink" title="1.6 环境变量"></a>1.6 环境变量</h3><p>变量值的定义方法：</p>
+<ul>
+<li>自定义变量值</li>
+<li>变量值从Pod属性获取</li>
+<li>变量值从Secret、ConfigMap获取</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> vim env.yaml</span></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  name: pod-env</span><br><span class="line">spec:</span><br><span class="line">  containers:</span><br><span class="line">    - name: test</span><br><span class="line">      image: busybox</span><br><span class="line">      command: [ &quot;sh&quot;, &quot;-c&quot;, &quot;sleep 36000&quot;]</span><br><span class="line">      env:</span><br><span class="line">        - name: MY_NODE_NAME     # 变量值从Pod属性获取</span><br><span class="line">          valueFrom:</span><br><span class="line">            fieldRef:</span><br><span class="line">              fieldPath: spec.nodeName    # Pod所在节点名称</span><br><span class="line">        - name: MY_POD_NAME     # 变量值从Pod属性获取</span><br><span class="line">          valueFrom:</span><br><span class="line">            fieldRef:</span><br><span class="line">              fieldPath: metadata.name     # Pod名称</span><br><span class="line">        - name: MY_POD_NAMESPACE    # 变量值从Pod属性获取</span><br><span class="line">          valueFrom:</span><br><span class="line">            fieldRef:</span><br><span class="line">              fieldPath: metadata.namespace    # Pod命名空间</span><br><span class="line">        - name: MY_POD_IP      # 变量值从Pod属性获取</span><br><span class="line">          valueFrom:</span><br><span class="line">            fieldRef:</span><br><span class="line">              fieldPath: status.podIP   # Pod IP</span><br><span class="line">        - name: ABC       # 自定义变量值</span><br><span class="line">          value: &quot;123456&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-7-init-Container"><a href="#1-7-init-Container" class="headerlink" title="1.7 init Container"></a>1.7 init Container</h3><p>Init Container：顾名思义，<strong>用于初始化工作，执行完就结束，可以理解为一次性任务</strong>。</p>
+<ul>
+<li>支持大部分应用容器配置，但不支持健康检查</li>
+<li>优先于应用容器执行</li>
+</ul>
+<p>应用场景：</p>
+<ul>
+<li>环境检查：例如确保应用容器依赖的服务启动后再启动应用容器</li>
+<li>初始化配置：例如给应用容器准备配置文件</li>
+</ul>
+<p>案例：部署一个web网站，网站首页没有放到镜像中，希望从指定位置下载(远程或者本地存储)网站首页，然后放到部署的web根目录下。</p>
+<p>实现的方法：</p>
+<ul>
+<li>将远程文件下载到本地，使用存储卷–volume</li>
+<li>将远程文件下载到本地，然后使用kubectl cp将网站首页拷贝到容器内，如果启动的web网站的副本数过多，就需要执行重复的操作</li>
+<li>待web容器启动后，通过kubectl exec进入容器，然后通过wget将远程文件下载到容器内</li>
+<li>使用init container</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  name: init-demo</span><br><span class="line">spec:</span><br><span class="line">  initContainers:    # 初始化容器</span><br><span class="line">  - name: download</span><br><span class="line">    image: busybox</span><br><span class="line">    command:        # 需要执行的命令，wget -O http://www.ctnrs.com &quot;/opt/index.html&quot;</span><br><span class="line">    - wget</span><br><span class="line">    - &quot;-O&quot;</span><br><span class="line">    - &quot;/opt/index.html&quot;</span><br><span class="line">    - http://www.ctnrs.com</span><br><span class="line">    volumeMounts:</span><br><span class="line">    - name: wwwroot</span><br><span class="line">      mountPath: &quot;/opt&quot;</span><br><span class="line">  containers:</span><br><span class="line">  - name: nginx_init</span><br><span class="line">    image: nginx</span><br><span class="line">    ports:</span><br><span class="line">    - containerPort: 80</span><br><span class="line">    volumeMounts:        # 将存储卷wwwroot挂载到网站的根目录下/usr/share/nginx/html</span><br><span class="line">    - name: wwwroot</span><br><span class="line">      mountPath: /usr/share/nginx/html</span><br><span class="line">  volumes:</span><br><span class="line">  - name: wwwroot</span><br><span class="line">    emptyDir: &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行yaml文件，查看pod状态变化</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl apply -f nginx_ini.yaml</span> </span><br><span class="line">pod/init-demo created</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pods</span> </span><br><span class="line">NAME            READY   STATUS     RESTARTS   AGE</span><br><span class="line">init-demo       0/1     Init:0/1   0          8s # 待busybox容器下载完成后才会创建nginx_init容器</span><br><span class="line">····  # 其他容器与该实验无关，此处不显示</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pods</span></span><br><span class="line">NAME            READY   STATUS            RESTARTS   AGE</span><br><span class="line">init-demo       0/1     PodInitializing   0          20s  # 状态为PodInitializing容器初始化</span><br><span class="line">····  # 其他容器与该实验无关，此处不显示</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pods</span></span><br><span class="line">NAME            READY   STATUS    RESTARTS   AGE</span><br><span class="line">init-demo       1/1     Running   0          37s    # 状态为Running</span><br><span class="line">····  # 其他容器与该实验无关，此处不显示</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入容器查看文件</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl <span class="built_in">exec</span> -it init-demo -- bash</span>   </span><br><span class="line">root@init-demo:/# ls -l   /usr/share/nginx/html/index.html </span><br><span class="line">-rw-r--r-- 1 root root 20702 Apr 12 07:27 /usr/share/nginx/html/index.html</span><br></pre></td></tr></table></figure>
+
+<p>Pod中常见的几类容器：</p>
+<ul>
+<li><p>Infrastructure Container：基础容器</p>
+<ul>
+<li>维护整个Pod网络空间</li>
+</ul>
+</li>
+<li><p>InitContainers：初始化容器</p>
+<ul>
+<li>先于业务容器开始执行</li>
+</ul>
+</li>
+<li><p>Containers：业务容器</p>
+<ul>
+<li>并行启动</li>
+</ul>
+</li>
+</ul>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢您美味的糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/kuberPodPre/">Pod基础</a>
-	
-    </h1>
-  
+      </a>
+    </div>
+    
 
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          qingdalf
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://scaven.site/2021-05/kuberPodPre/" title="Pod基础" target="_blank">https://scaven.site/2021-05/kuberPodPre/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
 
-        <div class="article-info info-on-right">
-          
-          
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -277,397 +507,118 @@
 	</div>
 
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://scaven.site/2021-05/kuberPodPre/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/kuberYaml/" class="archive-article-date">
-        <time datetime="2021-05-05T09:14:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-05</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2021-05/kuberYaml/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">认识yaml</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/kuberYaml/">认识yaml</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-pod%E5%9F%BA%E6%9C%AC%E7%AE%A1%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">1 pod基本管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Pod%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 Pod基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Pod%E7%9A%84%E7%94%A8%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 Pod的用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Pod%E8%B5%84%E6%BA%90%E5%85%B1%E4%BA%AB%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 Pod资源共享实现机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-Pod%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 Pod管理命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-1-%E5%88%9B%E5%BB%BAPod"><span class="toc-number">1.4.1.</span> <span class="toc-text">1.4.1 创建Pod</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-2-%E6%9F%A5%E7%9C%8BPod"><span class="toc-number">1.4.2.</span> <span class="toc-text">1.4.2 查看Pod</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-3-%E6%9F%A5%E7%9C%8Bpod%E6%97%A5%E5%BF%97"><span class="toc-number">1.4.3.</span> <span class="toc-text">1.4.3 查看pod日志</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-4-%E8%BF%9B%E5%85%A5pod%E6%88%96%E5%AE%B9%E5%99%A8"><span class="toc-number">1.4.4.</span> <span class="toc-text">1.4.4 进入pod或容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-5-%E5%88%A0%E9%99%A4Pod"><span class="toc-number">1.4.5.</span> <span class="toc-text">1.4.5 删除Pod</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E9%87%8D%E5%90%AF%E7%AD%96%E7%95%A5%E5%92%8C%E5%81%A5%E5%BA%B7%E6%A3%80%E6%9F%A5-%E5%BA%94%E7%94%A8%E8%87%AA%E6%88%91%E4%BF%AE%E5%A4%8D"><span class="toc-number">1.5.</span> <span class="toc-text">1.5 重启策略和健康检查(应用自我修复)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-1-%E9%87%8D%E5%90%AF%E7%AD%96%E7%95%A5"><span class="toc-number">1.5.1.</span> <span class="toc-text">1.5.1 重启策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-2-%E5%81%A5%E5%BA%B7%E6%A3%80%E6%9F%A5"><span class="toc-number">1.5.2.</span> <span class="toc-text">1.5.2 健康检查</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-5-2-1-%E5%81%A5%E5%BA%B7%E6%A3%80%E6%9F%A5%E7%9A%84%E4%B8%A4%E7%A7%8D%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">1.5.2.1  健康检查的两种类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-5-2-2-%E5%81%A5%E5%BA%B7%E6%A3%80%E6%9F%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">1.5.2.2 健康检查的三种方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.6.</span> <span class="toc-text">1.6 环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-init-Container"><span class="toc-number">1.7.</span> <span class="toc-text">1.7 init Container</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/kuberMakeWeb/" class="archive-article-date">
-        <time datetime="2021-05-05T08:34:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-05</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/kuberMakeWeb/">快熟部署一个网站</a>
-	
-    </h1>
-  
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/kuberMangerment/" class="archive-article-date">
-        <time datetime="2021-05-05T08:07:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-05</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/kuberMangerment/">kubernets管理命令</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/kuberRuncSwitch/" class="archive-article-date">
-        <time datetime="2021-05-04T13:05:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/kuberRuncSwitch/">切换容器引擎为Containerd</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/kuberInstall/" class="archive-article-date">
-        <time datetime="2021-05-04T12:43:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/kuberInstall/">kubernets集群搭建</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/kuberPre/" class="archive-article-date">
-        <time datetime="2021-05-04T12:22:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/kuberPre/">走进kubernets</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerMonitor/" class="archive-article-date">
-        <time datetime="2021-05-04T10:57:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerMonitor/">prometheus+grafana监控docker主机和容器</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerHarbor/" class="archive-article-date">
-        <time datetime="2021-05-04T10:47:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerHarbor/">harbor仓库</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerRegistory/" class="archive-article-date">
-        <time datetime="2021-05-04T10:38:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerRegistory/">docker镜像仓库</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -708,8 +659,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
