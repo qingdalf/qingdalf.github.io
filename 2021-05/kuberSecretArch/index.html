@@ -6,17 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://qingdalf.github.io">
-  <title>Archives: 2021/5 | 倚楼听雨</title>
+  <title>Kubernets安全框架 | 倚楼听雨</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="倚楼听雨">
-<meta property="og:url" content="https://qingdalf.github.io/archives/2021/05/page/3/index.html">
+  <meta name="description" content="Kubernets安全框架1.kubernets安全框架​        K8S安全控制框架主要由下面3个阶段进行控制，每一个阶段都支持插件方式，通过API Server配置来启用插件。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kubernets安全框架">
+<meta property="og:url" content="https://qingdalf.github.io/2021-05/kuberSecretArch/index.html">
 <meta property="og:site_name" content="倚楼听雨">
+<meta property="og:description" content="Kubernets安全框架1.kubernets安全框架​        K8S安全控制框架主要由下面3个阶段进行控制，每一个阶段都支持插件方式，通过API Server配置来启用插件。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://qingdalf.github.io/2021-05/kuberPre/image-20210524215428755.png">
+<meta property="og:image" content="https://qingdalf.github.io/2021-05/kuberPre/image-20210524223155064.png">
+<meta property="og:image" content="https://qingdalf.github.io/2021-05/kuberPre/image-20210410214949332.png">
+<meta property="og:image" content="https://qingdalf.github.io/2021-05/kuberPre/image-20210524231652863.png">
+<meta property="og:image" content="https://qingdalf.github.io/2021-05/kuberPre/image-20210524234039783.png">
+<meta property="article:published_time" content="2021-05-09T16:26:23.000Z">
+<meta property="article:modified_time" content="2021-06-08T16:28:25.348Z">
 <meta property="article:author" content="qingdalf">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://qingdalf.github.io/2021-05/kuberPre/image-20210524215428755.png">
   
     <link rel="alternative" href="/atom.xml" title="倚楼听雨" type="application/atom+xml">
   
@@ -229,257 +239,211 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-kuberSecretArch" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerImageMake/" class="archive-article-date">
-        <time datetime="2021-05-04T09:23:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerImageMake/">基于容器制作docker镜像</a>
-	
+    <h1 class="article-title" itemprop="name">
+      Kubernets安全框架
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kuberntes//" class="article-tag-list-link color5">kuberntes</a>
-        		</li>
-      		
-		</ul>
-	</div>
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2021-05/kuberSecretArch/" class="archive-article-date">
+        <time datetime="2021-05-09T16:26:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-10</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">2.8k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">13分</span>
+    </span>
+  </span>
+</div>
 
 
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="Kubernets安全框架"><a href="#Kubernets安全框架" class="headerlink" title="Kubernets安全框架"></a>Kubernets安全框架</h2><h3 id="1-kubernets安全框架"><a href="#1-kubernets安全框架" class="headerlink" title="1.kubernets安全框架"></a>1.kubernets安全框架</h3><p>​        K8S安全控制框架主要由下面3个阶段进行控制，每一个阶段都支持插件方式，通过API Server配置来启用插件。</p>
+<span id="more"></span>
+<ul>
+<li><p>Authentication（鉴权）：</p>
+<ul>
+<li>HTTPS证书认证：基于CA证书签名的数字证书认证</li>
+<li>HTTP Token认证：通过一个Token来识别用户</li>
+<li>HTTP Base认证：用户名+密码的认证方式</li>
+</ul>
+</li>
+<li><p>Authorization（授权）：</p>
+<ul>
+<li>RBAC（Role-Based Access Control，基于角色的访问控制）：负责完成授权（Authorization）工作，RBAC根据API请求属性，决定允许还是拒绝，比较常见的授权维度有如下：<ul>
+<li>user：用户名</li>
+<li>group：用户分组</li>
+<li>资源，例如pod、deployment</li>
+<li>资源操作方法：get，list，create，update，patch，watch，delete</li>
+<li>命名空间</li>
+<li>API组</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Admission Control（准入控制）：AdminssionControl实际上是一个准入控制器插件列表，发送到APIServer的请求都需要经过这个列表中的每个准入控制器插件的检查，检查不通过，则拒绝请求。</p>
+</li>
+</ul>
+<p>​        举个简单的例子来说，比如我所在的企业进入机房的手续就很好解释这三个词语，进入机房首先需要进行备案，即将申请人信息发送给机房走流程，各方领导审批了之后才能带着身份证去机房，出示身份证门卫，门卫查询到该身份证已经进行了备案，将扣留我的身份证，并给我一个临时的门禁卡，该卡只可以进入我备案上申请的机房大楼(其他楼进不去)，但不能直接进入机房，进入大楼后，需要过安检(人和背包)，通过安检后，才能进入机房。</p>
+<ul>
+<li>在这个过程中，门卫首先通过后台系统检查我的备案信息，这就是一个鉴权的过程，即我是否有权限进入，如果我没有提前备案，门卫将直接拒绝我的进入请求，只有我申请了进入机房，门卫看到了申请单后才能允许我进入机房；</li>
+<li>当门卫鉴别我可以进入机房后，给我一张进入指定机房大楼的临时卡(该卡不能进入其他机房大楼，可以刷大楼门禁和电梯)，这个过程就是授权</li>
+<li>进入大楼后，过安检的过程就是准入控制，如果在这里发现了违带品，如打火机、饮用水等，此处的安检人员将拒绝该类物品被禁止带入机房内。</li>
+<li>当上面三个过程都通过后，我们才能进入机房干活。</li>
+</ul>
+<p>客户端要想访问K8s集群API Server，一般需要证书、Token或者用户名+密码；如果Pod访问，需要ServiceAccount</p>
+<img src="../kuberPre/image-20210524215428755.png" alt="image-20210524215428755"  />
+
+
+
+<h3 id="3-基于角色的权限访问控制：RBAC"><a href="#3-基于角色的权限访问控制：RBAC" class="headerlink" title="3.基于角色的权限访问控制：RBAC"></a>3.基于角色的权限访问控制：RBAC</h3><p>RBAC（Role-Based Access Control，基于角色的访问控制），允许通过Kubernetes API动态配置策略。</p>
+<ul>
+<li>主体（subject）<ul>
+<li>User：用户</li>
+<li>Group：用户组</li>
+<li>ServiceAccount：服务账号</li>
+</ul>
+</li>
+<li>角色<ul>
+<li>Role：授权<strong>特定命名空间</strong>的访问权限</li>
+<li>ClusterRole：授权<strong>所有命名空间</strong>的访问权限</li>
+</ul>
+</li>
+<li>角色绑定<ul>
+<li>RoleBinding：将角色绑定到主体（即subject）</li>
+<li>ClusterRoleBinding：将<strong>集群角色绑定到主体</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="../kuberPre/image-20210524223155064.png" alt="image-20210524223155064"></p>
+<h3 id="4-案例：为指定用户授权访问不同命名空间权限"><a href="#4-案例：为指定用户授权访问不同命名空间权限" class="headerlink" title="4.案例：为指定用户授权访问不同命名空间权限"></a>4.案例：为指定用户授权访问不同命名空间权限</h3><p>示例：为指定用户(John)授权default命名空间Pod读取权限<br>1.用K8SCA签发客户端证书<br>2.生成kubeconfig授权文件<br>3.创建RBAC权限策略</p>
+<p>上传生产证书工具-cfssl：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> mkdir ssl &amp;&amp; <span class="built_in">cd</span> ssl</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> ll -h   <span class="comment"># 上次cfss工具包</span></span></span><br><span class="line">total 5.6M</span><br><span class="line">-rw-r--r-- 1 root root 5.6M Nov 25  2019 cfssl.tar.gz</span><br><span class="line"><span class="meta">#</span><span class="bash"> tar zxf cfssl.tar.gz  -C /usr/bin/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> cfssl -h    <span class="comment"># 检查，确保cfssl工具能够使用</span></span></span><br><span class="line">Usage:</span><br><span class="line">Available commands:</span><br><span class="line">	certinfo</span><br><span class="line">	sign</span><br><span class="line">	genkey</span><br><span class="line">	gencert</span><br><span class="line">	print-defaults</span><br><span class="line">	bundle</span><br><span class="line">	gencrl</span><br><span class="line">	ocspsign</span><br><span class="line">	selfsign</span><br><span class="line">	revoke</span><br><span class="line">	ocspdump</span><br><span class="line">	ocspserve</span><br><span class="line">	info</span><br><span class="line">	serve</span><br><span class="line">	version</span><br><span class="line">	ocsprefresh</span><br><span class="line">	scan</span><br><span class="line">Top-level flags:</span><br><span class="line">  -allow_verification_with_non_compliant_keys</span><br><span class="line">    	Allow a SignatureVerifier to use keys which are technically non-compliant with RFC6962.</span><br><span class="line">  -loglevel int</span><br><span class="line">    	Log level (0 = DEBUG, 5 = FATAL) (default 1)</span><br></pre></td></tr></table></figure>
+
+<p>用k8s CA签发客户端证书：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> ll   <span class="comment"># 上传</span></span></span><br><span class="line">total 5720</span><br><span class="line">-rw-r--r-- 1 root root 5850685 Nov 25  2019 cfssl.tar.gz</span><br><span class="line">-rw-r--r-- 1 root root    1400 Jul 17  2020 rbac.zip</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> unzip rbac.zip</span> </span><br><span class="line">Archive:  rbac.zip</span><br><span class="line">   creating: rbac/</span><br><span class="line">  inflating: rbac/cert.sh            </span><br><span class="line">  inflating: rbac/kubeconfig.sh      </span><br><span class="line">  inflating: rbac/rbac.yaml          </span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">cd</span> rbac &amp;&amp; ls</span> </span><br><span class="line">cert.sh  kubeconfig.sh  rbac.yaml</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> cat cert.sh</span> </span><br><span class="line"></span><br><span class="line">cat &gt; ca-config.json &lt;&lt;EOF   # 为ca证书生成配置文件</span><br><span class="line">&#123;</span><br><span class="line">  &quot;signing&quot;: &#123;</span><br><span class="line">    &quot;default&quot;: &#123;</span><br><span class="line">      &quot;expiry&quot;: &quot;87600h&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;profiles&quot;: &#123;</span><br><span class="line">      &quot;kubernetes&quot;: &#123;</span><br><span class="line">        &quot;usages&quot;: [</span><br><span class="line">            &quot;signing&quot;,</span><br><span class="line">            &quot;key encipherment&quot;,</span><br><span class="line">            &quot;server auth&quot;,</span><br><span class="line">            &quot;client auth&quot;</span><br><span class="line">        ],</span><br><span class="line">        &quot;expiry&quot;: &quot;87600h&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">cat &gt; John-csr.json &lt;&lt;EOF  # 为用户John用户生成证书文件</span><br><span class="line">&#123;</span><br><span class="line">  &quot;CN&quot;: &quot;John&quot;,</span><br><span class="line">  &quot;hosts&quot;: [],</span><br><span class="line">  &quot;key&quot;: &#123;</span><br><span class="line">    &quot;algo&quot;: &quot;rsa&quot;,</span><br><span class="line">    &quot;size&quot;: 2048</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;names&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;C&quot;: &quot;CN&quot;,</span><br><span class="line">      &quot;ST&quot;: &quot;BeiJing&quot;,</span><br><span class="line">      &quot;L&quot;: &quot;BeiJing&quot;,</span><br><span class="line">      &quot;O&quot;: &quot;k8s&quot;,</span><br><span class="line">      &quot;OU&quot;: &quot;System&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">cfssl gencert -ca=/etc/kubernetes/pki/ca.crt -ca-key=/etc/kubernetes/pki/ca.key -config=ca-config.json -profile=kubernetes John-csr.json | cfssljson -bare John</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">source</span> cert.sh</span> </span><br><span class="line">2021/05/24 22:54:54 [INFO] generate received request</span><br><span class="line">2021/05/24 22:54:54 [INFO] received CSR</span><br><span class="line">2021/05/24 22:54:54 [INFO] generating key: rsa-2048</span><br><span class="line">2021/05/24 22:54:54 [INFO] encoded CSR</span><br><span class="line">2021/05/24 22:54:54 [INFO] signed certificate with serial number 234605555614761262630898602470758695869535347141</span><br><span class="line">2021/05/24 22:54:54 [WARNING] This certificate lacks a &quot;hosts&quot; field. This makes it unsuitable for</span><br><span class="line">websites. For more information see the Baseline Requirements for the Issuance and Management</span><br><span class="line">of Publicly-Trusted Certificates, v.1.1.6, from the CA/Browser Forum (https://cabforum.org);</span><br><span class="line">specifically, section 10.2.3 (&quot;Information Requirements&quot;).</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ll -h   <span class="comment"># 生成了John.*文件</span></span></span><br><span class="line">total 32K</span><br><span class="line">-rw-r--r-- 1 root root  292 May 24 22:54 ca-config.json</span><br><span class="line">-rw-r--r-- 1 root root  733 May 24 22:54 cert.sh</span><br><span class="line">-rw-r--r-- 1 root root  993 May 24 22:54 John.csr</span><br><span class="line">-rw-r--r-- 1 root root  217 May 24 22:54 John-csr.json</span><br><span class="line">-rw------- 1 root root 1.7K May 24 22:54 John-key.pem</span><br><span class="line">-rw-r--r-- 1 root root 1.3K May 24 22:54 John.pem</span><br><span class="line">-rw-r--r-- 1 root root  622 Sep  1  2019 kubeconfig.sh</span><br><span class="line">-rw-r--r-- 1 root root  477 Aug 25  2019 rbac.yaml</span><br></pre></td></tr></table></figure>
+
+<p>生成kubeconfig授权文件</p>
+<p>kubeconfig文件格式：</p>
+<img src="../kuberPre/image-20210410214949332.png" alt="image-20210410214949332" style="zoom:67%;" />
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> cat kubeconfig.sh</span> </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置集群</span></span><br><span class="line">kubectl config set-cluster kubernetes \</span><br><span class="line">  --certificate-authority=/etc/kubernetes/pki/ca.crt \</span><br><span class="line">  --embed-certs=true \  # 将根证书/etc/kubernetes/pki/ca.crt的内容写入配置文件中</span><br><span class="line">  --server=https://10.138.3.61:6443 \</span><br><span class="line">  --kubeconfig=John.kubeconfig  # 将上面的所有参数内容写入到该文件中</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置客户端认证</span></span><br><span class="line">kubectl config set-credentials John \</span><br><span class="line">  --client-key=John-key.pem \</span><br><span class="line">  --client-certificate=John.pem \</span><br><span class="line">  --embed-certs=true \</span><br><span class="line">  --kubeconfig=John.kubeconfig</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置默认上下文</span></span><br><span class="line">kubectl config set-context kubernetes \</span><br><span class="line">  --cluster=kubernetes \</span><br><span class="line">  --user=John \</span><br><span class="line">  --kubeconfig=John.kubeconfig</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置当前使用配置</span></span><br><span class="line">kubectl config use-context kubernetes --kubeconfig=John.kubeconfig</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">source</span> kubeconfig.sh</span> </span><br><span class="line">Cluster &quot;kubernetes&quot; set.</span><br><span class="line">User &quot;John&quot; set.</span><br><span class="line">Context &quot;kubernetes&quot; created.</span><br><span class="line">Switched to context &quot;kubernetes&quot;.</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ll</span> </span><br><span class="line">total 40</span><br><span class="line">-rw-r--r-- 1 root root  292 May 24 22:54 ca-config.json</span><br><span class="line">-rw-r--r-- 1 root root  733 May 24 22:54 cert.sh</span><br><span class="line">-rw-r--r-- 1 root root  993 May 24 22:54 John.csr</span><br><span class="line">-rw-r--r-- 1 root root  217 May 24 22:54 John-csr.json</span><br><span class="line">-rw------- 1 root root 1675 May 24 22:54 John-key.pem</span><br><span class="line">-rw------- 1 root root 5705 May 24 23:03 John.kubeconfig   # 生成了该文件</span><br><span class="line">-rw-r--r-- 1 root root 1277 May 24 22:54 John.pem</span><br><span class="line">-rw-r--r-- 1 root root  604 May 24 23:02 kubeconfig.sh</span><br><span class="line">-rw-r--r-- 1 root root  477 Aug 25  2019 rbac.yaml</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> cat John.kubeconfig</span> </span><br><span class="line">apiVersion: v1</span><br><span class="line">clusters:</span><br><span class="line">- cluster:</span><br><span class="line">    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM1ekNDQWMrZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJeE1EUXdPVEF6TkRVMU0xb1hEVE14TURRd056QXpORFUxTTFvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTW40CitLQklXeTVQQUVrOW11cG9mbDUxRTlBczE0NHJhZUYyVXlneDB4MnlVWTB2eE1SYlFxajFUYUlTTWhNR1BlYXYKbjN4WDNZak9aSDNyM0thbmp2dkJVeXh0TU9CRk5DTG5QOFZBcjVmblQxRjh0Y2U1YnBDMXRKSk1hT3g1TE1KbQpiS3pOODJkb3N3Q2hoOVV0NlJoZXZIL2VudG1VVnhzZ1NnTUdHSnNtbEpkOVVBcmM0dGhXQk1JcUlQMEs4dFc5Cm1OZlNvamFaeU9HRmsxVGtRS2pRQngzMTd1MGpFWFFmZDFwVkt1c2JMN205Lzh4dmh1c3dlVjBMWUxXdi9TWTAKU0lZbHAvdDFjdk1rL1VPR2RBcGdFZGV4S1NsKzlEalBmd09HLzZ4REFoL0ZIbXY2MHJ2U2FEK09uemVSZy9rUQpuQzRUczdkRWMvR3lvaVNlQ2ZrQ0F3RUFBYU5DTUVBd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZFc1NUeGRLY3BVQmNWc24yRHJoallRL0lQWVhNQTBHQ1NxR1NJYjMKRFFFQkN3VUFBNElCQVFDRlNra1FDUjRLNEp2L1JlVWZvTjM1d01VS2lRUTlCTzlLQnd3RXVwUndkVXJ3TFZDTApKUWNJbEtHSWRyQ2hJNUt5Q1ZQUkdyZm5teVpoNWZmdkpTZk42VU5wV0c5TGk4OXI5ak5qZ2psVjE4SE9kYjdCCi9ObE1sdzJ6ellxcDZSRG16K0RDbXY3cmgzOHBpdk00S2dOdjd5VENrakZwYmQ1VjZaaUdsZWNRWlMwcVhxQlMKdVlpZk9DdFBVUGVsSWxwOHI5Mmp1cGVXWDE2SnVhWDNnTU9DRGxuOGUwa3c4VFBJM0lRRGQzYmlqa2pOb3VLdQprZG96UTF4Zk1LLzMzN2VZWHlxbWZSK1Bmd0ljaW9Kd3ZIOHpTeGREV29mZjhnYXF5SW4yK0hTVHhpQVdXOGZ3CkF2V20wODFnbUNndnBSM2M0Zy9SdVE2UU1WVmdXazEybTk5OAotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==</span><br><span class="line">    server: https://10.138.3.61:6443</span><br><span class="line">  name: kubernetes</span><br><span class="line">contexts:</span><br><span class="line">- context:</span><br><span class="line">    cluster: kubernetes</span><br><span class="line">    user: John</span><br><span class="line">  name: kubernetes</span><br><span class="line">current-context: kubernetes</span><br><span class="line">kind: Config</span><br><span class="line">preferences: &#123;&#125;</span><br><span class="line">users:</span><br><span class="line">- name: John   # 用户名称</span><br><span class="line">  user:</span><br><span class="line">    client-certificate-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURnVENDQW1tZ0F3SUJBZ0lVS1JnVHN6M2ZYMloyd2RGTzZmc295NndONGNVd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0ZURVRNQkVHQTFVRUF4TUthM1ZpWlhKdVpYUmxjekFlRncweU1UQTFNalF4TkRVd01EQmFGdzB6TVRBMQpNakl4TkRVd01EQmFNRjh4Q3pBSkJnTlZCQVlUQWtOT01SQXdEZ1lEVlFRSUV3ZENaV2xLYVc1bk1SQXdEZ1lEClZRUUhFd2RDWldsS2FXNW5NUXd3Q2dZRFZRUUtFd05yT0hNeER6QU5CZ05WQkFzVEJsTjVjM1JsYlRFTk1Bc0cKQTFVRUF4TUVTbTlvYmpDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBSzdPNkxYdApybjFOeXdjRklSTEx1aVlma21vVDRLUDhmV2xQVC9BeDhsTWttbDY2NGNUYWczc1B6bSs4SjAyaDJWTjRlTFluClZxTzRlSG1OeGl3OE5TVHdHOWM5blhwZGhJS3hVY0p0L1licFM5U1dxZ0pvdUMyNHByc3ZtdU9VRFltcWo4RWsKaDZCcUtqTjN5VEpEcmU5emx2eFUraTRqMzY2VktrdldWaDRJVlVMV2w3ZzdMZ0VwSmJoRlc0a1FOMGk1NXRhUwpWRkdtUUNPQUozZWNnencvU004L2lkeFRITzFUT3IwNm1ZU0xmRHZlTnByV1pMb2RuR2sxa1JZb0tUQzZRYzlUCnpsa1hiL0xRdFE1eGp0VGJibEdJS05GYVhrYTZLMUZzWlNXYlQ4TUZYeXNCckhSak9RcThvMjZCZEgvWWM2TmIKOGcrZU53RWR3UWo5bXhVQ0F3RUFBYU4vTUgwd0RnWURWUjBQQVFIL0JBUURBZ1dnTUIwR0ExVWRKUVFXTUJRRwpDQ3NHQVFVRkJ3TUJCZ2dyQmdFRkJRY0RBakFNQmdOVkhSTUJBZjhFQWpBQU1CMEdBMVVkRGdRV0JCUlczSTRUCjdaVFhpQ2hMMHVWdVdLRDl1SG80R0RBZkJnTlZIU01FR0RBV2dCUkxFazhYU25LVkFYRmJKOWc2NFkyRVB5RDIKRnpBTkJna3Foa2lHOXcwQkFRc0ZBQU9DQVFFQWdKMms0NENvcGRwVVl4N082ZEtGaFh4aS8wZ0VxbkJla1BXKwpienhFWHFmdXhtT0UxK1dSalJOTFZSRmlJQkZSb0pGR1NYWThlVkZUY09LalJrZXBBTTk3WjAwM1BHdVJDUW1JCkVLc0ZYU1J1UmZsV3FuNUJpVkFhZ1lFbm5VQitxSnUzQVpRRklSRUZ4MXhuT3FQd254a2lCUU9ZaWVxRDhDSlUKRU5xcmhSWEdMbFJZWHJ1QzBiOGY4bjYzOWMrQnd2TU1FZW9yNTBCb2d5SE04Z0NtNHlhVTQzRlN6Rk1Hdzk4aQpGbzBJeVRDa2xEeGJlVnB5UDVrZURESmR4RDU5WVA2RVE3L0ZaL1FFa1plMDlDWGliWnpNc3ErcnVhazJTdFg4CkVRY1JHU3JZQ1N0SExBMFNFTmljeTRlNDhKTjFwelJ6bWQxdUpxNzg1dkE0M0lLaEdBPT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=</span><br><span class="line">    client-key-data: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBcnM3b3RlMnVmVTNMQndVaEVzdTZKaCtTYWhQZ28veDlhVTlQOERIeVV5U2FYcnJoCnhOcURldy9PYjd3blRhSFpVM2g0dGlkV283aDRlWTNHTER3MUpQQWIxejJkZWwyRWdyRlJ3bTM5aHVsTDFKYXEKQW1pNExiaW11eSthNDVRTmlhcVB3U1NIb0dvcU0zZkpNa090NzNPVy9GVDZMaVBmcnBVcVM5WldIZ2hWUXRhWAp1RHN1QVNrbHVFVmJpUkEzU0xubTFwSlVVYVpBSTRBbmQ1eURQRDlJenorSjNGTWM3Vk02dlRxWmhJdDhPOTQyCm10Wmt1aDJjYVRXUkZpZ3BNTHBCejFQT1dSZHY4dEMxRG5HTzFOdHVVWWdvMFZwZVJyb3JVV3hsSlp0UHd3VmYKS3dHc2RHTTVDcnlqYm9GMGY5aHpvMXZ5RDU0M0FSM0JDUDJiRlFJREFRQUJBb0lCQUdnMFNUNmlCK0VFTGFIcQpxZE9GaEZyVGVUa296a0dTOHNPREZ2anRIVEg0NE5qVmVGNGJrRU1jb2dlelZvNk5pM3FabHdPbW9ad0pEREFSCmxtK3FHRmdEbGVVU0Fyejk0RTcwR3ZQWEUwbUg2cjg0YlBId3NOSDRmOU9YeGpJaGdJeHZFekNrY1FEc0tHbnoKM3dqS2xYWG5KcnNXZ09oZVZDbkRHNnFIZzJCMHhKZXZvQ3BiKzkwTnlvZ3NDbEtzMDh5Q24zL0wvaVQyUzZ6SQptZnRsSEFKZ1hkNGZUOXQ5RlJsL2tqbG9BcWFQejJTaUk3SDB3cCtaVHFIVXBEK0c5SHUyQmJvUHZabkRGZktUCnhXdWg1U0JZZEIzM0Y3TFR0UXlWUzZzc2oyZEk1ekF1Z3d5MXVGUVQ2TWFQdnFKVVpWZ2tBc3p6UDM0QnlFbWUKYVpHYXI4VUNnWUVBeDgyM1g2N0hEaXJtWG1rcTRjYnpKM0dqOHBORmVwYWoyMCttUXErc0hGdUZhZFBQTFAxbQpXWFN2eGdmY1lNSjlIYVVQL1draEUyWFNtUkR3cmlreGEyOHFZdW04M2srTDUwblBLeUd4QVVHSEhPeGJ2T0FVCnVrRURxWE1kam9JeFYxQUlkM3NQQjVlbW1UcGhDMmFJZjZsRU9RMDhtQWNYQmd3RVhHVTRRT2NDZ1lFQTMvbDUKa2d3Q0hDVy94dHRxYmlENll6NFpxMmZWN0YzNXlTb0lTR1c3SVpKZkNLeTdSTHMrdVFKVU85c3JmVHp4OXBSVQo1dUlkUzJCK3IvSWllR29pakFRQktQTXlZVUVKWHJsajFOcWNvQmVlOXdXdGN3b3JrVmhGRzlGZkEzeXRsaEljCjFEZWpuQ0R1UTFaSnVSVk0vNitxZURkWGdBZ1dWaEh5WUZKQWVLTUNnWUIvMnByYUJveG4rM200dGxGemNvek0KRThNV2lianZEaEJDV1lDSnNjSlB6eHpiTUdlbFlXMnFGcW9YN1pYTzhRV0EvOHZ3bStKSGVHUEFBUUFTWWxlMgphTWRWemo1R2Y5NkZuVXlOVEJ6cE1kWlU0c1o5WVdMQ0lMSklMMXFkZzZBeFFBeDY4R3NZcjZreTZoR0phdzR6CnFzdjJPZ3NwT1hnNUxWMXBCbmh0eHdLQmdRQ21MSUoyU1ZLSGI3cUozK0ZuTkRDUjBWRmFTdi85RHZ4MHRDclIKRENsN0R3NVRjVlMvK2V6ZmQwcm4zZ1MyTnJHUE1SNk03dGF0UmpxNGIvNERPVHZJaG5BVjRkcFBMZUcxMWZhcgp4a2JPd0xmQXJ3V3hoS291ZkQ5S0ZGMWFTUGJCa1U2eVpWV09VU0IxOVY5ZFl1QnVFL2QybWhqaGRSNmRYVk5uCkE1K3g0UUtCZ0NaRU45QzNNd0RwZjM1ZE1WWXFqZ25scWNKbmk4QU9ETHBIVEpzZkdHYlZyeVhvSm9TckFBYUoKYytqeXBpNDVzNEVTNzVBVG9DV0JuZTJTMUQzMWNnaVFGdHhGZklNVlc3YXQwQW85VFBoNVMwMFhuQ2taVWpqSApYNW8vSm9sNllxZEN6WDRiODdFWFRzTVNKMUkrSEEwblZCVGtYZXZ3R0hsYzNKaUFJa2lzCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>RBAC授权：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 默认情况下，我们执行kubectl get pod使用的配置文件是/root/.kube/conf</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pods --kubeconfig=/root/.kube/config</span>  </span><br><span class="line">NAME                                     READY   STATUS             RESTARTS   AGE</span><br><span class="line">java-demo-56d54df448-xnppg               1/1     Running            0          26h</span><br><span class="line">nfs-client-provisioner-fc7d496b4-p4r5b   0/1     CrashLoopBackOff   16         26h</span><br><span class="line">nfs-web-66cbdc486b-rj9xv                 1/1     Running            0          26h</span><br><span class="line">nfs-web-66cbdc486b-srlqx                 1/1     Running            0          26h</span><br><span class="line">nfs-web-66cbdc486b-t95dt                 1/1     Running            0          26h</span><br><span class="line">nginx-0                                  1/1     Running            0          25h</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 当我们指定John.kubeconfig作为配置文件查询时</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pods --kubeconfig=John.kubeconfig   <span class="comment"># 提示用户John没有列出pod的权限</span></span></span><br><span class="line">Error from server (Forbidden): pods is forbidden: User &quot;John&quot; cannot list resource &quot;pods&quot; in API group &quot;&quot; in the namespace &quot;default&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>认证过程如下：</p>
+<p><img src="../kuberPre/image-20210524231652863.png" alt="image-20210524231652863"></p>
+<p>配置RBAC</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> cat rbac.yaml</span> </span><br><span class="line">kind: Role</span><br><span class="line">apiVersion: rbac.authorization.k8s.io/v1</span><br><span class="line">metadata:</span><br><span class="line">  namespace: default</span><br><span class="line">  name: pod-reader</span><br><span class="line">rules:</span><br><span class="line">- apiGroups: [&quot;&quot;]                  # api组，没有写具体的组名时表示核心组</span><br><span class="line">  resources: [&quot;pods&quot;]              # 资源类型，多个资源用逗号隔开</span><br><span class="line">  verbs: [&quot;get&quot;, &quot;watch&quot;, &quot;list&quot;]  # 可对资源执行的操作，如增删改查等</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">kind: RoleBinding</span><br><span class="line">apiVersion: rbac.authorization.k8s.io/v1</span><br><span class="line">metadata:</span><br><span class="line">  name: read-pods</span><br><span class="line">  namespace: default</span><br><span class="line">subjects:</span><br><span class="line">- kind: User   # 主体类型，三种类型之一：User、Group、ServiceAccount</span><br><span class="line">  name: John   # 用户</span><br><span class="line">  apiGroup: rbac.authorization.k8s.io</span><br><span class="line">roleRef:</span><br><span class="line">  kind: Role   # 绑定的角色</span><br><span class="line">  name: pod-reader   # 绑定的角色名称</span><br><span class="line">  apiGroup: rbac.authorization.k8s.io</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl apply -f rbac.yaml</span> </span><br><span class="line">role.rbac.authorization.k8s.io/pod-reader created</span><br><span class="line">rolebinding.rbac.authorization.k8s.io/read-pods created</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pods --kubeconfig=John.kubeconfig   <span class="comment"># 可以访问pod了</span></span></span><br><span class="line">NAME                                     READY   STATUS             RESTARTS   AGE</span><br><span class="line">java-demo-56d54df448-xnppg               1/1     Running            0          27h</span><br><span class="line">nfs-client-provisioner-fc7d496b4-p4r5b   0/1     CrashLoopBackOff   19         26h</span><br><span class="line">nfs-web-66cbdc486b-rj9xv                 1/1     Running            0          27h</span><br><span class="line">nfs-web-66cbdc486b-srlqx                 1/1     Running            0          27h</span><br><span class="line">nfs-web-66cbdc486b-t95dt                 1/1     Running            0          27h</span><br><span class="line">···</span><br></pre></td></tr></table></figure>
+
+<p>通过John用户访问deploy和svc</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 使用John用户访问其他资源，均访问失败</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get deployment --kubeconfig=John.kubeconfig   <span class="comment"># 注意，我们可以通过这里的error输出，更改用户rbac的格式</span></span></span><br><span class="line">Error from server (Forbidden): deployments.apps is forbidden: User &quot;John&quot; cannot list resource &quot;deployments&quot; in API group &quot;apps&quot; in the namespace &quot;default&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 这里的resource <span class="string">&quot;deployments&quot;</span> <span class="keyword">in</span> API group <span class="string">&quot;apps&quot;</span>表示如果要加<span class="string">&quot;deployments&quot;</span>应该在resource中添加<span class="string">&quot;deployments&quot;</span>字段，并在group中添加<span class="string">&quot;apps&quot;</span>字段</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get svc --kubeconfig=John.kubeconfig</span> </span><br><span class="line">Error from server (Forbidden): services is forbidden: User &quot;John&quot; cannot list resource &quot;services&quot; in API group &quot;&quot; in the namespace &quot;default&quot;   # 此处的group &quot;&quot;表示核心组</span><br><span class="line"><span class="meta">#</span><span class="bash"> 这里的resource <span class="string">&quot;services&quot;</span> <span class="keyword">in</span> API group <span class="string">&quot;&quot;</span>，表示要在resource中添加<span class="string">&quot;services&quot;</span>字段，在group中添加<span class="string">&quot;&quot;</span>(核心组)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 给John用户添加上访问deployment和svc的权限</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> cat rbac.yaml</span> </span><br><span class="line">kind: Role</span><br><span class="line">apiVersion: rbac.authorization.k8s.io/v1</span><br><span class="line">metadata:</span><br><span class="line">  namespace: default</span><br><span class="line">  name: pod-reader</span><br><span class="line">rules:</span><br><span class="line">- apiGroups: [&quot;&quot;,&quot;apps&quot;]            # 添加上了&quot;apps&quot;</span><br><span class="line">  resources: [&quot;pods&quot;,&quot;deployments&quot;]  # 添加上了&quot;deployments&quot;</span><br><span class="line">  verbs: [&quot;get&quot;, &quot;watch&quot;, &quot;list&quot;]</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">kind: RoleBinding</span><br><span class="line">apiVersion: rbac.authorization.k8s.io/v1</span><br><span class="line">metadata:</span><br><span class="line">  name: read-pods</span><br><span class="line">  namespace: default</span><br><span class="line">subjects:</span><br><span class="line">- kind: User</span><br><span class="line">  name: John</span><br><span class="line">  apiGroup: rbac.authorization.k8s.io</span><br><span class="line">roleRef:</span><br><span class="line">  kind: Role</span><br><span class="line">  name: pod-reader</span><br><span class="line">  apiGroup: rbac.authorization.k8s.io</span><br><span class="line">  </span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl apply -f rbac.yaml</span> </span><br><span class="line">role.rbac.authorization.k8s.io/pod-reader configured</span><br><span class="line">rolebinding.rbac.authorization.k8s.io/read-pods unchanged</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 再次访问svc和deploy</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get svc --kubeconfig=John.kubeconfig</span> </span><br><span class="line">NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE</span><br><span class="line">java-demo    ClusterIP   10.111.238.127   &lt;none&gt;        80/TCP         34d</span><br><span class="line">kubernetes   ClusterIP   10.96.0.1        &lt;none&gt;        443/TCP        45d</span><br><span class="line">nginx        NodePort    10.99.5.83       &lt;none&gt;        80:31031/TCP   34d</span><br><span class="line">web-02       ClusterIP   None             &lt;none&gt;        80/TCP         24h</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get deployment --kubeconfig=John.kubeconfig</span> </span><br><span class="line">NAME                     READY   UP-TO-DATE   AVAILABLE   AGE</span><br><span class="line">java-demo                1/1     1            1           34d</span><br><span class="line">nfs-client-provisioner   0/1     1            0           26h</span><br><span class="line">nfs-web                  3/3     3            3           27d</span><br><span class="line">nginx                    3/3     3            3           45d</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>添加组(group)的信息是根据<code>kubectl api-resources</code>中的<code>APIVERSION</code>中的信息来定义的</p>
+<p><img src="../kuberPre/image-20210524234039783.png" alt="image-20210524234039783"></p>
+<p>在部署dashboard时，我们创建了用户，用户授权、获取Token的步骤，也是按照RBAC的步骤进行操作的，如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 创建用户</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl create serviceaccount dashboard-admin -n kube-system</span></span><br><span class="line">serviceaccount/dashboard-admin created</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 用户授权</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl create clusterrolebinding dashboard-admin --clusterrole=cluster-admin --serviceaccount=kube-system:dashboard-admin</span></span><br><span class="line">clusterrolebinding.rbac.authorization.k8s.io/dashboard-admin created</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 获取用户Token</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl describe secrets -n kube-system $(kubectl -n kube-system get secret | awk <span class="string">&#x27;/dashboard-admin/&#123;print $1&#125;&#x27;</span>)</span></span><br><span class="line">Name:         dashboard-admin-token-qz9b5</span><br><span class="line">Namespace:    kube-system</span><br><span class="line">Labels:       &lt;none&gt;</span><br><span class="line">Annotations:  kubernetes.io/service-account.name: dashboard-admin</span><br><span class="line">              kubernetes.io/service-account.uid: 3888e789-beec-45a8-a04e-1d03d3dc645e</span><br><span class="line"></span><br><span class="line">Type:  kubernetes.io/service-account-token</span><br><span class="line"></span><br><span class="line">Data</span><br><span class="line">====</span><br><span class="line">ca.crt:     1066 bytes</span><br><span class="line">namespace:  11 bytes</span><br><span class="line">token:      eyJhbGciOiJSUzI1NiIsImtpZCI6IldsZjlGaGZmcjNiekJOaTRCQjM4WEpDTXc0UXlhSF9nUC1ETlAzbVlvQk0ifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJkYXNoYm9hcmQtYWRtaW4tdG9rZW4tcXo5YjUiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGFzaGJvYXJkLWFkbWluIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiMzg4OGU3ODktYmVlYy00NWE4LWEwNGUtMWQwM2QzZGM2NDVlIiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Omt1YmUtc3lzdGVtOmRhc2hib2FyZC1hZG1pbiJ9.mVNJ7T8a7we8lza5bGsYrst-TuL5lTS7_Ef8kmORXwytknMkLYc34dYUB_NvuV8QBd9E7bGVka_ff6ihtmnxRVQ74Aq4Cj-Y5__Vqvy9BoAxAPTuYXPxyP88sC0GujIqfKnH369h0bfETuiTlaLW3WU4bIOH7O27T3n8JNICV7xAvAWrEX1KypVEWHROUFYGbv0-UzCGZxD9TRalaZi7EiIXCY2RH5bmpKsV3X0NfEsKtcUWHcXkonwjlawoi3IXBUzkTuw_FoAAL2qWMvGMi_XOQ1qyS4zcB18y4mhqt9lDKFDaNxUBA_RY-9JIOSTaHn4Co1Cq35-wjNKoPjSbTw</span><br><span class="line"><span class="meta">#</span><span class="bash"> 复制上面的token到浏览器中，注意不要多复制空格</span></span><br></pre></td></tr></table></figure>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢您美味的糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          qingdalf
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://qingdalf.github.io/2021-05/kuberSecretArch/" title="Kubernets安全框架" target="_blank">https://qingdalf.github.io/2021-05/kuberSecretArch/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
   </div>
-</article>
-  
+  <div class="article-info article-info-index">
     
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerVolumes/" class="archive-article-date">
-        <time datetime="2021-05-04T08:46:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerVolumes/">docker容器存储</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerNetQuestion/" class="archive-article-date">
-        <time datetime="2021-05-04T07:19:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerNetQuestion/">两个常见的容器网络问题</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerNetAdvance/" class="archive-article-date">
-        <time datetime="2021-05-04T07:16:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerNetAdvance/">docker网络进阶</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerNetwork/" class="archive-article-date">
-        <time datetime="2021-05-03T12:01:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerNetwork/">docker容器四种网络模式</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerImage/" class="archive-article-date">
-        <time datetime="2021-05-03T06:29:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerImage/">docker镜像</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -492,182 +456,127 @@
 	</div>
 
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://qingdalf.github.io/2021-05/kuberSecretArch/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerLifeCycle/" class="archive-article-date">
-        <time datetime="2021-05-03T06:09:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
-</a>
 
+
+<nav id="article-nav">
+  
+    <a href="/2021-05/kuberErr/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          k8s使用过程中的一些错误
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021-05/kuberStorage/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据、数据卷和动态供给</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerLifeCycle/">docker生命周期</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Kubernets%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E%B6"><span class="toc-number">1.</span> <span class="toc-text">Kubernets安全框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-kubernets%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E%B6"><span class="toc-number">1.1.</span> <span class="toc-text">1.kubernets安全框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%9F%BA%E4%BA%8E%E8%A7%92%E8%89%B2%E7%9A%84%E6%9D%83%E9%99%90%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%EF%BC%9ARBAC"><span class="toc-number">1.2.</span> <span class="toc-text">3.基于角色的权限访问控制：RBAC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%A1%88%E4%BE%8B%EF%BC%9A%E4%B8%BA%E6%8C%87%E5%AE%9A%E7%94%A8%E6%88%B7%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E4%B8%8D%E5%90%8C%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E6%9D%83%E9%99%90"><span class="toc-number">1.3.</span> <span class="toc-text">4.案例：为指定用户授权访问不同命名空间权限</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerInstall/" class="archive-article-date">
-        <time datetime="2021-05-03T05:33:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerInstall/">安装docker和运行容器的方式</a>
-	
-    </h1>
-  
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerIntroduction/" class="archive-article-date">
-        <time datetime="2021-05-03T04:49:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerIntroduction/">docker简介</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerPre/" class="archive-article-date">
-        <time datetime="2021-05-03T03:27:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerPre/">docker开篇：容器</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2021/05/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2021/05/">1</a><a class="page-number" href="/archives/2021/05/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2021/05/page/4/">4</a><a class="extend next" rel="next" href="/archives/2021/05/page/4/">Next &amp;raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -708,8 +617,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

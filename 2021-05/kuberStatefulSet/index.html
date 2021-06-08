@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://qingdalf.github.io">
-  <title>Archives: 2021/5 | 倚楼听雨</title>
+  <title>Kubernetes 有状态应用部署 | 倚楼听雨</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="倚楼听雨">
-<meta property="og:url" content="https://qingdalf.github.io/archives/2021/05/page/3/index.html">
+  <meta name="description" content="Kubernetes 有状态应用部署1.无状态与有状态​        Deployment控制器设计原则：管理的所有Pod一模一样，提供同一个服务，也不考虑在哪台Node运行，可随意扩容和缩容。这种应用称为“无状态”，例如Web服务。​        在实际的场景中，并不能满足所有应用，尤其是分布式应用，会部署多个实例，这些实例之间往往有依赖关系(如启动顺序)，例如主从关系、主备关系，这种应用称">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kubernetes 有状态应用部署">
+<meta property="og:url" content="https://qingdalf.github.io/2021-05/kuberStatefulSet/index.html">
 <meta property="og:site_name" content="倚楼听雨">
+<meta property="og:description" content="Kubernetes 有状态应用部署1.无状态与有状态​        Deployment控制器设计原则：管理的所有Pod一模一样，提供同一个服务，也不考虑在哪台Node运行，可随意扩容和缩容。这种应用称为“无状态”，例如Web服务。​        在实际的场景中，并不能满足所有应用，尤其是分布式应用，会部署多个实例，这些实例之间往往有依赖关系(如启动顺序)，例如主从关系、主备关系，这种应用称">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-08T16:22:11.000Z">
+<meta property="article:modified_time" content="2021-06-08T16:25:17.721Z">
 <meta property="article:author" content="qingdalf">
 <meta name="twitter:card" content="summary">
   
@@ -229,214 +233,183 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-kuberStatefulSet" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerImageMake/" class="archive-article-date">
-        <time datetime="2021-05-04T09:23:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerImageMake/">基于容器制作docker镜像</a>
-	
+    <h1 class="article-title" itemprop="name">
+      Kubernetes 有状态应用部署
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kuberntes//" class="article-tag-list-link color5">kuberntes</a>
-        		</li>
-      		
-		</ul>
-	</div>
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2021-05/kuberStatefulSet/" class="archive-article-date">
+        <time datetime="2021-05-08T16:22:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-09</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">3.5k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">18分</span>
+    </span>
+  </span>
+</div>
 
 
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="Kubernetes-有状态应用部署"><a href="#Kubernetes-有状态应用部署" class="headerlink" title="Kubernetes 有状态应用部署"></a>Kubernetes 有状态应用部署</h2><h3 id="1-无状态与有状态"><a href="#1-无状态与有状态" class="headerlink" title="1.无状态与有状态"></a>1.无状态与有状态</h3><p>​        Deployment控制器设计原则：管理的所有Pod一模一样，提供同一个服务，也不考虑在哪台Node运行，可随意扩容和缩容。这种应用称为“无状态”，例如Web服务。<br>​        在实际的场景中，并不能满足所有应用，尤其是分布式应用，会部署多个实例，这些实例之间往往有依赖关系(如启动顺序)，例如主从关系、主备关系，这种应用称为“有状态”，例如MySQL主从、Etcd集群</p>
+<span id="more"></span>
+
+<h3 id="2-StatefulSet控制器概述"><a href="#2-StatefulSet控制器概述" class="headerlink" title="2.StatefulSet控制器概述"></a>2.StatefulSet控制器概述</h3><p>StatefulSet控制器用于部署有状态应用，满足一些有状态应用的需求：</p>
+<ul>
+<li><strong>Pod有序的部署、扩容、删除和停止</strong></li>
+<li><strong>Pod分配一个稳定的且唯一的网络标识</strong></li>
+<li><strong>Pod分配一个独享的存储</strong></li>
+</ul>
+<h4 id="2-1-StatefulSet控制器管理机制：网络标识"><a href="#2-1-StatefulSet控制器管理机制：网络标识" class="headerlink" title="2.1 StatefulSet控制器管理机制：网络标识"></a>2.1 StatefulSet控制器管理机制：网络标识</h4><p>​        我们知道service具有负载均衡的能力，可以将访问请求通过分发给后端pod去处理，那么如果有状态的应用也使用service的这个功能的话，是不是用户的写入操作就分别写入到了主备两个pod中了呢(svc的调度功能)，这样就造成了数据的不一致了，我们想要达到的功能是数据只写入到主库，备库同步主库的数据。</p>
+<p>​        使用Headless Service（相比普通Service只是将spec.clusterIP定义为None）来维护Pod网络身份，会为每个Pod分配一个数字编号并且按照编号顺序部署。还需要在StatefulSet添加serviceName: “xx”字段指定StatefulSet控制器要使用这个Headless Service。<br>稳定主要体现在主机名和Pod A记录：</p>
+<ul>
+<li>主机名：&lt;statefulset名称&gt;-&lt;编号&gt;</li>
+<li>Pod DNS A记录：&lt;statefulset名称-编号&gt;.<service-name> .<namespace>.svc.cluster.local</li>
+</ul>
+<h5 id="2-1-1-创建Headless-Service"><a href="#2-1-1-创建Headless-Service" class="headerlink" title="2.1.1 创建Headless Service"></a>2.1.1 创建Headless Service</h5><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat svc.yaml </span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">web-01</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">clusterIP:</span> <span class="string">None</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">nginx-01</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">    <span class="attr">targetPort:</span> <span class="number">80</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># kubectl apply -f svc.yaml </span></span><br><span class="line"><span class="string">service/web-01</span> <span class="string">created</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># kubectl get svc</span></span><br><span class="line"><span class="string">NAME</span>         <span class="string">TYPE</span>        <span class="string">CLUSTER-IP</span>      <span class="string">EXTERNAL-IP</span>   <span class="string">PORT(S)</span>        <span class="string">AGE</span></span><br><span class="line"><span class="string">kubernetes</span>   <span class="string">ClusterIP</span>   <span class="number">10.96</span><span class="number">.0</span><span class="number">.1</span>       <span class="string">&lt;none&gt;</span>        <span class="number">443</span><span class="string">/TCP</span>        <span class="string">42h</span></span><br><span class="line"><span class="string">nginx</span>        <span class="string">NodePort</span>    <span class="number">10.101</span><span class="number">.73</span><span class="number">.189</span>   <span class="string">&lt;none&gt;</span>        <span class="number">80</span><span class="string">:32168/TCP</span>   <span class="string">42h</span></span><br><span class="line"><span class="string">web-01</span>       <span class="string">ClusterIP</span>   <span class="string">None</span>            <span class="string">&lt;none&gt;</span>        <span class="number">80</span><span class="string">/TCP</span>         <span class="string">4s</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># kubectl describe svc web-01</span></span><br><span class="line"><span class="attr">Name:</span>              <span class="string">web-01</span></span><br><span class="line"><span class="attr">Namespace:</span>         <span class="string">default</span></span><br><span class="line"><span class="attr">Labels:</span>            <span class="string">&lt;none&gt;</span></span><br><span class="line"><span class="attr">Annotations:</span>       <span class="string">&lt;none&gt;</span></span><br><span class="line"><span class="attr">Selector:</span>          <span class="string">app=nginx-01</span></span><br><span class="line"><span class="attr">Type:</span>              <span class="string">ClusterIP</span></span><br><span class="line"><span class="attr">IP Families:</span>       <span class="string">&lt;none&gt;</span></span><br><span class="line"><span class="attr">IP:</span>                <span class="string">None</span></span><br><span class="line"><span class="attr">IPs:</span>               <span class="string">None</span></span><br><span class="line"><span class="attr">Port:</span>              <span class="string">&lt;unset&gt;</span>  <span class="number">80</span><span class="string">/TCP</span></span><br><span class="line"><span class="attr">TargetPort:</span>        <span class="number">80</span><span class="string">/TCP</span></span><br><span class="line"><span class="attr">Endpoints:</span>         <span class="string">&lt;none&gt;</span></span><br><span class="line"><span class="attr">Session Affinity:</span>  <span class="string">None</span></span><br><span class="line"><span class="attr">Events:</span>            <span class="string">&lt;none&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="2-2-2-创建使用Headless-Service的StatefulSet应用"><a href="#2-2-2-创建使用Headless-Service的StatefulSet应用" class="headerlink" title="2.2.2 创建使用Headless Service的StatefulSet应用"></a>2.2.2 创建使用Headless Service的StatefulSet应用</h5><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim statfulset.yaml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">StatefulSet</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">serviceName:</span> <span class="string">&quot;web-01&quot;</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">3</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">       <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">         <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">         <span class="attr">ports:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br><span class="line">          </span><br><span class="line"></span><br><span class="line"><span class="comment"># kubectl get pods | grep nginx   # 创建pod是先后顺序创建的，nginx-0建好后在新建nginx-1</span></span><br><span class="line"><span class="string">nginx-0</span>                               <span class="number">1</span><span class="string">/1</span>     <span class="string">Running</span>             <span class="number">0</span>          <span class="string">25s</span></span><br><span class="line"><span class="string">nginx-1</span>                               <span class="number">0</span><span class="string">/1</span>     <span class="string">ContainerCreating</span>   <span class="number">0</span>          <span class="string">7s</span></span><br><span class="line"><span class="string">nginx-6799fc88d8-sfsjw</span>                <span class="number">1</span><span class="string">/1</span>     <span class="string">Running</span>             <span class="number">0</span>          <span class="string">42h</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># kubectl get sts   # 已经有一个pod新建完成 </span></span><br><span class="line"><span class="string">NAME</span>    <span class="string">READY</span>   <span class="string">AGE</span></span><br><span class="line"><span class="string">nginx</span>   <span class="number">1</span><span class="string">/3</span>     <span class="string">31s</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># kubectl get pods | grep nginx  # nginx-1新建好后，再新建nginx-2</span></span><br><span class="line"><span class="string">nginx-0</span>                                <span class="number">1</span><span class="string">/1</span>     <span class="string">Running</span>             <span class="number">0</span>          <span class="string">37s</span></span><br><span class="line"><span class="string">nginx-1</span>                                <span class="number">1</span><span class="string">/1</span>     <span class="string">Running</span>             <span class="number">0</span>          <span class="string">19s</span></span><br><span class="line"><span class="string">nginx-2</span>                                <span class="number">0</span><span class="string">/1</span>     <span class="string">ContainerCreating</span>   <span class="number">0</span>          <span class="string">1s</span></span><br><span class="line"><span class="string">nginx-6799fc88d8-sfsjw</span>                 <span class="number">1</span><span class="string">/1</span>     <span class="string">Running</span>             <span class="number">0</span>          <span class="string">42h</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># kubectl get sts</span></span><br><span class="line"><span class="string">NAME</span>    <span class="string">READY</span>   <span class="string">AGE</span></span><br><span class="line"><span class="string">nginx</span>   <span class="number">3</span><span class="string">/3</span>     <span class="string">54s</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># kubectl get pods | grep nginx</span></span><br><span class="line"><span class="string">nginx-0</span>                                <span class="number">1</span><span class="string">/1</span>     <span class="string">Running</span>   <span class="number">0</span>          <span class="string">58s</span></span><br><span class="line"><span class="string">nginx-1</span>                                <span class="number">1</span><span class="string">/1</span>     <span class="string">Running</span>   <span class="number">0</span>          <span class="string">40s</span></span><br><span class="line"><span class="string">nginx-2</span>                                <span class="number">1</span><span class="string">/1</span>     <span class="string">Running</span>   <span class="number">0</span>          <span class="string">22s</span></span><br><span class="line"><span class="string">nginx-6799fc88d8-sfsjw</span>                 <span class="number">1</span><span class="string">/1</span>     <span class="string">Running</span>   <span class="number">0</span>          <span class="string">42h</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看主机名</span></span><br><span class="line"><span class="comment"># kubectl exec nginx-0 -- hostname </span></span><br><span class="line"><span class="string">nginx-0</span></span><br><span class="line"><span class="comment"># kubectl exec nginx-1 -- hostname </span></span><br><span class="line"><span class="string">nginx-1</span></span><br><span class="line"><span class="comment"># kubectl exec nginx-2 -- hostname </span></span><br><span class="line"><span class="string">nginx-2</span></span><br></pre></td></tr></table></figure>
+
+<p>验证通过主机名访问：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl run -it  --rm dns-test --image=busybox:1.28.4 -- sh</span></span><br><span class="line">If you don&#x27;t see a command prompt, try pressing enter.</span><br><span class="line">/ # nslookup nginx   # 解析普通的service</span><br><span class="line">Server:    10.96.0.10</span><br><span class="line">Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local</span><br><span class="line"></span><br><span class="line">Name:      nginx</span><br><span class="line">Address 1: 10.101.73.189 nginx.default.svc.cluster.local</span><br><span class="line">/ # </span><br><span class="line">/ # nslookup web-01   # 没有clusterIp的service</span><br><span class="line">Server:    10.96.0.10</span><br><span class="line">Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local</span><br><span class="line"></span><br><span class="line">Name:      web-01</span><br><span class="line">Address 1: 10.244.154.205 nginx-0.web-01.default.svc.cluster.local</span><br><span class="line">Address 2: 10.244.154.206 nginx-2.web-01.default.svc.cluster.local</span><br><span class="line">Address 3: 10.244.44.202 nginx-1.web-01.default.svc.cluster.local</span><br><span class="line">/ # </span><br><span class="line">/ # nslookup nginx-01-1.web-01.default.svc.cluster.local  # 解析其中的一个pod</span><br><span class="line">Server:    10.96.0.10</span><br><span class="line">Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local</span><br><span class="line"></span><br><span class="line">Name:      nginx-1.web-01.default.svc.cluster.local</span><br><span class="line">Address 1: 10.244.44.202 nginx-1.web-01.default.svc.cluster.local</span><br><span class="line">/ # </span><br><span class="line">/ # nslookup nginx-01-2.web-01.default.svc.cluster.local</span><br><span class="line">Server:    10.96.0.10</span><br><span class="line">Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local</span><br><span class="line"></span><br><span class="line">Name:      nginx-2.web-01.default.svc.cluster.local</span><br><span class="line">Address 1: 10.244.154.206 nginx-2.web-01.default.svc.cluster.local</span><br></pre></td></tr></table></figure>
+
+<p>​        上文中由于都是通过主机名进行解析的，所以即使pod重启了，主机名并不会发生变化，所以还是能解析出来，我们可以删除一个pod进行测试。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl delete pod nginx-01-1</span></span><br><span class="line">pod &quot;nginx-01-1&quot; deleted</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pods | grep nginx-0</span> </span><br><span class="line">nginx-01-0                                1/1     Running   0          21m</span><br><span class="line">nginx-01-1                                1/1     Running   0          2m19s</span><br><span class="line">nginx-01-2                                1/1     Running   0          21m</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 此时通过busybox容器再次解析nginx-01-1，IP地址发送了变化，但是通过主机名还是能解析出来</span></span><br><span class="line">/ # nslookup nginx-01-1.web-01.default.svc.cluster.local</span><br><span class="line">Server:    10.96.0.10</span><br><span class="line">Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local</span><br><span class="line"></span><br><span class="line">Name:      nginx-1.web-01.default.svc.cluster.local</span><br><span class="line">Address 1: 10.244.44.203 nginx-1.web-01.default.svc.cluster.local</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>扩容pod</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 修改statfulset.yaml中的副本数为4个</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl apply -f statfulset.yaml</span> </span><br><span class="line">statefulset.apps/nginx-01 configured</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pods | grep nginx-0</span></span><br><span class="line">nginx-0                                1/1     Running   0          49m</span><br><span class="line">nginx-1                                1/1     Running   0          29m</span><br><span class="line">nginx-2                                1/1     Running   0          48m</span><br><span class="line">nginx-3                                1/1     Running   0          3m22s</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get sts</span></span><br><span class="line">NAME    READY   AGE</span><br><span class="line">nginx   4/4     49</span><br><span class="line"><span class="meta">#</span><span class="bash"> 再次进行域名解析</span></span><br><span class="line">/ # nslookup web-01</span><br><span class="line">Server:    10.96.0.10</span><br><span class="line">Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local</span><br><span class="line"></span><br><span class="line">Name:      web-01</span><br><span class="line">Address 1: 10.244.154.206 nginx-2.web-01.default.svc.cluster.local</span><br><span class="line">Address 2: 10.244.154.205 nginx-0.web-01.default.svc.cluster.local</span><br><span class="line">Address 3: 10.244.44.203 nginx-1.web-01.default.svc.cluster.local</span><br><span class="line">Address 4: 10.244.154.208 nginx-3.web-01.default.svc.cluster.local</span><br><span class="line"></span><br><span class="line">/ # nslookup nginx-3.web-01.default.svc.cluster.local</span><br><span class="line">Server:    10.96.0.10</span><br><span class="line">Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local</span><br><span class="line"></span><br><span class="line">Name:      nginx-3.web-01.default.svc.cluster.local</span><br><span class="line">Address 1: 10.244.154.208 nginx-3.web-01.default.svc.cluster.local</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除pod，也是按照顺序删除，此时我们通过<code>kubectl delete</code>直接删除四个pod，观察删除顺序和删除后的重建顺序</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl delete pod nginx-0 nginx-1 nginx-2 nginx-3  <span class="comment"># 删除pod</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在集群中的其他节点上观察执行删除后的变化情况</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pods -w    <span class="comment"># 未执行删除命令前</span></span></span><br><span class="line">NAME                                     READY   STATUS    RESTARTS   AGE</span><br><span class="line">java-demo-56d54df448-xnppg               1/1     Running   0          96m</span><br><span class="line">nfs-client-provisioner-fc7d496b4-p4r5b   1/1     Running   0          65m</span><br><span class="line">nfs-web-66cbdc486b-rj9xv                 1/1     Running   0          96m</span><br><span class="line">nfs-web-66cbdc486b-srlqx                 1/1     Running   0          96m</span><br><span class="line">nfs-web-66cbdc486b-t95dt                 1/1     Running   0          96m</span><br><span class="line">nginx-0                                  1/1     Running   0          9m14s</span><br><span class="line">nginx-1                                  1/1     Running   0          8m57s</span><br><span class="line">nginx-2                                  1/1     Running   0          8m40s</span><br><span class="line">nginx-3                                  1/1     Running   0          4m14s</span><br><span class="line">nginx-6799fc88d8-5nz5v                   1/1     Running   0          96m</span><br><span class="line">nginx-6799fc88d8-9srh6                   1/1     Running   0          96m</span><br><span class="line">nginx-6799fc88d8-t9dqc                   1/1     Running   0          96m</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 执行删除命令后</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pods   <span class="comment"># 删除无先后顺序</span></span></span><br><span class="line">NAME                                     READY   STATUS        RESTARTS   AGE</span><br><span class="line">java-demo-56d54df448-xnppg               1/1     Running       0          97m</span><br><span class="line">nfs-client-provisioner-fc7d496b4-p4r5b   1/1     Running       0          65m</span><br><span class="line">nfs-web-66cbdc486b-rj9xv                 1/1     Running       0          97m</span><br><span class="line">nfs-web-66cbdc486b-srlqx                 1/1     Running       0          97m</span><br><span class="line">nfs-web-66cbdc486b-t95dt                 1/1     Running       0          97m</span><br><span class="line">nginx-0                                  0/1     Terminating   0          9m56s</span><br><span class="line">nginx-1                                  0/1     Terminating   0          9m39s</span><br><span class="line">nginx-2                                  0/1     Terminating   0          9m22s</span><br><span class="line">nginx-3                                  0/1     Terminating   0          4m56s</span><br><span class="line">nginx-6799fc88d8-5nz5v                   1/1     Running       0          97m</span><br><span class="line">nginx-6799fc88d8-9srh6                   1/1     Running       0          97m</span><br><span class="line">nginx-6799fc88d8-t9dqc                   1/1     Running       0          97m</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pods   <span class="comment"># 按照nginx-0、nginx-1、nginx-2、nginx-3的顺序依次新建pod</span></span></span><br><span class="line">NAME                                     READY   STATUS              RESTARTS   AGE</span><br><span class="line">java-demo-56d54df448-xnppg               1/1     Running             0          97m</span><br><span class="line">nfs-client-provisioner-fc7d496b4-p4r5b   1/1     Running             0          66m</span><br><span class="line">nfs-web-66cbdc486b-rj9xv                 1/1     Running             0          97m</span><br><span class="line">nfs-web-66cbdc486b-srlqx                 1/1     Running             0          97m</span><br><span class="line">nfs-web-66cbdc486b-t95dt                 1/1     Running             0          97m</span><br><span class="line">nginx-0                                  1/1     Running             0          34s</span><br><span class="line">nginx-1                                  0/1     ContainerCreating   0          17s</span><br><span class="line">nginx-6799fc88d8-5nz5v                   1/1     Running             0          97m</span><br><span class="line">nginx-6799fc88d8-9srh6                   1/1     Running             0          97m</span><br><span class="line">nginx-6799fc88d8-t9dqc                   1/1     Running             0          97m</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pods</span></span><br><span class="line">NAME                                     READY   STATUS    RESTARTS   AGE</span><br><span class="line">java-demo-56d54df448-xnppg               1/1     Running   0          99m</span><br><span class="line">nfs-client-provisioner-fc7d496b4-p4r5b   1/1     Running   0          67m</span><br><span class="line">nfs-web-66cbdc486b-rj9xv                 1/1     Running   0          99m</span><br><span class="line">nfs-web-66cbdc486b-srlqx                 1/1     Running   0          99m</span><br><span class="line">nfs-web-66cbdc486b-t95dt                 1/1     Running   0          99m</span><br><span class="line">nginx-0                                  1/1     Running   0          111s # 从时间也可以看出新建的先后顺序</span><br><span class="line">nginx-1                                  1/1     Running   0          94s</span><br><span class="line">nginx-2                                  1/1     Running   0          77s</span><br><span class="line">nginx-3                                  1/1     Running   0          60s</span><br><span class="line">nginx-6799fc88d8-5nz5v                   1/1     Running   0          99m</span><br><span class="line">nginx-6799fc88d8-9srh6                   1/1     Running   0          99m</span><br><span class="line">nginx-6799fc88d8-t9dqc                   1/1     Running   0          99m</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 通过<span class="string">&quot;kubectl get pods -w&quot;</span>指令查看容器变化的完整过程如下</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pods -w   <span class="comment"># 此处只截取了nginx-0、nginx-1、nginx-2、nginx-3四个容器的状态变化</span></span></span><br><span class="line">nginx-2                                  0/1     Terminating   0          9m30s</span><br><span class="line">nginx-1                                  0/1     Terminating   0          9m30s</span><br><span class="line">nginx-3                                  0/1     Terminating   0          5m4s</span><br><span class="line">nginx-0                                  0/1     Terminating   0          10m</span><br><span class="line"><span class="meta">#</span><span class="bash"> ------nginx-0容器从pending-&gt;ContainerCreating-&gt;到Running的状态变化</span></span><br><span class="line">nginx-0                                  0/1     Pending       0          0s</span><br><span class="line">nginx-0                                  0/1     Pending       0          0s </span><br><span class="line">nginx-0                                  0/1     Pending       0          1s </span><br><span class="line">nginx-0                                  0/1     ContainerCreating   0          1s</span><br><span class="line">nginx-0                                  1/1     Running             0          17s</span><br><span class="line"><span class="meta">#</span><span class="bash"> ------nginx-1容器从pending-&gt;ContainerCreating-&gt;到Running的状态变化</span></span><br><span class="line">nginx-1                                  0/1     Pending             0          0s</span><br><span class="line">nginx-1                                  0/1     Pending             0          0s</span><br><span class="line">nginx-1                                  0/1     ContainerCreating   0          0s</span><br><span class="line">nginx-1                                  0/1     ContainerCreating   0          1s</span><br><span class="line">nginx-1                                  1/1     Running             0          17s</span><br><span class="line"><span class="meta">#</span><span class="bash"> ------nginx-2容器从pending-&gt;ContainerCreating-&gt;到Running的状态变化</span></span><br><span class="line">nginx-2                                  0/1     Pending             0          0s</span><br><span class="line">nginx-2                                  0/1     Pending             0          0s</span><br><span class="line">nginx-2                                  0/1     ContainerCreating   0          0s</span><br><span class="line">nginx-2                                  0/1     ContainerCreating   0          1s</span><br><span class="line">nginx-2                                  1/1     Running             0          17s</span><br><span class="line"><span class="meta">#</span><span class="bash"> ------nginx-3容器从pending-&gt;ContainerCreating-&gt;到Running的状态变化</span></span><br><span class="line">nginx-3                                  0/1     Pending             0          0s</span><br><span class="line">nginx-3                                  0/1     Pending             0          0s</span><br><span class="line">nginx-3                                  0/1     ContainerCreating   0          1s</span><br><span class="line">nginx-3                                  0/1     ContainerCreating   0          1s</span><br><span class="line">nginx-3                                  1/1     Running             0          17s</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>升级，按照从后往前的顺序一个个升级</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 将镜像修改成nginx:1.17</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl apply -f svc.ymal</span> </span><br><span class="line">statefulset.apps/nginx configured</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pods</span></span><br><span class="line">NAME                                     READY   STATUS              RESTARTS   AGE</span><br><span class="line">java-demo-56d54df448-xnppg               1/1     Running             0          118m</span><br><span class="line">nfs-client-provisioner-fc7d496b4-p4r5b   1/1     Running             0          86m</span><br><span class="line">nfs-web-66cbdc486b-rj9xv                 1/1     Running             0          118m</span><br><span class="line">nfs-web-66cbdc486b-srlqx                 1/1     Running             0          118m</span><br><span class="line">nfs-web-66cbdc486b-t95dt                 1/1     Running             0          118m</span><br><span class="line">nginx-0                                  0/1     ContainerCreating   0          16s  # 新建第四个容器</span><br><span class="line">nginx-1                                  1/1     Running             0          46s  # 新建第三个容器</span><br><span class="line">nginx-2                                  1/1     Running             0          76s  # 新建第二个容器</span><br><span class="line">nginx-3                                  1/1     Running             0          2m6s # 新建第一个完成</span><br><span class="line">nginx-6799fc88d8-5nz5v                   1/1     Running             0          118m</span><br><span class="line">nginx-6799fc88d8-9srh6                   1/1     Running             0          118m</span><br><span class="line">nginx-6799fc88d8-t9dqc                   1/1     Running             0          118m</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 通过<span class="string">&quot;kubectl get pods -w&quot;</span>指令查看容器变化的完整过程如下</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pods -w  <span class="comment"># 此处只截取相关容器的状态变化</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> ------nginx-3容器从Terminating-&gt;pending-&gt;ContainerCreating-&gt;Running的状态变化</span></span><br><span class="line">nginx-3                                  1/1     Terminating         0          17m</span><br><span class="line">nginx-3                                  0/1     Pending             0          0s</span><br><span class="line">nginx-3                                  0/1     ContainerCreating   0          0s</span><br><span class="line">nginx-3                                  1/1     Running             0          43s</span><br><span class="line"><span class="meta">#</span><span class="bash"> ------nginx-2容器从Terminating-&gt;pending-&gt;ContainerCreating-&gt;Running的状态变化</span></span><br><span class="line">nginx-2                                  1/1     Terminating         0          18m</span><br><span class="line">nginx-2                                  0/1     Pending             0          0s</span><br><span class="line">nginx-2                                  0/1     ContainerCreating   0          0s</span><br><span class="line">nginx-2                                  1/1     Running             0          18s</span><br><span class="line"><span class="meta">#</span><span class="bash"> ------nginx-1容器从Terminating-&gt;pending-&gt;ContainerCreating-&gt;Running的状态变化</span></span><br><span class="line">nginx-1                                  0/1     Terminating         0          19m</span><br><span class="line">nginx-1                                  0/1     Pending             0          0s</span><br><span class="line">nginx-1                                  0/1     ContainerCreating   0          0s</span><br><span class="line">nginx-1                                  1/1     Running             0          18s</span><br><span class="line"><span class="meta">#</span><span class="bash"> ------nginx-0容器从Terminating-&gt;pending-&gt;ContainerCreating-&gt;Running的状态变化</span></span><br><span class="line">nginx-0                                  1/1     Terminating         0          20m</span><br><span class="line">nginx-0                                  0/1     Pending             0          0s</span><br><span class="line">nginx-0                                  0/1     ContainerCreating   0          0s</span><br><span class="line">nginx-0                                  1/1     Running             0          18s</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3-StatefulSet控制器管理机制：独享存储"><a href="#2-3-StatefulSet控制器管理机制：独享存储" class="headerlink" title="2.3 StatefulSet控制器管理机制：独享存储"></a>2.3 StatefulSet控制器管理机制：独享存储</h4><p>​        StatefulSet的存储卷使用<code>VolumeClaimTemplate</code>创建，称为<code>卷申请模板</code>，当StatefulSet使用<code>VolumeClaimTemplate</code>创建一个<code>PersistentVolume</code>时，同样也会为每个Pod分配并创建一个编号的PVC，每个PVC绑定对应的PV，从而保证每个Pod都拥有独立的存储。</p>
+<p>​        新建关于svc、StatefulSet的yaml文件</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim svc2.yaml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">web-02</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">clusterIP:</span> <span class="string">None</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">nginx-02</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">    <span class="attr">targetPort:</span> <span class="number">80</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># kubectl apply -f svc2.yaml </span></span><br><span class="line"><span class="string">service/web-02</span> <span class="string">created</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># kubectl get svc | grep web-02</span></span><br><span class="line"><span class="string">web-02</span>       <span class="string">ClusterIP</span>   <span class="string">None</span>             <span class="string">&lt;none&gt;</span>        <span class="number">80</span><span class="string">/TCP</span>         <span class="string">26s</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># vim svc.yaml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">StatefulSet</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">webserver</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">serviceName:</span> <span class="string">&quot;web-02&quot;</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">3</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">       <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">         <span class="attr">image:</span> <span class="string">nginx:1.17</span></span><br><span class="line">         <span class="attr">ports:</span></span><br><span class="line">         <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br><span class="line">           <span class="attr">name:</span> <span class="string">web</span></span><br><span class="line">         <span class="attr">volumeMounts:</span></span><br><span class="line">         <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">www</span></span><br><span class="line">           <span class="attr">mountPath:</span> <span class="string">/usr/share/nginx/html/</span></span><br><span class="line">           </span><br><span class="line">  <span class="attr">volumeClaimTemplates:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">www</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">storageClassName:</span> <span class="string">&quot;managed-nfs-storage&quot;</span></span><br><span class="line">      <span class="attr">accessModes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">ReadWriteOnce</span></span><br><span class="line">      <span class="attr">resources:</span></span><br><span class="line">        <span class="attr">requests:</span></span><br><span class="line">          <span class="attr">storage:</span> <span class="string">5Gi</span>          </span><br></pre></td></tr></table></figure>
+
+<p>​        执行yaml文件，并查看pv和pvc的信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 执行yaml文件前</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pv</span></span><br><span class="line">No resources found</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pvc</span></span><br><span class="line">No resources found in default namespace.</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 执行yaml文件后</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl apply -f sts.yaml</span> </span><br><span class="line">statefulset.apps/webserver created</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pods | grep webserver</span></span><br><span class="line">webserver-0                              1/1     Running   0          21s</span><br><span class="line">webserver-1                              1/1     Running   0          18s</span><br><span class="line">webserver-2                              1/1     Running   0          14s</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pv  <span class="comment"># 按照pod新建的顺序依次新建</span></span></span><br><span class="line">NAME    CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM    STORAGECLASS          REASON   AGE</span><br><span class="line">pvc-7bb8995f-47ca-4003-bf56-d8850b814873   5Gi   RWO   Delete  Bound    default/www-webserver-0   managed-nfs-storage            113s</span><br><span class="line">pvc-9caa7ee0-e998-4880-ae6e-469ed0e86838   5Gi  RWO    Delete   Bound    default/www-webserver-1   managed-nfs-storage            110s</span><br><span class="line">pvc-b365f76a-a36f-402a-b0b9-fdd0d33286cc   5Gi  RWO    Delete   Bound    default/www-webserver-2   managed-nfs-storage            106s</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pvc  <span class="comment"># 按照pod新建的顺序依次新建</span></span></span><br><span class="line">NAME             STATUS       VOLUME                           CAPACITY  ACCESS MODES STORAGECLASS  AGE</span><br><span class="line">www-webserver-0 Bound pvc-7bb8995f-47ca-4003-bf56-d8850b814873  5Gi     RWO    managed-nfs-storage  8s</span><br><span class="line">www-webserver-1 Bound pvc-9caa7ee0-e998-4880-ae6e-469ed0e86838  5Gi     RWO    managed-nfs-storage  5s</span><br><span class="line">www-webserver-2 Bound pvc-b365f76a-a36f-402a-b0b9-fdd0d33286cc  5Gi     RWO   managed-nfs-storage  1s</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> nfs服务器上的根文件夹中的文件如下</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> ll -h</span> </span><br><span class="line">total 12K</span><br><span class="line">-rw-r--r-- 1 root root  8 Apr 27 17:23 a.txt</span><br><span class="line">drwxrwxrwx 2 root root  6 May 23 22:34 default-www-webserver-0-pvc-1884bb67-ff54-4bd5-bbaf-e0c349080349</span><br><span class="line">drwxrwxrwx 2 root root  6 May 23 22:34 default-www-webserver-1-pvc-e397aae1-f85c-46fc-a91e-b66540a4f195</span><br><span class="line">drwxrwxrwx 2 root root  6 May 23 22:34 default-www-webserver-2-pvc-0531d703-7014-405e-a4d8-efd6ae4e264b</span><br><span class="line">-rw-r--r-- 1 root root 16 May 23 20:17 index.html</span><br><span class="line">-rw-r--r-- 1 root root 19 May 23 20:20 welcome.html</span><br></pre></td></tr></table></figure>
+
+<p>​        分别往三个容器中写入文件并查看nfs服务器上根文件目录中的信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl <span class="built_in">exec</span> -it  webserver-0   -- /bin/bash</span></span><br><span class="line">root@webserver-0 :/# echo &quot;welcome webserver-0&quot; &gt;  /usr/share/nginx/html/welcome.html</span><br><span class="line">root@webserver-0 :/# ls /usr/share/nginx/html/</span><br><span class="line">welcome.html</span><br><span class="line">root@webserver-0 :/# exit</span><br><span class="line">exit</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl <span class="built_in">exec</span> -it webserver-1  -- /bin/bash</span></span><br><span class="line">root@webserver-1:/# echo &quot;welcome webserver-1&quot; &gt;  /usr/share/nginx/html/welcome.html</span><br><span class="line">root@webserver-1:/# ls /usr/share/nginx/html/</span><br><span class="line">welcome.html</span><br><span class="line">root@webserver-1:/# exit</span><br><span class="line">exit</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl <span class="built_in">exec</span> -it webserver-2  -- /bin/bash</span></span><br><span class="line">root@webserver-2:/# echo &quot;welcome webserver-2&quot; &gt;  /usr/share/nginx/html/welcome.html</span><br><span class="line">root@webserver-2:/# ls /usr/share/nginx/html/</span><br><span class="line">welcome.html</span><br><span class="line">root@webserver-2:/# exit</span><br><span class="line">exit</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> nfs服务器上的根文件夹中的文件如下</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> ll</span> </span><br><span class="line">total 12</span><br><span class="line">-rw-r--r-- 1 root root  8 Apr 27 17:23 a.txt</span><br><span class="line">drwxrwxrwx 2 root root 26 May 23 23:12 default-www-webserver-0-pvc-7bb8995f-47ca-4003-bf56-d8850b814873</span><br><span class="line">drwxrwxrwx 2 root root 26 May 23 23:14 default-www-webserver-1-pvc-9caa7ee0-e998-4880-ae6e-469ed0e86838</span><br><span class="line">drwxrwxrwx 2 root root 26 May 23 23:14 default-www-webserver-2-pvc-b365f76a-a36f-402a-b0b9-fdd0d33286cc</span><br><span class="line">-rw-r--r-- 1 root root 16 May 23 20:17 index.html</span><br><span class="line">-rw-r--r-- 1 root root 19 May 23 20:20 welcome.html</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ls default-www-webserver-0-pvc-7bb8995f-47ca-4003-bf56-d8850b814873/</span></span><br><span class="line">welcome.html</span><br><span class="line"><span class="meta">#</span><span class="bash"> ls default-www-webserver-1-pvc-9caa7ee0-e998-4880-ae6e-469ed0e86838/</span></span><br><span class="line">welcome.html</span><br><span class="line"><span class="meta">#</span><span class="bash"> ls default-www-webserver-2-pvc-b365f76a-a36f-402a-b0b9-fdd0d33286cc/</span></span><br><span class="line">welcome.html</span><br></pre></td></tr></table></figure>
+
+<p>​        通过pod的ip地址访问</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pods -o wide| grep webserver</span></span><br><span class="line">webserver-0    1/1     Running   0   5m36s   10.244.44.234   k8s-node-02   &lt;none&gt;     &lt;none&gt;</span><br><span class="line">webserver-1    1/1     Running   0   5m34s   10.244.44.238   k8s-node-02   &lt;none&gt;     &lt;none&gt;</span><br><span class="line">webserver-2    1/1     Running   0   5m32s   10.244.44.241   k8s-node-02   &lt;none&gt;     &lt;none&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> curl 10.244.44.234/welcome.html</span></span><br><span class="line">welcome webserver-0</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> curl 10.244.44.238/welcome.html</span></span><br><span class="line">welcome webserver-1</span><br><span class="line"><span class="meta">#</span><span class="bash"> curl 10.244.44.241/welcome.html</span></span><br><span class="line">welcome webserver-2</span><br></pre></td></tr></table></figure>
+
+<p>StatefulSet与Deployment区别：<strong>有身份的！</strong><br>身份三要素：</p>
+<ul>
+<li>域名</li>
+<li>主机名</li>
+<li>存储（PVC）</li>
+</ul>
+<p>在K8s里部署应用集群参考资料：<br>•<a target="_blank" rel="noopener" href="https://kubernetes.io/zh/docs/tutorials/stateful-application/zookeeper/">https://kubernetes.io/zh/docs/tutorials/stateful-application/zookeeper/</a><br>•<a target="_blank" rel="noopener" href="https://kubernetes.io/zh/docs/tutorials/stateful-application/cassandra/">https://kubernetes.io/zh/docs/tutorials/stateful-application/cassandra/</a><br>•<a target="_blank" rel="noopener" href="https://github.com/lizhenliang/k8s-statefulset/">https://github.com/lizhenliang/k8s-statefulset/</a></p>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢您美味的糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.png">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          qingdalf
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://qingdalf.github.io/2021-05/kuberStatefulSet/" title="Kubernetes 有状态应用部署" target="_blank">https://qingdalf.github.io/2021-05/kuberStatefulSet/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
   </div>
-</article>
-  
+  <div class="article-info article-info-index">
     
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerVolumes/" class="archive-article-date">
-        <time datetime="2021-05-04T08:46:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerVolumes/">docker容器存储</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerNetQuestion/" class="archive-article-date">
-        <time datetime="2021-05-04T07:19:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerNetQuestion/">两个常见的容器网络问题</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerNetAdvance/" class="archive-article-date">
-        <time datetime="2021-05-04T07:16:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerNetAdvance/">docker网络进阶</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerNetwork/" class="archive-article-date">
-        <time datetime="2021-05-03T12:01:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerNetwork/">docker容器四种网络模式</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -449,225 +422,127 @@
 	</div>
 
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://qingdalf.github.io/2021-05/kuberStatefulSet/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerImage/" class="archive-article-date">
-        <time datetime="2021-05-03T06:29:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
-</a>
 
+
+<nav id="article-nav">
+  
+    <a href="/2021-05/kuberStorage/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          数据、数据卷和动态供给
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021-05/kuberMangerConfig/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">管理应用程序配置</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerImage/">docker镜像</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Kubernetes-%E6%9C%89%E7%8A%B6%E6%80%81%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2"><span class="toc-number">1.</span> <span class="toc-text">Kubernetes 有状态应用部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%97%A0%E7%8A%B6%E6%80%81%E4%B8%8E%E6%9C%89%E7%8A%B6%E6%80%81"><span class="toc-number">1.1.</span> <span class="toc-text">1.无状态与有状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-StatefulSet%E6%8E%A7%E5%88%B6%E5%99%A8%E6%A6%82%E8%BF%B0"><span class="toc-number">1.2.</span> <span class="toc-text">2.StatefulSet控制器概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-StatefulSet%E6%8E%A7%E5%88%B6%E5%99%A8%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6%EF%BC%9A%E7%BD%91%E7%BB%9C%E6%A0%87%E8%AF%86"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 StatefulSet控制器管理机制：网络标识</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-1-%E5%88%9B%E5%BB%BAHeadless-Service"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">2.1.1 创建Headless Service</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-2-%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8Headless-Service%E7%9A%84StatefulSet%E5%BA%94%E7%94%A8"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">2.2.2 创建使用Headless Service的StatefulSet应用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-StatefulSet%E6%8E%A7%E5%88%B6%E5%99%A8%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6%EF%BC%9A%E7%8B%AC%E4%BA%AB%E5%AD%98%E5%82%A8"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.3 StatefulSet控制器管理机制：独享存储</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerLifeCycle/" class="archive-article-date">
-        <time datetime="2021-05-03T06:09:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerLifeCycle/">docker生命周期</a>
-	
-    </h1>
-  
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerInstall/" class="archive-article-date">
-        <time datetime="2021-05-03T05:33:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerInstall/">安装docker和运行容器的方式</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerIntroduction/" class="archive-article-date">
-        <time datetime="2021-05-03T04:49:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerIntroduction/">docker简介</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021-05/dockerPre/" class="archive-article-date">
-        <time datetime="2021-05-03T03:27:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021-05/dockerPre/">docker开篇：容器</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2021/05/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2021/05/">1</a><a class="page-number" href="/archives/2021/05/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2021/05/page/4/">4</a><a class="extend next" rel="next" href="/archives/2021/05/page/4/">Next &amp;raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -708,8 +583,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -236,6 +236,186 @@
             
 
   
+    <article id="post-dockerImageMake" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021-05/dockerImageMake/">基于容器制作docker镜像</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021-05/dockerImageMake/" class="archive-article-date">
+        <time datetime="2021-05-04T09:23:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="1-准备工作–制作本地局域网yum源"><a href="#1-准备工作–制作本地局域网yum源" class="headerlink" title="1 准备工作–制作本地局域网yum源"></a>1 准备工作–制作本地局域网yum源</h3><h4 id="1-1-安装并启动vsftpd"><a href="#1-1-安装并启动vsftpd" class="headerlink" title="1.1 安装并启动vsftpd"></a>1.1 安装并启动vsftpd</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> yum -y install vsftpd</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> systemctl <span class="built_in">enable</span> vsftpd &amp;&amp; systemctl start vsftpd</span></span><br></pre></td></tr></table></figure>
+    
+    <a class="article-more-a" href="/2021-05/dockerImageMake/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/kuberntes//" class="article-tag-list-link color5">kuberntes</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021-05/dockerImageMake/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-dockerVolumes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021-05/dockerVolumes/">docker容器存储</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021-05/dockerVolumes/" class="archive-article-date">
+        <time datetime="2021-05-04T08:46:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>​        将数据从宿主机挂载到容器中的三种方式：</p>
+<ul>
+<li>bind mounts：将宿主机上的任意位置的文件或者目录挂载到容器中。</li>
+<li>volumes：Docker管理宿主机文件系统的一部分(/var/lib/docker/volumes)，保存数据的最佳方法</li>
+<li>tmpfs：挂载存储在主机系统的内存中，而不会写入主机的文件系统。如果不希望将数据持久化存储在任何位置，可以使用tmpfs，同时避免写入容器可写层提高性能(不常使用)。
+    
+    <a class="article-more-a" href="/2021-05/dockerVolumes/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021-05/dockerVolumes/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-dockerNetQuestion" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -935,183 +1115,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2021-05/dockerPre/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pVarString" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021-05/pVarString/">PythonVarString</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021-05/pVarString/" class="archive-article-date">
-        <time datetime="2021-05-02T06:16:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-02</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h2 id="3-字符串"><a href="#3-字符串" class="headerlink" title="3.字符串"></a>3.字符串</h2><p>字符串常见操作官方文档：<a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.9/library/string.html?highlight=%E5%AD%97%E7%AC%A6%E4%B8%B2">https://docs.python.org/zh-cn/3.9/library/string.html?highlight=字符串</a></p>
-<p>​        大多数程序都定义并收集某种数据，然后使用它们来做些有意义的事情。鉴于此，对数据进行分类大有裨益。其中字符串就是一个基础的数据类型。</p>
-    
-    <a class="article-more-a" href="/2021-05/pVarString/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021-05/pVarString/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pList" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021-05/pList/">列表简介和列表操作</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021-05/pList/" class="archive-article-date">
-        <time datetime="2021-05-02T05:49:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-02</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h2 id="1-认识列表"><a href="#1-认识列表" class="headerlink" title="1. 认识列表"></a>1. 认识列表</h2><h3 id="1-1-列表是什么？"><a href="#1-1-列表是什么？" class="headerlink" title="1.1 列表是什么？"></a>1.1 列表是什么？</h3><p>​        列表是由一系列按特定顺序排列的不相关的元素组成且可以更改的集合。在Python中，用方括号（[]）来表示列表，并用逗号来分隔其中的元素。从描述中，我们可以知道：</p>
-    
-    <a class="article-more-a" href="/2021-05/pList/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021-05/pList/">展开全文 >></a>
     </p>
     
 
