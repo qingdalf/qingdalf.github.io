@@ -6,23 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://qingdalf.github.io">
-  <title>Pod调度 | 倚楼听雨</title>
+  <title>Archives: 2021 | 倚楼听雨</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="1. 创建一个Pod的流程step1 kubectl run&#x2F;apply创建一个pod，向apiserver发起请求step2 apiserver会将请求的配置写到etcdstep3 etcd响应处理结果给apiserver，apiserver响应处理结果给kubectlstep4 scheduler收到需要创建pod的请求，根据自己调度算法选择一个合适的节点分配，并将结果反馈给apiserver">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Pod调度">
-<meta property="og:url" content="https://qingdalf.github.io/2021-05/kuberScheduler/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="倚楼听雨">
+<meta property="og:url" content="https://qingdalf.github.io/archives/2021/page/5/index.html">
 <meta property="og:site_name" content="倚楼听雨">
-<meta property="og:description" content="1. 创建一个Pod的流程step1 kubectl run&#x2F;apply创建一个pod，向apiserver发起请求step2 apiserver会将请求的配置写到etcdstep3 etcd响应处理结果给apiserver，apiserver响应处理结果给kubectlstep4 scheduler收到需要创建pod的请求，根据自己调度算法选择一个合适的节点分配，并将结果反馈给apiserver">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://qingdalf.github.io/2021-05/kuberPre/image-20210412155314385.png">
-<meta property="article:published_time" content="2021-05-05T11:07:33.000Z">
-<meta property="article:modified_time" content="2021-05-05T11:30:01.894Z">
 <meta property="article:author" content="qingdalf">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://qingdalf.github.io/2021-05/kuberPre/image-20210412155314385.png">
   
     <link rel="alternative" href="/atom.xml" title="倚楼听雨" type="application/atom+xml">
   
@@ -235,412 +229,90 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-kuberScheduler" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
+            
+  
+  
     
-      <header class="article-header">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2021" class="archive-year">2021</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	
+<a href="/2021-04/aboutme/" class="archive-article-date">
+        <time datetime="2021-04-18T00:18:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-18</time>
+</a>
+
+        </div>
+    	 
   
-  
-    <h1 class="article-title" itemprop="name">
-      Pod调度
+    <h1 itemprop="name">
+	
+	  <a class="archive-article-title" href="/2021-04/aboutme/">aboutme</a>
+	
     </h1>
   
 
 
-  
-  
-        
-        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
-              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
-        </span>
-
-<a href="/2021-05/kuberScheduler/" class="archive-article-date">
-        <time datetime="2021-05-05T11:07:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-05</time>
-</a>
-
-  
-  
-    
-<div style="margin-top:10px;">
-  <span class="post-time">
-    <span class="post-meta-item-icon">
-      <!-- fonts.scss -->
-      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
-      <i class="icon-statistics"></i>
-      <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">3.2k字</span>
-    </span>
-  </span>
-
-  <span class="post-time">
-    &nbsp; | &nbsp;
-    <span class="post-meta-item-icon">
-      <i class="icon-book icon"></i>
-      <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">14分</span>
-    </span>
-  </span>
-</div>
-
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h2 id="1-创建一个Pod的流程"><a href="#1-创建一个Pod的流程" class="headerlink" title="1. 创建一个Pod的流程"></a>1. 创建一个Pod的流程</h2><p><strong>step1</strong> kubectl run/apply创建一个pod，向apiserver发起请求<br><strong>step2</strong> apiserver会将请求的配置写到etcd<br><strong>step3</strong> etcd响应处理结果给apiserver，apiserver响应处理结果给kubectl<br><strong>step4</strong> scheduler收到需要创建pod的请求，根据自己调度算法选择一个合适的节点分配，并将结果反馈给apiserver<br><strong>step5</strong> kubelet收到需要创建我这个节点的pod，再调用容器引擎创建容器，容器引擎将结果反馈给kubelet，kubelet汇总pod状态反馈apiserver</p>
-<span id="more"></span>
-
-<p>​        在创建pod的过程中，少了controller-manager和kube-proxy组件。controller-manager创建工作负载控制器才会用到；kube-proxy创建service才用到。</p>
-<img src="../kuberPre/image-20210412155314385.png" alt="image-20210412155314385" style="zoom: 67%;" />
-
-<center>创建pod流程</center>
-
-<h2 id="2-Pod中影响调度的主要因素"><a href="#2-Pod中影响调度的主要因素" class="headerlink" title="2. Pod中影响调度的主要因素"></a>2. Pod中影响调度的主要因素</h2><h3 id="2-1-资源配额–resources"><a href="#2-1-资源配额–resources" class="headerlink" title="2.1 资源配额–resources"></a>2.1 资源配额–resources</h3><ul>
-<li>资源调度的依据–limits(上限)和requests(下限)<ul>
-<li><strong>容器资源限制</strong>：<ul>
-<li><code>resources.limits.cpu</code>–容器最大能使用的cpu</li>
-<li><code>resources.limits.memory</code>–容器最大能使用的memory</li>
-</ul>
-</li>
-<li><strong>容器最小资源需求</strong>(等同于预分配)：<ul>
-<li><code>resources.requests.cpu</code></li>
-<li><code>resources.requests.memory</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<ol>
-<li><strong>容器最小资源需求</strong>作为容器调度时资源分配的依据</li>
-<li><strong>如果集群中没有节点能满足pod创建的最小资源要求，pod将不会被创建，一直处于pedding状态</strong>。</li>
-</ol>
-</blockquote>
-<ul>
-<li>资源配额注意事项：<ul>
-<li>requests必须小于limits，并且小于宿主机能提供的最大cpu和memory资源</li>
-<li>requests配置建议低于limits的20%-30%</li>
-<li>cpu单位可以是m，也可以是浮点数，m是CPU的一个计量单位，称为毫核，例如节点2C4G，2C=2*1000=2000m，0.5=500m</li>
-<li>如果设置CPU的值是浮点数，会自动转m单位</li>
-<li>如果没有节点满足requests配置要求，pod不会被创建</li>
-</ul>
-</li>
-</ul>
-<h4 id="2-1-1-设置pod使用的宿主机资源"><a href="#2-1-1-设置pod使用的宿主机资源" class="headerlink" title="2.1.1 设置pod使用的宿主机资源"></a>2.1.1 设置pod使用的宿主机资源</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  labels:</span><br><span class="line">    run: nginx</span><br><span class="line">  name: pod-resources </span><br><span class="line">spec:</span><br><span class="line">  containers:</span><br><span class="line">  - image: nginx</span><br><span class="line">    name: nginx</span><br><span class="line">    resources:            # 资源配额，包括最小配置要求requests和最大使用限制limits</span><br><span class="line">      requests:</span><br><span class="line">        memory: &quot;800Mi&quot;   # 最小内存要求为800M，如果此处的值大于limits中的memory的值，将新建pod失败</span><br><span class="line">        cpu: &quot;0.4&quot;     # 最小cpu要求是0.4核，如果此处的值大于limits中的cpu的值，将新建pod失败</span><br><span class="line">      limits:</span><br><span class="line">        memory: &quot;1Gi&quot;    # 最大能使用的内存是1024M</span><br><span class="line">        cpu: &quot;0.5&quot;       # 最大能使用的cpu是半核，单位会自动转换成m的</span><br></pre></td></tr></table></figure>
-
-<p>新建容器，并查看资源限制信息</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl apply -f pod-resouce.yaml</span> </span><br><span class="line">pod/pod-resources created</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl describe pods pod-resources   <span class="comment"># 着重关注下面的Limits和Requests字段</span></span></span><br><span class="line">Name:         pod-resources</span><br><span class="line">Namespace:    default</span><br><span class="line">Priority:     0</span><br><span class="line">Node:         k8s-node-02/10.138.3.63</span><br><span class="line">Start Time:   Mon, 12 Apr 2021 16:38:58 +0800</span><br><span class="line">Labels:       run=nginx</span><br><span class="line">Annotations:  cni.projectcalico.org/podIP: 10.244.44.214/32</span><br><span class="line">              cni.projectcalico.org/podIPs: 10.244.44.214/32</span><br><span class="line">Status:       Running</span><br><span class="line">IP:           10.244.44.214</span><br><span class="line">IPs:</span><br><span class="line">  IP:  10.244.44.214</span><br><span class="line">Containers:</span><br><span class="line">  nginx:</span><br><span class="line">    Container ID:   containerd://657add7043e67b807db3b34d3d18c40d7f82c6620175a86f85b7036d4b205e15</span><br><span class="line">    Image:          nginx</span><br><span class="line">    Image ID:       docker.io/library/nginx@sha256:6b5f5eec0ac03442f3b186d552ce895dce2a54be6cb834358040404a242fd476</span><br><span class="line">    Port:           &lt;none&gt;</span><br><span class="line">    Host Port:      &lt;none&gt;</span><br><span class="line">    State:          Running</span><br><span class="line">      Started:      Mon, 12 Apr 2021 16:39:14 +0800</span><br><span class="line">    Ready:          True</span><br><span class="line">    Restart Count:  0</span><br><span class="line">    Limits:            # 资源限制，如果不做限制，一般不显示这个字段的信息</span><br><span class="line">      cpu:     500m             # cpu限制，默认将单位转换成了毫核</span><br><span class="line">      memory:  1Gi              # memory限制</span><br><span class="line">    Requests:         # 最小资源要求，如果不做限制，一般不显示这个字段的信息</span><br><span class="line">      cpu:        400m          # cpu最小要求400毫核</span><br><span class="line">      memory:     800Mi         # memory最小要求</span><br><span class="line">    Environment:  &lt;none&gt;</span><br><span class="line">    Mounts:</span><br><span class="line">      /var/run/secrets/kubernetes.io/serviceaccount from default-token-bq4pj (ro)</span><br><span class="line">Conditions:</span><br><span class="line">  Type              Status</span><br><span class="line">  Initialized       True </span><br><span class="line">  Ready             True </span><br><span class="line">  ContainersReady   True </span><br><span class="line">  PodScheduled      True </span><br><span class="line">Volumes:</span><br><span class="line">  default-token-bq4pj:</span><br><span class="line">    Type:        Secret (a volume populated by a Secret)</span><br><span class="line">    SecretName:  default-token-bq4pj</span><br><span class="line">    Optional:    false</span><br><span class="line">QoS Class:       Burstable</span><br><span class="line">Node-Selectors:  &lt;none&gt;</span><br><span class="line">Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s</span><br><span class="line">                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s</span><br><span class="line">Events:</span><br><span class="line">  Type    Reason     Age   From               Message</span><br><span class="line">  ----    ------     ----  ----               -------</span><br><span class="line">  Normal  Scheduled  53s   default-scheduler  Successfully assigned default/pod-resources to k8s-node-02</span><br><span class="line">  Normal  Pulling    53s   kubelet            Pulling image &quot;nginx&quot;</span><br><span class="line">  Normal  Pulled     37s   kubelet            Successfully pulled image &quot;nginx&quot; in 15.312652246s</span><br><span class="line">  Normal  Created    37s   kubelet            Created container nginx</span><br><span class="line">  Normal  Started    37s   kubelet            Started container nginx</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-1-2-查看集群中节点资源分配情况"><a href="#2-1-2-查看集群中节点资源分配情况" class="headerlink" title="2.1.2 查看集群中节点资源分配情况"></a>2.1.2 查看集群中节点资源分配情况</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl describe node k8s-master</span></span><br><span class="line">····</span><br><span class="line">  Namespace      Name                    CPU Requests  CPU Limits Memory Requests Memory Limits   AGE</span><br><span class="line">  --------- ---- ------------  ----------  ---------------  -------------  ---</span><br><span class="line">  kube-system  calico-kube-controllers-69496d8b75-vlphv  0 (0%)    0 (0%)  0 (0%)     0 (0%)      3d4h</span><br><span class="line">  kube-system  calico-node-jppch                        250m (12%) 0 (0%)  0 (0%)     0 (0%)      3d4h</span><br><span class="line">  kube-system  coredns-7f89b7bc75-b2ms6                 100m (5%)  0 (0%)  70Mi (1%)  170Mi (4%)  3d5h</span><br><span class="line">  kube-system  coredns-7f89b7bc75-hr2sk                 100m (5%)  0 (0%)  70Mi (1%)  170Mi (4%)  3d5h</span><br><span class="line">  kube-system  etcd-k8s-master                          100m (5%)  0 (0%)  100Mi (2%)  0 (0%)     3d5h</span><br><span class="line">  kube-system  kube-apiserver-k8s-master                250m (12%) 0 (0%)   0 (0%)     0 (0%)     3d5h</span><br><span class="line">  kube-system  kube-controller-manager-k8s-master 200m (10%) 0 (0%) 0 (0%) 0 (0%)  2d16h</span><br><span class="line">  kube-system  kube-proxy-p6hmt                          0 (0%)    0 (0%)   0 (0%)     0 (0%)     3d5h</span><br><span class="line">  kube-system  kube-scheduler-k8s-master                 100m (5%) 0 (0%)   0 (0%)     0 (0%)     2d16h</span><br><span class="line"></span><br><span class="line">Allocated resources:</span><br><span class="line">  (Total limits may be over 100 percent, i.e., overcommitted.)</span><br><span class="line">  Resource           Requests     Limits</span><br><span class="line">  --------           --------     ------</span><br><span class="line">  cpu                1100m (55%)  0 (0%)</span><br><span class="line">  memory             240Mi (6%)   340Mi (9%)</span><br><span class="line">  ephemeral-storage  100Mi (0%)   0 (0%)</span><br><span class="line">  hugepages-1Gi      0 (0%)       0 (0%)</span><br><span class="line">  hugepages-2Mi      0 (0%)       0 (0%)</span><br><span class="line">····</span><br></pre></td></tr></table></figure>
-
-<p>关于资源配额的几个常见问题：</p>
-<p><strong>Q1</strong>：如果requests配置超出节点配置会怎么样？<br>A：pod无法分配，pendding状态<br><strong>Q2</strong>：如果只是limits超出节点配置会怎么样？<br>A：Pod正常分配<br><strong>Q3</strong>：如果limits设置太大（超出节点配置）会怎么样？<br>A：Pod可以分配，可以超卖，但是如果超出节点配置比较多，出现节点资源打满几率就比较</p>
-<h3 id="2-2-调度策略–nodeSelector-amp-nodeAffinity"><a href="#2-2-调度策略–nodeSelector-amp-nodeAffinity" class="headerlink" title="2.2 调度策略–nodeSelector &amp; nodeAffinity"></a>2.2 调度策略–nodeSelector &amp; nodeAffinity</h3><h4 id="2-2-1-nodeSelector"><a href="#2-2-1-nodeSelector" class="headerlink" title="2.2.1 nodeSelector"></a>2.2.1 nodeSelector</h4><p>​        nodeSelector：<strong>用于将Pod调度到匹配Label的Node上，如果没有匹配的标签会调度失败</strong>。<br>作用：</p>
-<ul>
-<li>约束Pod到特定的节点运行</li>
-<li>完全匹配节点标签(必须满足)，如果匹配不到，则Pod的状态将一直为Pendding</li>
-</ul>
-<p>应用场景：</p>
-<ul>
-<li>专用节点：根据业务线将Node分组管理</li>
-<li>配备特殊硬件：部分Node配有SSD硬盘、GPU等</li>
-</ul>
-<p><strong>案例：确保Pod分配到具有SSD硬盘的节点上</strong></p>
-<ul>
-<li><strong>给节点打标签</strong></li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl get nodes</span></span><br><span class="line">NAME          STATUS   ROLES                  AGE    VERSION</span><br><span class="line">k8s-master    Ready    control-plane,master   3d5h   v1.20.0</span><br><span class="line">k8s-node-01   Ready    &lt;none&gt;                 3d3h   v1.20.0</span><br><span class="line">k8s-node-02   Ready    &lt;none&gt;                 3d3h   v1.20.0</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get nodes --show-labels   <span class="comment"># 查看node节点的标签</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl label node k8s-node-01 disktype=ssd   <span class="comment"># 给k8s-node-01宿主机打标签</span></span></span><br><span class="line">node/k8s-node-01 labeled</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 验证结果，只有名称为k8s-node-01的节点被打上了disktype=ssd的标签</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get nodes -l disktype=ssd</span>              </span><br><span class="line">NAME          STATUS   ROLES    AGE    VERSION</span><br><span class="line">k8s-node-01   Ready    &lt;none&gt;   3d3h   v1.20.0</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>编写yaml文件时指定节点标签</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> vim ssd-pod.yaml</span></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  labels:</span><br><span class="line">    run: nginx</span><br><span class="line">  name: pod-nodeselector </span><br><span class="line">spec:</span><br><span class="line">  nodeSelector:        # 指定将要被调度的node的标签，如果有多个node符合标准，k8s将选择含有该标签的最优的一个节点</span><br><span class="line">    disktype: &quot;ssd&quot;</span><br><span class="line">  containers:</span><br><span class="line">  - image: nginx</span><br><span class="line">    name: nginx</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>执行yaml文件并验证</strong></li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl apply -f ssd-pod.yaml    <span class="comment"># 新建容器</span></span></span><br><span class="line">pod/pod-nodeselector created</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pods  -o wide | grep pod-nodeselector   <span class="comment"># 该pod被调度到k8s-node-01节点上</span></span></span><br><span class="line">NAME              READY   STATUS RESTARTS AGE     IP           NODE    NOMINATED NODE  READINESS GATES</span><br><span class="line">pod-nodeselector  1/1     Running   0      58s 10.244.154.203  k8s-node-01   &lt;none&gt;    &lt;none&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-2-2-nodeAffinity"><a href="#2-2-2-nodeAffinity" class="headerlink" title="2.2.2 nodeAffinity"></a>2.2.2 nodeAffinity</h4><p>​        <strong>nodeAffinity</strong>：节点亲和性，与nodeSelector(必须满足，不满足pod状态将为pendding)作用一样，但相比更灵活，满足更多条件，诸如：</p>
-<ul>
-<li><p>匹配更多的逻辑组合，不只是字符串的完全相等，操作符：In(包含)、NotIn(不包含)、Exists(存在)、DoesNotExist(不存在)、Gt(大于)、Lt(小于)</p>
-</li>
-<li><p>调度策略可分为软策略和硬策略，而不是硬性要求</p>
-<ul>
-<li><p>硬（required）：必须满足</p>
-</li>
-<li><p>软（preferred）：尝试满足，但不保证</p>
-</li>
-</ul>
-</li>
-</ul>
-<p>硬性策略案例–必须满足策略，否则不创建pod</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim node-affinity.yaml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">pod-nodeaffinity</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">affinity:</span></span><br><span class="line">    <span class="attr">nodeAffinity:</span></span><br><span class="line">      <span class="attr">requiredDuringSchedulingIgnoredDuringExecution:</span></span><br><span class="line">        <span class="attr">nodeSelectorTerms:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">matchExpressions:</span>   <span class="comment"># 匹配disktype=ssd的node节点，必须要满足才能被创建</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">key:</span> <span class="string">disktype</span></span><br><span class="line">            <span class="attr">operator:</span> <span class="string">In</span></span><br><span class="line">            <span class="attr">values:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">ssd</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">web</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nginx</span></span><br></pre></td></tr></table></figure>
-
-<p>软性策略案例–即使不满足，也会创建pod</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim node-affinity.yaml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">pod-nodeaffinity</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">affinity:</span></span><br><span class="line">    <span class="attr">nodeAffinity:</span></span><br><span class="line">      <span class="attr">preferredDuringSchedulingIgnoredDuringExecution:</span>  <span class="comment"># 跟硬性要求第一个单词不一样</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">wight:</span> <span class="number">1</span>   <span class="comment"># 设置权重，权重取值范围是1-100，值越大，期望越大，没有匹配的也会创建pod</span></span><br><span class="line">        <span class="attr">preferrce:</span>     <span class="comment"># 比硬性多该行</span></span><br><span class="line">          <span class="attr">matchExpressions:</span>   <span class="comment"># 匹配disktype=ssd的node节点，跟硬性要求不同，没有横杆</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">key:</span> <span class="string">gpu</span></span><br><span class="line">            <span class="attr">operator:</span> <span class="string">In</span></span><br><span class="line">            <span class="attr">values:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">&quot;yes&quot;</span>   <span class="comment"># yes、no这种是yaml中的关键字，因此需要用引号，否则产生歧义</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">web</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nginx</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="3-Taint-污点-amp-Tolerations-污点容忍"><a href="#3-Taint-污点-amp-Tolerations-污点容忍" class="headerlink" title="3. Taint(污点) &amp; Tolerations(污点容忍)"></a>3. Taint(污点) &amp; Tolerations(污点容忍)</h2><p>Taints：避免Pod调度到特定Node上<br>Tolerations：允许Pod调度到持有Taints的Node上<br>应用场景：</p>
-<ul>
-<li>专用节点：根据业务线将Node分组管理，<strong>希望在默认情况下不调度该节点</strong>，只有配置了污点容忍才允许分配</li>
-<li>配备特殊硬件：部分Node配有SSD硬盘、GPU，希望在默认情况下不调度该节点，只有配置了污点容忍才允许分配</li>
-<li>基于Taint的驱逐</li>
-</ul>
-<p>给节点打污点的步骤和方法：</p>
-<ul>
-<li>第一步：给节点添加污点<ul>
-<li>格式：kubectl taint node [node] key=value:[effect]<br>例如：kubectl taint node k8s-node1 gpu=yes:NoSchedule</li>
-<li>验证：kubectl describe node k8s-node1 |grep Taint</li>
-<li>其中[effect] 可取值：<ul>
-<li>NoSchedule ：一定不能被调度</li>
-<li>PreferNoSchedule：尽量不要调度，非必须配置容忍</li>
-<li>NoExecute：不仅不会调度，还会驱逐Node上已有的Pod</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>第二步：添加污点容忍（tolrations）字段到Pod配置中</li>
-<li>去掉污点：kubectl taint node [node] key:[effect]-</li>
-</ul>
-<h3 id="3-1-给节点添加污点"><a href="#3-1-给节点添加污点" class="headerlink" title="3.1 给节点添加污点"></a>3.1 给节点添加污点</h3><ul>
-<li>格式：kubectl taint node [node] key=value:[effect]<br>例如：kubectl taint node k8s-node1 gpu=yes:NoSchedule</li>
-<li>验证：kubectl describe node k8s-node1 |grep Taint</li>
-<li>其中[effect] 可取值：<ul>
-<li>NoSchedule ：一定不能被调度</li>
-<li>PreferNoSchedule：尽量不要调度，非必须配置容忍</li>
-<li>NoExecute：不仅不会调度，还会驱逐Node上已有的Pod</li>
-</ul>
-</li>
-</ul>
-<h4 id="3-1-1-查看集群节点污点情况"><a href="#3-1-1-查看集群节点污点情况" class="headerlink" title="3.1.1 查看集群节点污点情况"></a>3.1.1 查看集群节点污点情况</h4><ul>
-<li><strong>查看指定节点污点</strong></li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> master节点默认被打了污点</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl describe nodes k8s-master| grep -i taint</span></span><br><span class="line">Taints:             node-role.kubernetes.io/master:NoSchedule   # master默认被打了污点</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> node节点默认没有污点</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl describe nodes k8s-node-01| grep -i taint</span></span><br><span class="line">Taints:             &lt;none&gt;</span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl describe nodes k8s-node-02| grep -i taint</span></span><br><span class="line">Taints:             &lt;none&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看所有节点污点情况</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl describe node | grep -i taint</span></span><br><span class="line">Taints:             node-role.kubernetes.io/master:NoSchedule   # master节点默认不允许被调度</span><br><span class="line">Taints:             &lt;none&gt;</span><br><span class="line">Taints:             &lt;none&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-1-2-给指定节点添加污点并验证"><a href="#3-1-2-给指定节点添加污点并验证" class="headerlink" title="3.1.2 给指定节点添加污点并验证"></a>3.1.2 给指定节点添加污点并验证</h4><p>​        污点也是通过标签进行选择的，因此在添加污点之前，需要给节点添加标签。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 给k8s-node-02打两个标签，分别是abc=123和gpu=yes</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl label nodes k8s-node-02 gpu=yes</span></span><br><span class="line">node/k8s-node-02 labeled</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl label node k8s-node-02 abc=123</span></span><br><span class="line">node/k8s-node-02 labeled</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get  nodes -l gpu=yes</span>    </span><br><span class="line">NAME          STATUS   ROLES    AGE    VERSION</span><br><span class="line">k8s-node-02   Ready    &lt;none&gt;   3d7h   v1.20.0</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get nodes  -l abc=123</span></span><br><span class="line">NAME          STATUS   ROLES    AGE    VERSION</span><br><span class="line">k8s-node-02   Ready    &lt;none&gt;   3d8h   v1.20.0</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 给节点k8s-node-02打污点</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl taint node k8s-node-02 gpu=yes:NoSchedule   <span class="comment"># 不调度到该节点</span></span></span><br><span class="line">node/k8s-node-02 tainted</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 验证</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl describe nodes | grep -i taint</span></span><br><span class="line">Taints:             node-role.kubernetes.io/master:NoSchedule</span><br><span class="line">Taints:             &lt;none&gt;</span><br><span class="line">Taints:             gpu=yes:NoSchedule   # 污点</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>编写yaml文件并执行</li>
-</ul>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim tain.yaml    # 编写yaml文件，指定节点选择器为abc=123，那么该Pod会在k8s-node-02上进行创建吗</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">run:</span> <span class="string">nginx</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">pod-taint</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">nodeSelector:</span></span><br><span class="line">    <span class="attr">abc:</span> <span class="string">&quot;123&quot;</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># kubectl apply -f tain.yaml </span></span><br><span class="line"><span class="string">pod/pod-taint</span> <span class="string">created</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># kubectl get pod pod-taint</span></span><br><span class="line"><span class="string">NAME</span>        <span class="string">READY</span>   <span class="string">STATUS</span>    <span class="string">RESTARTS</span>   <span class="string">AGE</span></span><br><span class="line"><span class="string">pod-taint</span>   <span class="number">0</span><span class="string">/1</span>     <span class="string">Pending</span>   <span class="number">0</span>          <span class="string">19s</span>   <span class="comment"># 状态将一直是Pendding</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># kubectl describe pod pod-taint   # 查看名称为pod-taint的Pod的详细信息</span></span><br><span class="line"><span class="comment"># 此处只截取Events里面的信息，查看创建日志</span></span><br><span class="line"><span class="string">···</span></span><br><span class="line"><span class="attr">Events:</span></span><br><span class="line">  <span class="string">Type</span>     <span class="string">Reason</span>            <span class="string">Age</span>   <span class="string">From</span>               <span class="string">Message</span></span><br><span class="line">  <span class="string">----</span>     <span class="string">------</span>            <span class="string">----</span>  <span class="string">----</span>               <span class="string">-------</span></span><br><span class="line">  <span class="attr">Warning  FailedScheduling  58s   default-scheduler  0/3 nodes are available:</span> <span class="number">1</span> <span class="string">node(s)</span> <span class="string">didn&#x27;t</span> <span class="string">match</span> <span class="string">Pod&#x27;s</span> <span class="string">node</span> <span class="string">affinity,</span> <span class="number">1</span> <span class="string">node(s)</span> <span class="string">had</span> <span class="string">taint</span> &#123;<span class="attr">gpu:</span> <span class="literal">yes</span>&#125;<span class="string">,</span> <span class="string">that</span> <span class="string">the</span> <span class="string">pod</span> <span class="string">didn&#x27;t</span> <span class="string">tolerate,</span> <span class="number">1</span> <span class="string">node(s)</span> <span class="string">had</span> <span class="string">taint</span> &#123;<span class="attr">node-role.kubernetes.io/master:</span> &#125;<span class="string">,</span> <span class="string">that</span> <span class="string">the</span> <span class="string">pod</span> <span class="string">didn&#x27;t</span> <span class="string">tolerate.</span></span><br><span class="line"><span class="comment"># 警告 调度失败 三个节点没有一个节点可用(0/3)：1个节点没有匹配，1个节点有污点(gpu:yes)，1个节点(master)有污点</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="3-2-污点容忍"><a href="#3-2-污点容忍" class="headerlink" title="3.2 污点容忍"></a>3.2 污点容忍</h3><p>容忍可选值是NoSchedule的所有污点：<br>        - effect: NoSchedule<br>          operator: Exists</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim pid-taint2.yaml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">run:</span> <span class="string">nginx</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">pod-taint2</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">nodeSelector:</span>   <span class="comment"># node标签选择器</span></span><br><span class="line">    <span class="attr">abc:</span> <span class="string">&quot;123&quot;</span></span><br><span class="line">  <span class="attr">tolerations:</span>   <span class="comment"># 污点容忍，gpu=yes</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">key:</span> <span class="string">&quot;gpu&quot;</span></span><br><span class="line">    <span class="attr">operator:</span> <span class="string">&quot;Equal&quot;</span></span><br><span class="line">    <span class="attr">value:</span> <span class="string">&quot;yes&quot;</span></span><br><span class="line">    <span class="attr">effect:</span> <span class="string">&quot;NoSchedule&quot;</span>   <span class="comment"># 一定不能被调度，但是是tolerations(污点容忍)，因此可以新建Pod成功</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">   </span><br><span class="line"><span class="comment"># 查看上面创建的两个pod的结果，pod-taint2已经创建成功</span></span><br><span class="line"><span class="comment"># kubectl get pods| grep   pod-taint</span></span><br><span class="line"><span class="string">pod-taint</span>                    <span class="number">0</span><span class="string">/1</span>     <span class="string">Pending</span>   <span class="number">0</span>          <span class="string">12m</span>   <span class="comment"># 未对污点进行容忍，因此不能创建pod</span></span><br><span class="line"><span class="string">pod-taint2</span>                   <span class="number">1</span><span class="string">/1</span>     <span class="string">Running</span>   <span class="number">0</span>          <span class="string">30s</span>   <span class="comment"># 对污点进行容忍，因此可以创建pod</span></span><br></pre></td></tr></table></figure>
-
-<p>总结：</p>
-<ul>
-<li>nodeSelector：节点做好分组，希望Pod根据配置调度到部分节点</li>
-<li>Taints：节点做特殊用途，不希望正常Pod分配过来</li>
-</ul>
-<h2 id="4-nodeName"><a href="#4-nodeName" class="headerlink" title="4. nodeName"></a>4. nodeName</h2><p>​        nodeName：指定节点名称，<strong>用于将Pod调度到指定的Node上</strong>，<strong>不经过调度器</strong>，<strong>因此污点不会起作用</strong></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim nodename.yaml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">run:</span> <span class="string">nginx</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">pod-nodename</span> </span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">nodeName:</span> <span class="string">&quot;k8s-node-02&quot;</span>   <span class="comment"># 该pod会被调度到名称为k8s-node-02的节点上(注意02上有污点)</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">nginx</span></span><br></pre></td></tr></table></figure>
-
-<p>创建pod</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> kubectl describe nodes | grep -i taints</span></span><br><span class="line">Taints:             node-role.kubernetes.io/master:NoSchedule</span><br><span class="line">Taints:             &lt;none&gt;</span><br><span class="line">Taints:             gpu=yes:NoSchedule   # 02上有污点，不允许被调度</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl apply -f nodename.yaml</span> </span><br><span class="line">pod/pod-nodename created</span><br><span class="line"><span class="meta">#</span><span class="bash"> kubectl get pods | grep pod-nodename</span></span><br><span class="line">pod-nodename                 1/1     Running   0          15s   # 创建pod成功</span><br></pre></td></tr></table></figure>
-
-    
-
-    
-    <div class="page-reward">
-      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
-        <div class="tooltip tooltip-east">
-          <span class="tooltip-item">
-            赏
-          </span>
-          <span class="tooltip-content">
-            <span class="tooltip-text">
-              <span class="tooltip-inner">
-                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢您美味的糖果<i
-                    class="icon icon-quo-right"></i></p>
-                <div class="reward-box">
-                  
-                  <div class="reward-box-item">
-                    <img class="reward-img" src="/img/alipay.jpg">
-                    <span class="reward-type">支付宝</span>
-                  </div>
-                  
-                  
-                  <div class="reward-box-item">
-                    <img class="reward-img" src="/img/weixin.png">
-                    <span class="reward-type">微信</span>
-                  </div>
-                  
-                </div>
-              </span>
-            </span>
-          </span>
-        </div>
-      </a>
-    </div>
-    
-
-    
-    <div class="declare"> 
-      <ul class="post-copyright">
-        <li>
-          <strong>本文作者：</strong>
-          qingdalf
-        </li>
-        <li>
-          <strong>本文链接：</strong>
-          <a href="https://qingdalf.github.io/2021-05/kuberScheduler/" title="Pod调度" target="_blank">https://qingdalf.github.io/2021-05/kuberScheduler/</a>
-        </li>
-        
-        <li>
-          <strong>版权声明： </strong>
+        <div class="article-info info-on-right">
           
-          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
-        </li>
-        
-      </ul>
-    </div>
-    
+          
 
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-
-    
-    
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a> -->
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://qingdalf.github.io/2021-05/kuberScheduler/" alt="微信分享二维码"> -->
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-
-    
-    <div class="clearfix"></div>
-  </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-<nav id="article-nav">
   
-    <a href="/2021-05/kuberLifeCycle/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          项目生命周期
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2021-05/kuberPodPre/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Pod基础</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	
+<a href="/2021-04/welcome/" class="archive-article-date">
+        <time datetime="2021-04-18T00:08:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-18</time>
+</a>
 
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
         </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAPod%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">1. 创建一个Pod的流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Pod%E4%B8%AD%E5%BD%B1%E5%93%8D%E8%B0%83%E5%BA%A6%E7%9A%84%E4%B8%BB%E8%A6%81%E5%9B%A0%E7%B4%A0"><span class="toc-number">2.</span> <span class="toc-text">2. Pod中影响调度的主要因素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E8%B5%84%E6%BA%90%E9%85%8D%E9%A2%9D%E2%80%93resources"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 资源配额–resources</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-%E8%AE%BE%E7%BD%AEpod%E4%BD%BF%E7%94%A8%E7%9A%84%E5%AE%BF%E4%B8%BB%E6%9C%BA%E8%B5%84%E6%BA%90"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.1.1 设置pod使用的宿主机资源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-%E6%9F%A5%E7%9C%8B%E9%9B%86%E7%BE%A4%E4%B8%AD%E8%8A%82%E7%82%B9%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D%E6%83%85%E5%86%B5"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.1.2 查看集群中节点资源分配情况</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E8%B0%83%E5%BA%A6%E7%AD%96%E7%95%A5%E2%80%93nodeSelector-amp-nodeAffinity"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 调度策略–nodeSelector &amp; nodeAffinity</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-nodeSelector"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.2.1 nodeSelector</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-nodeAffinity"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2.2 nodeAffinity</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Taint-%E6%B1%A1%E7%82%B9-amp-Tolerations-%E6%B1%A1%E7%82%B9%E5%AE%B9%E5%BF%8D"><span class="toc-number">3.</span> <span class="toc-text">3. Taint(污点) &amp; Tolerations(污点容忍)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E7%BB%99%E8%8A%82%E7%82%B9%E6%B7%BB%E5%8A%A0%E6%B1%A1%E7%82%B9"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 给节点添加污点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-1-%E6%9F%A5%E7%9C%8B%E9%9B%86%E7%BE%A4%E8%8A%82%E7%82%B9%E6%B1%A1%E7%82%B9%E6%83%85%E5%86%B5"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1 查看集群节点污点情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-2-%E7%BB%99%E6%8C%87%E5%AE%9A%E8%8A%82%E7%82%B9%E6%B7%BB%E5%8A%A0%E6%B1%A1%E7%82%B9%E5%B9%B6%E9%AA%8C%E8%AF%81"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2 给指定节点添加污点并验证</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%B1%A1%E7%82%B9%E5%AE%B9%E5%BF%8D"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 污点容忍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-nodeName"><span class="toc-number">4.</span> <span class="toc-text">4. nodeName</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
+    	 
+  
+    <h1 itemprop="name">
+	
+	  <a class="archive-article-title" href="/2021-04/welcome/">welcome</a>
+	
+    </h1>
+  
+
+
+        <div class="article-info info-on-right">
+          
+          
+
         </div>
-        
-    </div>
-</aside>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
+  
 
-
-
-
-
-
-
-
-
-
-
-
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/2021/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2021/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2021/page/3/">3</a><a class="page-number" href="/archives/2021/page/4/">4</a><span class="page-number current">5</span>
+    </nav>
+  
 
 
           </div>
@@ -681,8 +353,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

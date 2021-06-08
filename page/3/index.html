@@ -236,6 +236,186 @@
             
 
   
+    <article id="post-dockerNetQuestion" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021-05/dockerNetQuestion/">两个常见的容器网络问题</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021-05/dockerNetQuestion/" class="archive-article-date">
+        <time datetime="2021-05-04T07:19:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="1-容器2引用容器1的网络，当容器1宕掉后，容器2的网络还能正常吗？"><a href="#1-容器2引用容器1的网络，当容器1宕掉后，容器2的网络还能正常吗？" class="headerlink" title="1 容器2引用容器1的网络，当容器1宕掉后，容器2的网络还能正常吗？"></a>1 容器2引用容器1的网络，当容器1宕掉后，容器2的网络还能正常吗？</h4><p>​        不能。容器1宕掉后会销毁网络，因此容器2此时只有lo网络了，不再拥有与容器1共享的网络。</p>
+    
+    <a class="article-more-a" href="/2021-05/dockerNetQuestion/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021-05/dockerNetQuestion/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-dockerNetAdvance" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021-05/dockerNetAdvance/">docker网络进阶</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021-05/dockerNetAdvance/" class="archive-article-date">
+        <time datetime="2021-05-04T07:16:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="1-网络变化"><a href="#1-网络变化" class="headerlink" title="1 网络变化"></a>1 网络变化</h3><p>​        我们从下面两个方面来查看网络的变化情况。</p>
+<ol>
+<li><p>安装和启动docker前后，宿主机上网络的变化</p>
+</li>
+<li><p>启动一个容器后，查看容器内发收数据包与网桥docker0上新增的端口收发数据包的情况</p>
+    
+    <a class="article-more-a" href="/2021-05/dockerNetAdvance/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021-05/dockerNetAdvance/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-dockerNetwork" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -961,186 +1141,9 @@
 
 
   
-    <article id="post-pIf" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021-05/pIf/">if判断语句</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021-05/pIf/" class="archive-article-date">
-        <time datetime="2021-05-02T04:59:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-02</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>​        编程时经常需要检查一系列条件，并据此决定采取什么措施。在Python中，if语句让你能够检查程序的当前状态，并据此采取相应的措施。</p>
-<h2 id="1-格式"><a href="#1-格式" class="headerlink" title="1. 格式"></a>1. 格式</h2><h3 id="1-1-单分支结构"><a href="#1-1-单分支结构" class="headerlink" title="1.1 单分支结构"></a>1.1 单分支结构</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 条件为真:</span><br><span class="line">   执行的代码块</span><br></pre></td></tr></table></figure>
-    
-    <a class="article-more-a" href="/2021-05/pIf/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021-05/pIf/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pJupyterNotebook" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021-05/pJupyterNotebook/">安装Jupyter Notebook</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021-05/pJupyterNotebook/" class="archive-article-date">
-        <time datetime="2021-05-02T02:31:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-02</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>​        Jupyter Notebook 是一个基于 Web 的交互式计算笔记本环境，允许用户创建和共享各种内容，包括实时代码、方程式、可视化和叙述文本的文档。它的用途包括：数据清理和转换、数值模拟、统计建模、数据可视化与机器学习等。</p>
-    
-    <a class="article-more-a" href="/2021-05/pJupyterNotebook/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021-05/pJupyterNotebook/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
     </nav>
   
 
