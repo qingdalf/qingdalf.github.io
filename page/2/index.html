@@ -236,6 +236,94 @@
             
 
   
+    <article id="post-kuberScheduler" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021-05/kuberScheduler/">Pod调度</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021-05/kuberScheduler/" class="archive-article-date">
+        <time datetime="2021-05-05T11:07:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-05</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="1-创建一个Pod的流程"><a href="#1-创建一个Pod的流程" class="headerlink" title="1. 创建一个Pod的流程"></a>1. 创建一个Pod的流程</h2><p><strong>step1</strong> kubectl run/apply创建一个pod，向apiserver发起请求<br><strong>step2</strong> apiserver会将请求的配置写到etcd<br><strong>step3</strong> etcd响应处理结果给apiserver，apiserver响应处理结果给kubectl<br><strong>step4</strong> scheduler收到需要创建pod的请求，根据自己调度算法选择一个合适的节点分配，并将结果反馈给apiserver<br><strong>step5</strong> kubelet收到需要创建我这个节点的pod，再调用容器引擎创建容器，容器引擎将结果反馈给kubelet，kubelet汇总pod状态反馈apiserver</p>
+    
+    <a class="article-more-a" href="/2021-05/kuberScheduler/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021-05/kuberScheduler/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-kuberPodPre" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1002,94 +1090,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2021-05/dockerHarbor/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-dockerRegistory" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021-05/dockerRegistory/">docker镜像仓库</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021-05/dockerRegistory/" class="archive-article-date">
-        <time datetime="2021-05-04T10:38:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-04</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>​        启动容器时，docker daemon会试图从本地获取相关镜像，本地镜像不存在时，其将从Registry中下载该镜像并保存到本地</p>
-    
-    <a class="article-more-a" href="/2021-05/dockerRegistory/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/kubernets//" class="article-tag-list-link color5">kubernets</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021-05/dockerRegistory/">展开全文 >></a>
     </p>
     
 
