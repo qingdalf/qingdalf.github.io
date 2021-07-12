@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://qingdalf.github.io/2021-05/ansibleBase/image-20210712120417808.png">
 <meta property="article:published_time" content="2021-05-25T07:15:02.000Z">
-<meta property="article:modified_time" content="2021-07-12T05:17:44.424Z">
+<meta property="article:modified_time" content="2021-07-12T05:24:19.731Z">
 <meta property="article:author" content="qingdalf">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://qingdalf.github.io/2021-05/ansibleBase/image-20210712120417808.png">
@@ -313,11 +313,9 @@
 <p>在playbook role中的格式：</p>
 <ul>
 <li>templates文件必须存放于templates目录下，且命名为 .j2 结尾</li>
-<li>yaml/yml 文件需和templates目录平级，目录结构如下：<br>./<br>├── temnginx.yml<br>└── templates<pre><code> └── nginx.conf.j2
-</code></pre>
-</li>
+<li>yaml/yml 文件需和templates目录平级，目录结构如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">├── temnginx.yml</span><br><span class="line">└── templates</span><br><span class="line">     └── nginx.conf.j2</span><br></pre></td></tr></table></figure>
+案例：</li>
 </ul>
-<p>案例：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> cat zabbix_agentd.conf.j2</span> </span><br><span class="line">PidFile=/var/run/zabbix/zabbix_agentd.pid</span><br><span class="line">LogFile=/var/log/zabbix/zabbix_agentd.log</span><br><span class="line">DebugLevel=3</span><br><span class="line">Server=192.168.1.20</span><br><span class="line">ListenPort=10050</span><br><span class="line">ListenIP=&#123;&#123; ansible_eth0.ipv4.address &#125;&#125;</span><br><span class="line">Hostname=&#123;&#123; ansible_eth0.ipv4.address &#125;&#125;</span><br></pre></td></tr></table></figure>
 
 <p>playbook</p>
